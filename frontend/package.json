@@ -3,13 +3,15 @@
   "version": "0.0.1",
   "description": "Frontend for handmade goods webstore",
   "author": "sprilukin@gmail.com",
-  "contributors": [{
-    "name": "Sergey Prilukin",
-    "email": "sprilukin@gmail.com"
-  }],
-  "bin": {
-  },
+  "contributors": [
+    {
+      "name": "Sergey Prilukin",
+      "email": "sprilukin@gmail.com"
+    }
+  ],
+  "bin": {},
   "scripts": {
+    "build": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "main": "index.js",
@@ -21,8 +23,8 @@
     "url": "https://github.com/sprilukin/artbizhu/issues"
   },
   "dependencies": {
+    "webpack": "^2.2.1"
   },
-  "devDependencies": {
-  },
+  "devDependencies": {},
   "license": "MIT"
 }
