@@ -1,0 +1,27 @@
+{
+  "name": "artbizhu",
+  "version": "0.0.1",
+  "description": "Web store for handmade goods",
+  "author": "sprilukin@gmail.com",
+  "contributors": [{
+    "name": "Sergey Prilukin",
+    "email": "sprilukin@gmail.com"
+  }],
+  "bin": {
+  },
+  "scripts": {
+  },
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sprilukin/artbizhu"
+  },
+  "bugs": {
+    "url": "https://github.com/sprilukin/artbizhu/issues"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+  },
+  "license": "MIT"
+}
