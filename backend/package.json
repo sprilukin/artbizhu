@@ -1,0 +1,36 @@
+{
+  "name": "artbizhu-backend",
+  "version": "0.0.1",
+  "description": "Backend for handmade goods webstore",
+  "author": "sprilukin@gmail.com",
+  "contributors": [
+    {
+      "name": "Sergey Prilukin",
+      "email": "sprilukin@gmail.com"
+    }
+  ],
+  "bin": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./bin/www"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sprilukin/artbizhu"
+  },
+  "bugs": {
+    "url": "https://github.com/sprilukin/artbizhu/issues"
+  },
+  "dependencies": {
+    "express": "^4.14.1",
+    "mongoose": "^4.8.1",
+    "body-parser": "~1.16.0",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.0",
+    "jade": "~1.11.0",
+    "morgan": "~1.7.0",
+    "serve-favicon": "~2.3.2"
+  },
+  "devDependencies": {},
+  "license": "MIT"
+}

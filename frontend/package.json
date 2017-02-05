@@ -1,7 +1,7 @@
 {
-  "name": "artbizhu",
+  "name": "artbizhu-frontend",
   "version": "0.0.1",
-  "description": "Web store for handmade goods",
+  "description": "Frontend for handmade goods webstore",
   "author": "sprilukin@gmail.com",
   "contributors": [{
     "name": "Sergey Prilukin",
@@ -10,6 +10,7 @@
   "bin": {
   },
   "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "main": "index.js",
   "repository": {
