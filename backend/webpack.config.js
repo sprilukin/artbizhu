@@ -2,12 +2,12 @@ let path = require('path');
 
 module.exports = {
     entry: {
-        testModule: './src/testModule.js'
+        testModule: './frontend/testModule.js'
     },
 
     output: {
         filename: '[name].js',
-        path: path.resolve(__dirname, "..", 'backend', "public", "javascripts")
+        path: path.resolve(__dirname, "public", "javascripts")
     },
 
     watch: true,
