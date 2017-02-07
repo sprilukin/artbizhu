@@ -43,8 +43,11 @@ module.exports = {
 
     plugins: [
         // new webpack.HotModuleReplacementPlugin(),
+        new webpack.DefinePlugin({
+            "typeof self": JSON.stringify("undefined")
+        }),
         new webpack.ProvidePlugin({
-            // 'Promise': 'promise-polyfill', // Thanks Aaron (https://gist.github.com/Couto/b29676dd1ab8714a818f#gistcomment-1584602)
+            'Promise': 'promise-polyfill'
             // 'fetch': 'whatwg-fetch'
         }),
         //new webpack.optimize.CommonsChunkPlugin('app', null, false),
