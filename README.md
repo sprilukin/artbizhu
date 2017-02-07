@@ -17,5 +17,6 @@ An example of web store for handcrafted goods
 for hot app deployment it's recommended to use `nodemon`:
 - `npm i nodemon -g`
 - `nodemon`
+
 ## License
 MIT
