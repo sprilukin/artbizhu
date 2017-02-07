@@ -1,7 +1,7 @@
 {
-  "name": "artbizhu",
+  "name": "handcrafted",
   "version": "0.0.1",
-  "description": "Artbizhu - handmade goods webstore",
+  "description": "Web store for handmade goods",
   "author": "sprilukin@gmail.com",
   "contributors": [
     {
@@ -17,10 +17,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/sprilukin/artbizhu"
+    "url": "https://github.com/sprilukin/handcrafted"
   },
   "bugs": {
-    "url": "https://github.com/sprilukin/artbizhu/issues"
+    "url": "https://github.com/sprilukin/handcrafted/issues"
   },
   "dependencies": {
     "babel-core": "^6.22.1",

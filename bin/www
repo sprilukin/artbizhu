@@ -5,7 +5,7 @@
  */
 
 let app = require('../app/configuredApp');
-let debug = require('debug')('artbizhu:server');
+let debug = require('debug')('handcrafted:server');
 let http = require('http');
 
 /**
