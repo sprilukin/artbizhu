@@ -1,5 +1,9 @@
-let path = require('path'),
-    webpack = require("webpack");
+const path = require('path'),
+    webpack = require("webpack"),
+    UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+
+const NODE_ENV = process.env.NODE_ENV || "development",
+    WATCH = process.env.WATCH || false;
 
 module.exports = {
     entry: {
@@ -41,22 +45,30 @@ module.exports = {
     },
 
     plugins: [
-        // new webpack.HotModuleReplacementPlugin(),
         new webpack.ProvidePlugin({
             'Promise': 'promise-polyfill'
         }),
-        //new webpack.optimize.CommonsChunkPlugin('app', null, false),
-        // new webpack.NoEmitOnErrorsPlugin(),
-        // new HtmlWebpackPlugin({
-        //     template: path.resolve('./', 'index.html'),
-        //     webpackDevServer: '/webpack-dev-server.js'
-        // })
+        new webpack.NoEmitOnErrorsPlugin()
     ],
-
-    // watch: true,
-    // watchOptions: {
-    //     aggregateTimeout: 100
-    // },
 
     devtool: "source-map"
 };
+
+if (WATCH) {
+    module.exports.watch = true;
+    module.exports.watchOptions = {
+        aggregateTimeout: 100
+    }
+}
+
+if (NODE_ENV === "production") {
+    module.exports.plugins.push(new UglifyJSPlugin({
+        compress: {
+            warnings: false,
+            drop_console: true,
+            unsafe: true
+        },
+        comments: false,
+        sourceMap: true
+    }))
+}
