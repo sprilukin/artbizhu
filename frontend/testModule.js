@@ -1,9 +1,12 @@
 let a = require("./anotherModule");
 let fetch = require("whatwg-fetch").fetch;
-let _ = require("lodash");
+let pick = require("lodash/pick");
+let Promise = require("promise-polyfill");
 
 fetch('/users.html').then(() => console.log(arguments));
 
-_.pick({});
+pick({});
+
+Promise.resolve({test: "test"}).then((res) => console.log(res));
 
 console.log(a);
