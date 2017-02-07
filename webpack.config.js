@@ -21,9 +21,8 @@ module.exports = {
     module: {
         rules: [
             {
-                // test: "/node_modules\/whatwg-fetch/fetch\.js",
-                // use: 'imports?this=>global!exports?fetch=global.fetch'
-                // use: 'imports-loader?self=>{}!exports-loader?fetch=self.fetch'
+                test: /whatwg-fetch\/fetch.js$/,
+                use: 'imports-loader?self=>this'
             },
             {
                 test: /\.js$/,
@@ -43,9 +42,6 @@ module.exports = {
 
     plugins: [
         // new webpack.HotModuleReplacementPlugin(),
-        new webpack.DefinePlugin({
-            "typeof self": JSON.stringify("undefined")
-        }),
         new webpack.ProvidePlugin({
             'Promise': 'promise-polyfill'
             // 'fetch': 'whatwg-fetch'
