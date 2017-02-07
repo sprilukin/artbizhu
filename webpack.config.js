@@ -44,7 +44,6 @@ module.exports = {
         // new webpack.HotModuleReplacementPlugin(),
         new webpack.ProvidePlugin({
             'Promise': 'promise-polyfill'
-            // 'fetch': 'whatwg-fetch'
         }),
         //new webpack.optimize.CommonsChunkPlugin('app', null, false),
         // new webpack.NoEmitOnErrorsPlugin(),
