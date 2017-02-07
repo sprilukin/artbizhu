@@ -20,10 +20,11 @@ module.exports = {
 
     module: {
         rules: [
-            /*{
-                test: require.resolve("whatwg-fetch"),
-                use: 'imports?this=>global!exports?fetch=global.fetch'
-            },*/
+            {
+                // test: "/node_modules\/whatwg-fetch/fetch\.js",
+                // use: 'imports?this=>global!exports?fetch=global.fetch'
+                // use: 'imports-loader?self=>{}!exports-loader?fetch=self.fetch'
+            },
             {
                 test: /\.js$/,
                 use: [
@@ -43,7 +44,7 @@ module.exports = {
     plugins: [
         // new webpack.HotModuleReplacementPlugin(),
         new webpack.ProvidePlugin({
-            // 'Promise': 'es6-promise', // Thanks Aaron (https://gist.github.com/Couto/b29676dd1ab8714a818f#gistcomment-1584602)
+            // 'Promise': 'promise-polyfill', // Thanks Aaron (https://gist.github.com/Couto/b29676dd1ab8714a818f#gistcomment-1584602)
             // 'fetch': 'whatwg-fetch'
         }),
         //new webpack.optimize.CommonsChunkPlugin('app', null, false),
