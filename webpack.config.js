@@ -1,7 +1,8 @@
 const path = require('path'),
     webpack = require("webpack"),
     UglifyJSPlugin = require('uglifyjs-webpack-plugin'),
-    ExtractTextPlugin = require("extract-text-webpack-plugin");
+    ExtractTextPlugin = require("extract-text-webpack-plugin"),
+    OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
 const NODE_ENV = process.env.NODE_ENV || "development",
     WATCH = process.env.WATCH || false;
@@ -84,11 +85,20 @@ module.exports = {
         new webpack.ProvidePlugin({
             'Promise': 'promise-polyfill'
         }),
+        new webpack.DefinePlugin({
+            "UIkit": 'uikit'
+        }),
         new webpack.NoEmitOnErrorsPlugin(),
         new ExtractTextPlugin({
-            filename: "bundle.css",
+            filename: "css/bundle.css",
             disable: false,
             allChunks: true
+        }),
+        new OptimizeCssAssetsPlugin({
+            // assetNameRegExp: /bundle\.css&/,
+            // cssProcessor: require('cssnano'),
+            // canPrint: true,
+            cssProcessorOptions: { discardComments: { removeAll: true } }
         })
     ],
 
