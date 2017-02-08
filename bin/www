@@ -4,7 +4,7 @@
  * Module dependencies.
  */
 
-let app = require('../app/configuredApp');
+let app = require('../backend/app/configuredApp');
 let debug = require('debug')('handcrafted:server');
 let http = require('http');
 
