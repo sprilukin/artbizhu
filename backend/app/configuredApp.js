@@ -4,6 +4,6 @@ require("./templating");
 require("./routing");
 require("./errorHandling");
 
-let app = require('./app');
+let app = require("./app");
 
 module.exports = app;

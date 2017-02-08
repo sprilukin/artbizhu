@@ -1,3 +1,3 @@
-let morgan = require('morgan');
+let morgan = require("morgan");
 
-module.exports = morgan('dev');
+module.exports = morgan("dev");

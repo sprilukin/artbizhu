@@ -3,10 +3,10 @@ let fetch = require("whatwg-fetch").fetch;
 let pick = require("lodash/pick");
 let Promise = require("promise-polyfill");
 
-fetch('/users.html').then(() => console.log(arguments));
+fetch("/users.html").then(/*() => console.log(arguments)*/);
 
 pick({});
 
-Promise.resolve({test: "test"}).then((res) => console.log(res));
+Promise.resolve({test: "test"}).then(/*(res) => console.log(res)*/);
 
-console.log(a);
+module.exports = a;
