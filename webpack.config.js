@@ -26,7 +26,7 @@ module.exports = {
         rules: [
             {
                 test: /whatwg-fetch\/fetch.js$/,
-                use: 'imports-loader?self=>this'
+                use: 'imports-loader?self=>undefined'
             },
             {
                 test: /\.js$/,
