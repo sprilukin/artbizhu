@@ -8,8 +8,7 @@ const NODE_ENV = process.env.NODE_ENV || "development",
 
 module.exports = {
     entry: {
-        "javascripts/testModule.js": 'testModule.js',
-        // "css/uikit.css": 'uikit.less'
+        "javascripts/testModule.js": 'testModule.js'
     },
 
     output: {
@@ -65,7 +64,7 @@ module.exports = {
                 ],
                 include: [/node_modules/]
             },
-            {
+            /*{
                 test: /\.(png|jpg|svg|ttf|eot|woff|woff2)$/,
                 use: [
                     {
@@ -77,7 +76,7 @@ module.exports = {
                     }
                 ],
                 exclude: [/node_modules/]
-            }
+            }*/
         ]
     },
 
