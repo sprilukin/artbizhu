@@ -7,19 +7,22 @@ const NODE_ENV = process.env.NODE_ENV || "development",
 
 module.exports = {
     entry: {
-        testModule: 'testModule.js'
+        "javascripts/testModule.js": 'testModule.js',
+        // "css/uikit.css": 'uikit.less'
     },
 
     output: {
-        filename: '[name].js',
-        path: path.resolve(__dirname, "public", "javascripts")
+        filename: '[name]',
+        path: path.resolve(__dirname, "public"),
+        publicPath: "/"
     },
 
     resolve: {
         modules: [
-            path.join(__dirname, "frontend"),
+            path.join(__dirname, "frontend/js"),
+            path.join(__dirname, "frontend/css"),
             "node_modules"
-        ]
+        ],
     },
 
     module: {
@@ -40,6 +43,30 @@ module.exports = {
                     }
                 ],
                 exclude: [/node_modules/]
+            },
+            {
+                test: /\.less$/,
+                use: [
+                    'style-loader',
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            importLoaders: 1
+                        }
+                    },
+                    'less-loader'
+                ]
+            },
+            {
+                test: /\.(png|jpg|svg|ttf|eot|woff|woff2)$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: "static/[name].[ext]"
+                        }
+                    }
+                ]
             }
         ]
     },

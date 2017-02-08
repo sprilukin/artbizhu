@@ -1,0 +1,11 @@
+*.js
+*.js.map
+*.css
+*.css.map
+*.png
+*.jpg
+*.svg
+*.ttf
+*.eot
+*.woff
+*.woff2
