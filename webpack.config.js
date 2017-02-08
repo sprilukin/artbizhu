@@ -63,10 +63,24 @@ module.exports = {
                     {
                         loader: 'file-loader',
                         options: {
-                            name: "static/[name].[ext]"
+                            name: "[1][name].[ext]",
+                            regExp: "node_modules/(.*)"
                         }
                     }
-                ]
+                ],
+                include: [/node_modules/]
+            },
+            {
+                test: /\.(png|jpg|svg|ttf|eot|woff|woff2)$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: "[path][name].[ext]",
+                        }
+                    }
+                ],
+                exclude: [/node_modules/]
             }
         ]
     },
