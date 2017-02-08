@@ -3,7 +3,6 @@ let fetch = require("whatwg-fetch").fetch;
 // let pick = require("lodash/pick");
 let Promise = require("promise-polyfill");
 require("uikit/dist/js/uikit");
-require("../css/uikit.less");
 
 fetch("/users.html").then(/*() => console.log(arguments)*/);
 

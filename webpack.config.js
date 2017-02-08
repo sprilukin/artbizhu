@@ -9,7 +9,8 @@ const NODE_ENV = process.env.NODE_ENV || "development",
 
 module.exports = {
     entry: {
-        "javascripts/testModule.js": 'testModule.js'
+        "javascripts/testModule.js": 'testModule.js',
+        "css/bundle.css": 'uikit.less'
     },
 
     output: {
@@ -90,7 +91,7 @@ module.exports = {
         }),
         new webpack.NoEmitOnErrorsPlugin(),
         new ExtractTextPlugin({
-            filename: "css/bundle.css",
+            filename: "[name]",
             disable: false,
             allChunks: true
         }),
