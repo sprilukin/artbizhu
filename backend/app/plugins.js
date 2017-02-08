@@ -8,10 +8,14 @@ let cookieParser = require("cookie-parser");
 let bodyParser = require("body-parser");
 let publicFolder = path.join(__dirname, "../../public");
 let compression = require('compression');
+let NODE_ENV = process.env.NODE_ENV || "development";
+
 
 // should be the first middleware function
 // need to conditionally enable it on production
-// app.use(compression());
+if (NODE_ENV === "production") {
+    app.use(compression());
+}
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, "public", "favicon.ico")));
