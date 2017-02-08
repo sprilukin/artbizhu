@@ -1,6 +1,7 @@
 const path = require('path'),
     webpack = require("webpack"),
-    UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+    UglifyJSPlugin = require('uglifyjs-webpack-plugin'),
+    ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 const NODE_ENV = process.env.NODE_ENV || "development",
     WATCH = process.env.WATCH || false;
@@ -13,8 +14,7 @@ module.exports = {
 
     output: {
         filename: '[name]',
-        path: path.resolve(__dirname, "public"),
-        publicPath: "/"
+        path: path.resolve(__dirname, "public")
     },
 
     resolve: {
@@ -46,16 +46,11 @@ module.exports = {
             },
             {
                 test: /\.less$/,
-                use: [
-                    'style-loader',
-                    {
-                        loader: 'css-loader',
-                        options: {
-                            importLoaders: 1
-                        }
-                    },
-                    'less-loader'
-                ]
+                loader: ExtractTextPlugin.extract({
+                    fallback: "style-loader",
+                    use: "css-loader!less-loader",
+                    publicPath: "/"
+                })
             },
             {
                 test: /\.(png|jpg|svg|ttf|eot|woff|woff2)$/,
@@ -74,9 +69,10 @@ module.exports = {
                 test: /\.(png|jpg|svg|ttf|eot|woff|woff2)$/,
                 use: [
                     {
-                        loader: 'file-loader',
+                        loader: 'url-loader',
                         options: {
                             name: "[path][name].[ext]",
+                            limit: "1024"
                         }
                     }
                 ],
@@ -89,7 +85,12 @@ module.exports = {
         new webpack.ProvidePlugin({
             'Promise': 'promise-polyfill'
         }),
-        new webpack.NoEmitOnErrorsPlugin()
+        new webpack.NoEmitOnErrorsPlugin(),
+        new ExtractTextPlugin({
+            filename: "bundle.css",
+            disable: false,
+            allChunks: true
+        })
     ],
 
     devtool: "source-map"
