@@ -49,7 +49,23 @@ module.exports = {
                 test: /\.less$/,
                 loader: ExtractTextPlugin.extract({
                     fallback: "style-loader",
-                    use: "css-loader!less-loader",
+                    // use: "css-loader?sourceMap=true!less-loader?sourceMap=true",
+                    use: [
+                        {
+                            loader: 'css-loader',
+                            options: {
+                                sourceMap: true,
+                                importLoaders: 1
+                            }
+                        },
+                        {
+                            loader: 'less-loader',
+                            options: {
+                                sourceMap: true
+                            }
+                        }
+                    ],
+
                     publicPath: "/"
                 })
             },
