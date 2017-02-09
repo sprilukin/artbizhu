@@ -1,2 +1,8 @@
 {
+  "watch": false,
+  "port": 80,
+  "cache": true,
+  "uglify": true,
+  "localsError": false,
+  "compress": true
 }
