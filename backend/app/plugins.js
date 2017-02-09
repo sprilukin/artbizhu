@@ -12,7 +12,7 @@ let profile = require("../../profile");
 
 // should be the first middleware function
 // need to conditionally enable it on production
-if (profile.name === profile.PRODUCTION) {
+if (profile.compress) {
     app.use(compression());
 }
 

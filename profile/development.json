@@ -1,6 +1,0 @@
-{
-  "name": "development",
-  "watch": false,
-  "port": 3000,
-  "cache": false
-}

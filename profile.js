@@ -1,36 +1,29 @@
 /* eslint no-console: "off" */
 
+// profile resultion precedence (from high to low):
+// env -> .profile.json -> [profile].json -> default.json
+// where [profile] resolved from NODE_ENV or is "development" by default
+
 let fs = require("fs"),
-    _ = require("lodash");
+    profiles = require("./profiles"),
+    environmentProfile = require("./profiles/environment");
 
-const PROFILES = {
-    DEVELOPMENT: JSON.parse(fs.readFileSync("./profile/development.json")),
-    PRODUCTION: JSON.parse(fs.readFileSync("./profile/production.json"))
-};
-
-let profile = PROFILES.DEVELOPMENT;
+// get profile name from NODE_ENV
+let profile = profiles[process.env.NODE_ENV] || profiles.development;
 
 const localProfilePath = "./.profile.json";
 let isProfileFileExists = fs.existsSync(localProfilePath);
 
 if (isProfileFileExists) {
     try {
-        profile = _.extend(profile, JSON.parse(fs.readFileSync(localProfilePath)));
+        profile = Object.assign(profile, JSON.parse(fs.readFileSync(localProfilePath)));
     } catch (e) {
         console.log("Invalid './.profile.json' file");
     }
 }
 
-profile.name = process.env.NODE_ENV || profile.name;
-profile.watch = process.env.WATCH || profile.watch;
-profile.port = process.env.PORT || profile.port;
-profile.cache = process.env.CACHE || profile.cache;
+profile = Object.assign(profile, environmentProfile);
 
 console.log("Active profile: " + JSON.stringify(profile, null, 2));
 
-let profiles = Object.keys(PROFILES).reduce(function(memo, key) {
-    memo[key] = PROFILES[key].name;
-    return memo;
-}, {});
-
-module.exports = _.extend(profile, profiles);
+module.exports = profile;

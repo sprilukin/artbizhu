@@ -1,6 +1,6 @@
-const path = require('path'),
+const path = require("path"),
     webpack = require("webpack"),
-    UglifyJSPlugin = require('uglifyjs-webpack-plugin'),
+    UglifyJSPlugin = require("uglifyjs-webpack-plugin"),
     ExtractTextPlugin = require("extract-text-webpack-plugin"),
     OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
@@ -8,12 +8,12 @@ const profile = require("./profile");
 
 module.exports = {
     entry: {
-        "js/testModule.js": 'testModule.js',
-        "css/bundle.css": 'uikit.less'
+        "js/testModule.js": "testModule.js",
+        "css/bundle.css": "uikit.less"
     },
 
     output: {
-        filename: '[name]',
+        filename: "[name]",
         path: path.resolve(__dirname, "public")
     },
 
@@ -29,7 +29,7 @@ module.exports = {
         rules: [
             {
                 test: /whatwg-fetch\/fetch.js$/,
-                use: 'imports-loader?self=>undefined'
+                use: "imports-loader?self=>undefined"
             },
             {
                 test: /\.js$/,
@@ -37,7 +37,7 @@ module.exports = {
                     {
                         loader: "babel-loader",
                         options: {
-                            presets: ['es2015'],
+                            presets: ["es2015"],
                             plugins: ["transform-runtime"]
                         }
                     }
@@ -51,14 +51,14 @@ module.exports = {
                     // use: "css-loader?sourceMap=true!less-loader?sourceMap=true",
                     use: [
                         {
-                            loader: 'css-loader',
+                            loader: "css-loader",
                             options: {
                                 sourceMap: true,
                                 importLoaders: 1
                             }
                         },
                         {
-                            loader: 'less-loader',
+                            loader: "less-loader",
                             options: {
                                 sourceMap: true
                             }
@@ -72,7 +72,7 @@ module.exports = {
                 test: /\.(ttf|eot|woff|woff2)$/,
                 use: [
                     {
-                        loader: 'file-loader',
+                        loader: "file-loader",
                         options: {
                             name: "font/[hash:6].[name].[ext]",
                             //name: "[1].[name].[ext]",
@@ -86,7 +86,7 @@ module.exports = {
                 test: /\.(png|jpg|svg)$/,
                 use: [
                     {
-                        loader: 'file-loader',
+                        loader: "file-loader",
                         options: {
                             name: "img/[hash:6].[name].[ext]"
                         }
@@ -98,7 +98,7 @@ module.exports = {
                 test: /\.(png|jpg|svg|ttf|eot|woff|woff2)$/,
                 use: [
                     {
-                        loader: 'url-loader',
+                        loader: "url-loader",
                         options: {
                             name: "[path][name].[ext]",
                             limit: "1024"
@@ -112,10 +112,10 @@ module.exports = {
 
     plugins: [
         new webpack.ProvidePlugin({
-            'Promise': 'promise-polyfill'
+            "Promise": "promise-polyfill"
         }),
         new webpack.DefinePlugin({
-            "UIkit": 'uikit'
+            "UIkit": "uikit"
         }),
         new webpack.NoEmitOnErrorsPlugin(),
         new ExtractTextPlugin({
@@ -132,10 +132,10 @@ if (profile.watch) {
     module.exports.watch = true;
     module.exports.watchOptions = {
         aggregateTimeout: 100
-    }
+    };
 }
 
-if (profile.name === profile.PRODUCTION) {
+if (profile.uglify) {
     module.exports.plugins.push(new UglifyJSPlugin({
         compress: {
             warnings: false,
@@ -147,7 +147,7 @@ if (profile.name === profile.PRODUCTION) {
     }));
     module.exports.plugins.push(new OptimizeCssAssetsPlugin({
         // assetNameRegExp: /bundle\.css&/,
-        // cssProcessor: require('cssnano'),
+        // cssProcessor: require("cssnano"),
         // canPrint: true,
         cssProcessorOptions: {
             discardComments: {
