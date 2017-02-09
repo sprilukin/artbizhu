@@ -9,7 +9,7 @@ const NODE_ENV = process.env.NODE_ENV || "development",
 
 module.exports = {
     entry: {
-        "javascripts/testModule.js": 'testModule.js',
+        "js/testModule.js": 'testModule.js',
         "css/bundle.css": 'uikit.less'
     },
 
@@ -54,13 +54,26 @@ module.exports = {
                 })
             },
             {
-                test: /\.(png|jpg|svg|ttf|eot|woff|woff2)$/,
+                test: /\.(ttf|eot|woff|woff2)$/,
                 use: [
                     {
                         loader: 'file-loader',
                         options: {
-                            name: "[1][name].[ext]",
-                            regExp: "node_modules/(.*)"
+                            name: "font/[hash:6].[name].[ext]",
+                            //name: "[1].[name].[ext]",
+                            // regExp: "node_modules/(.*)"
+                        }
+                    }
+                ],
+                include: [/node_modules/]
+            },
+            {
+                test: /\.(png|jpg|svg)$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: "img/[hash:6].[name].[ext]"
                         }
                     }
                 ],
@@ -94,12 +107,6 @@ module.exports = {
             filename: "[name]",
             disable: false,
             allChunks: true
-        }),
-        new OptimizeCssAssetsPlugin({
-            // assetNameRegExp: /bundle\.css&/,
-            // cssProcessor: require('cssnano'),
-            // canPrint: true,
-            cssProcessorOptions: { discardComments: { removeAll: true } }
         })
     ],
 
@@ -122,5 +129,15 @@ if (NODE_ENV === "production") {
         },
         comments: false,
         sourceMap: true
-    }))
+    }));
+    module.exports.plugins.push(new OptimizeCssAssetsPlugin({
+        // assetNameRegExp: /bundle\.css&/,
+        // cssProcessor: require('cssnano'),
+        // canPrint: true,
+        cssProcessorOptions: {
+            discardComments: {
+                removeAll: true
+            }
+        }
+    }));
 }
