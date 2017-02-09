@@ -4,13 +4,11 @@ let fs = require("fs"),
     _ = require("lodash");
 
 const PROFILES = {
-    DEVELOPMENT: "development",
-    PRODUCTION: "production"
+    DEVELOPMENT: JSON.parse(fs.readFileSync("./profile/development.json")),
+    PRODUCTION: JSON.parse(fs.readFileSync("./profile/production.json"))
 };
 
-let profile = {
-    name: PROFILES.DEVELOPMENT
-};
+let profile = PROFILES.DEVELOPMENT;
 
 const localProfilePath = "./.profile.json";
 let isProfileFileExists = fs.existsSync(localProfilePath);
@@ -24,7 +22,14 @@ if (isProfileFileExists) {
 }
 
 profile.name = process.env.NODE_ENV || profile.name;
+profile.watch = process.env.WATCH || profile.watch;
+profile.port = process.env.PORT || profile.port;
 
 console.log("Active profile: " + JSON.stringify(profile, null, 2));
 
-module.exports = _.extend(profile, PROFILES);
+let profiles = Object.keys(PROFILES).reduce(function(memo, key) {
+    memo[key] = PROFILES[key].name;
+    return memo;
+}, {});
+
+module.exports = _.extend(profile, profiles);

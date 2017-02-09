@@ -1,0 +1,5 @@
+{
+  "name": "production",
+  "watch": false,
+  "port": 80
+}
