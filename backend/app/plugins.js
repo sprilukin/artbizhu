@@ -7,7 +7,7 @@ let logger = require("./logger");
 let cookieParser = require("cookie-parser");
 let bodyParser = require("body-parser");
 let publicFolder = path.join(__dirname, "../../public");
-let compression = require('compression');
+let compression = require("compression");
 let profile = require("../../profile");
 
 // should be the first middleware function

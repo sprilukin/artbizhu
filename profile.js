@@ -1,3 +1,5 @@
+/* eslint no-console: "off" */
+
 let fs = require("fs"),
     _ = require("lodash");
 

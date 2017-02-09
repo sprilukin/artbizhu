@@ -8,4 +8,4 @@ app.set("views", viewsFolder);
 app.engine("html", ejs.renderFile);
 // app.set("view engine", "ejs");
 app.set("view engine", "html");
-app.set('view cache', true);
+app.set("view cache", true);
