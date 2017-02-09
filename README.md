@@ -18,5 +18,19 @@ for hot app deployment it's recommended to use `nodemon`:
 - `npm i nodemon -g`
 - `nodemon`
 
+## Custom profile
+file `.profile.json` if exists may contains active profile options
+it has the following syntax:
+```
+{
+  'name': <'development'|'production'>
+  'watch': <true|false>
+  ... other possible options
+}
+```
+- name - is the name of current active profile. There are two available profile names: `production` and `development`
+    - it also could be set through `NODE_ENV` environement variable, for example: `NODE_ENV=production nodemon`
+- watch - watch option for webpack
+
 ## License
 MIT

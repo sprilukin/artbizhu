@@ -4,8 +4,7 @@ const path = require('path'),
     ExtractTextPlugin = require("extract-text-webpack-plugin"),
     OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
-const NODE_ENV = process.env.NODE_ENV || "development",
-    WATCH = process.env.WATCH || false;
+const profile = require("./profile");
 
 module.exports = {
     entry: {
@@ -129,14 +128,14 @@ module.exports = {
     devtool: "source-map"
 };
 
-if (WATCH) {
+if (profile.watch) {
     module.exports.watch = true;
     module.exports.watchOptions = {
         aggregateTimeout: 100
     }
 }
 
-if (NODE_ENV === "production") {
+if (profile.name === profile.PRODUCTION) {
     module.exports.plugins.push(new UglifyJSPlugin({
         compress: {
             warnings: false,

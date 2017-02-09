@@ -8,12 +8,11 @@ let cookieParser = require("cookie-parser");
 let bodyParser = require("body-parser");
 let publicFolder = path.join(__dirname, "../../public");
 let compression = require('compression');
-let NODE_ENV = process.env.NODE_ENV || "development";
-
+let profile = require("../../profile");
 
 // should be the first middleware function
 // need to conditionally enable it on production
-if (NODE_ENV === "production") {
+if (profile.name === profile.PRODUCTION) {
     app.use(compression());
 }
 
