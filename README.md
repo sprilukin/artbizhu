@@ -18,19 +18,34 @@ for hot app deployment it's recommended to use `nodemon`:
 - `npm i nodemon -g`
 - `nodemon`
 
+## Profiles
+There are two profiles supported: `development` and `production`.
+Each profile has different values for the following properties:
+- `watch`
+- `port`
+- `cache`
+- `uglify`
+- `localsError`
+- `compress`
+- `devtool`
+
+`NODE_ENV` environement variable should be used to set desired profile, 
+for example: `NODE_ENV=production nodemon`
+
 ## Custom profile
-file `.profile.json` if exists may contains active profile options
-it has the following syntax:
+- file `.profile.json` if exists may contain replacement for some profile properties
+it should has the following syntax:
 ```
 {
-  'name': <'development'|'production'>
   'watch': <true|false>
-  ... other possible options
+  ... etc ...
 }
 ```
-- name - is the name of current active profile. There are two available profile names: `production` and `development`
-    - it also could be set through `NODE_ENV` environement variable, for example: `NODE_ENV=production nodemon`
-- watch - watch option for webpack
+
+- each property could be overridden by env variable. see `./profiles/environement.js` for env var names
+- profile property lookup is the following:
+`env -> <[profile].json | (.profile.json ->  development.json)>`
+where \[profile\] resolved from NODE_ENV
 
 ## License
 MIT

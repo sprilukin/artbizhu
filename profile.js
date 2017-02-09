@@ -1,7 +1,7 @@
 /* eslint no-console: "off" */
 
 // profile resultion precedence (from high to low):
-// env -> <[profile].json | .profile.json> ->  development.json -> default.json
+// env -> <[profile].json | (.profile.json ->  development.json)>
 // where [profile] resolved from NODE_ENV
 
 let fs = require("fs"),
