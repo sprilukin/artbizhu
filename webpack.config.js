@@ -125,7 +125,7 @@ module.exports = {
         })
     ],
 
-    devtool: "source-map"
+    devtool: profile.devtool
 };
 
 if (profile.watch) {

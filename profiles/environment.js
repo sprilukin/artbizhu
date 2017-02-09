@@ -6,7 +6,8 @@ module.exports = _.pickBy({
     cache: process.env.CACHE,
     uglify: process.env.UGLIFY,
     localsError: process.env.LOCALS_ERROR,
-    compress: process.env.COMPRESS
+    compress: process.env.COMPRESS,
+    devtool: process.env.DEV_TOOL
 }, function(value) {
     return !_.isUndefined(value);
 });
