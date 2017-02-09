@@ -15,7 +15,7 @@ let isProfileFileExists = fs.existsSync(localProfilePath);
 
 if (isProfileFileExists) {
     try {
-        profile = JSON.parse(fs.readFileSync(localProfilePath));
+        profile = _.extend(profile, JSON.parse(fs.readFileSync(localProfilePath)));
     } catch (e) {
         console.log("Invalid './.profile.json' file");
     }
@@ -24,6 +24,7 @@ if (isProfileFileExists) {
 profile.name = process.env.NODE_ENV || profile.name;
 profile.watch = process.env.WATCH || profile.watch;
 profile.port = process.env.PORT || profile.port;
+profile.cache = process.env.CACHE || profile.cache;
 
 console.log("Active profile: " + JSON.stringify(profile, null, 2));
 
