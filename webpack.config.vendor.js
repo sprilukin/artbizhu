@@ -28,7 +28,8 @@ let config = {
                     {
                         loader: "file-loader",
                         options: {
-                            name: "js/vendor/[name].[ext]"
+                            name: "js/vendor/[3].[ext]",
+                            regExp: "node_modules\/(.*)\/dist\/(js\/)?([^\.]+)(\.min)?\.js"
                         }
                     }
                 ],
