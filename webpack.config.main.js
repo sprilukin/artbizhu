@@ -1,7 +1,10 @@
 const path = require("path"),
+    UglifyJSPlugin = require("uglifyjs-webpack-plugin"),
     webpack = require("webpack");
 
-module.exports = {
+const profile = require("./profile");
+
+let config = {
     externals: {
         jquery: "jQuery",
         uikit: "UIkit"
@@ -49,5 +52,28 @@ module.exports = {
         new webpack.ProvidePlugin({
             "Promise": "promise-polyfill"
         })
-    ]
+    ],
+
+    devtool: profile.devtool
 };
+
+if (profile.watch) {
+    config.watch = true;
+    config.watchOptions = {
+        aggregateTimeout: 100
+    };
+}
+
+if (profile.uglify) {
+    config.plugins.push(new UglifyJSPlugin({
+        compress: {
+            warnings: false,
+            drop_console: true,
+            unsafe: true
+        },
+        comments: false,
+        sourceMap: true
+    }));
+}
+
+module.exports = config;

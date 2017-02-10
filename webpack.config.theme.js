@@ -1,8 +1,10 @@
 const path = require("path"),
-    webpack = require("webpack"),
+    OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin"),
     ExtractTextPlugin = require("extract-text-webpack-plugin");
 
-module.exports = {
+const profile = require("./profile");
+
+let config = {
 
     entry: {
         "css/bundle.css": "uikit.less"
@@ -83,3 +85,25 @@ module.exports = {
         })
     ]
 };
+
+if (profile.watch) {
+    config.watch = true;
+    config.watchOptions = {
+        aggregateTimeout: 100
+    };
+}
+
+if (profile.uglify) {
+    config.plugins.push(new OptimizeCssAssetsPlugin({
+        // assetNameRegExp: /bundle\.css&/,
+        // cssProcessor: require("cssnano"),
+        // canPrint: true,
+        cssProcessorOptions: {
+            discardComments: {
+                removeAll: true
+            }
+        }
+    }));
+}
+
+module.exports = config;

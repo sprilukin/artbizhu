@@ -1,6 +1,7 @@
 const path = require("path");
+const profile = require("./profile");
 
-module.exports = {
+let config = {
     entry: {
         "js/vendor/jquery.wrapped.js": "jquery",
         "js/vendor/uikit.wrapped.js": "uikit"
@@ -18,11 +19,11 @@ module.exports = {
     },
 
     module: {
-        noParse: /(jquery|uikit)\.js$/,
+        noParse: /(jquery|uikit)(\.min)?\.js$/,
 
         rules: [
             {
-                test: /(jquery|uikit)\.js$/,
+                test: /(jquery|uikit)(\.min)?\.js$/,
                 use: [
                     {
                         loader: "file-loader",
@@ -32,10 +33,19 @@ module.exports = {
                     }
                 ],
                 include: [/node_modules/]
-            },
+            }
         ]
     },
 
     plugins: [
     ],
 };
+
+if (profile.uglify) {
+    config.resolve.alias = {
+        jquery: "jquery/dist/jquery.min",
+        uikit: "uikit/dist/js/uikit.min"
+    };
+}
+
+module.exports = config;
