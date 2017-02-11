@@ -1,7 +1,7 @@
 const path = require("path"),
     UglifyJSPlugin = require("uglifyjs-webpack-plugin"),
     webpack = require("webpack"),
-    commonConfig = require("./webpack.config.common");
+    commonConfig = require("./webpack/webpack.config.common");
 
 const profile = require("./profile");
 

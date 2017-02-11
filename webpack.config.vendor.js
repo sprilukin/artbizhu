@@ -1,6 +1,6 @@
 const path = require("path"),
     profile = require("./profile"),
-    commonConfig = require("./webpack.config.common");
+    commonConfig = require("./webpack/webpack.config.common");
 
 let config = Object.assign({}, commonConfig, {
     entry: {

@@ -1,16 +1,12 @@
 const webpack = require("webpack"),
-    rimraf = require("rimraf");
+    RemoveAssetsPlugin = require("./plugin/RemoveAssetsPlugin");
 
-const profile = require("./profile");
+const profile = require("../profile");
 
 let config = {
 
     plugins: [
-        {
-            apply: (compiler) => {
-                // rimraf.sync(compiler.options.output.path);
-            }
-        },
+        new RemoveAssetsPlugin(),
         new webpack.NoEmitOnErrorsPlugin(),
     ],
 

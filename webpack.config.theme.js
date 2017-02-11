@@ -1,7 +1,7 @@
 const path = require("path"),
     OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin"),
     ExtractTextPlugin = require("extract-text-webpack-plugin"),
-    commonConfig = require("./webpack.config.common");
+    commonConfig = require("./webpack/webpack.config.common");
 
 const profile = require("./profile");
 
