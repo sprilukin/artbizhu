@@ -1,6 +1,7 @@
 const path = require("path"),
     UglifyJSPlugin = require("uglifyjs-webpack-plugin"),
-    webpack = require("webpack");
+    webpack = require("webpack"),
+    rimraf = require("rimraf");
 
 const profile = require("./profile");
 
@@ -49,6 +50,12 @@ let config = {
     },
 
     plugins: [
+        {
+            apply: (compiler) => {
+                rimraf.sync(compiler.options.output.path);
+            }
+        },
+        new webpack.NoEmitOnErrorsPlugin(),
         new webpack.ProvidePlugin({
             "Promise": "promise-polyfill"
         })

@@ -1,6 +1,8 @@
 const path = require("path"),
     OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin"),
-    ExtractTextPlugin = require("extract-text-webpack-plugin");
+    ExtractTextPlugin = require("extract-text-webpack-plugin"),
+    webpack = require("webpack"),
+    rimraf = require("rimraf");
 
 const profile = require("./profile");
 
@@ -78,6 +80,12 @@ let config = {
     },
 
     plugins: [
+        {
+            apply: (compiler) => {
+                rimraf.sync(compiler.options.output.path);
+            }
+        },
+        new webpack.NoEmitOnErrorsPlugin(),
         new ExtractTextPlugin({
             filename: "[name]",
             disable: false,

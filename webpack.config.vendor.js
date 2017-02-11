@@ -1,5 +1,7 @@
-const path = require("path");
-const profile = require("./profile");
+const path = require("path"),
+    profile = require("./profile"),
+    webpack = require("webpack"),
+    rimraf = require("rimraf");
 
 let config = {
     entry: {
@@ -39,6 +41,12 @@ let config = {
     },
 
     plugins: [
+        {
+            apply: (compiler) => {
+                rimraf.sync(compiler.options.output.path);
+            }
+        },
+        new webpack.NoEmitOnErrorsPlugin()
     ],
 };
 
