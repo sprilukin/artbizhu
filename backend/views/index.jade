@@ -1,0 +1,30 @@
+doctype html
+html
+    head
+        title
+        link(rel='stylesheet', href='css/bundle.css')
+        script(src='js/vendor/jquery.js', defer='')
+        script(src='js/vendor/uikit.js', defer='')
+        script(src='js/testModule.js', defer='')
+    body
+        h1 #{title}
+        p Welcome to #{title}
+        a.uk-button.uk-button-default(href='') assadfdfsaf
+        button.uk-button.uk-button-default sdfdsf
+        button.uk-button.uk-button-default(disabled='') asdfsadf
+        ul(uk-accordion='')
+            li.uk-open
+                h3.uk-accordion-title Item 1
+                .uk-accordion-content
+                    p
+                        | Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            li
+                h3.uk-accordion-title Item 2
+                .uk-accordion-content
+                    p
+                        | Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor reprehenderit.
+            li
+                h3.uk-accordion-title Item 3
+                .uk-accordion-content
+                    p
+                        | Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat proident.

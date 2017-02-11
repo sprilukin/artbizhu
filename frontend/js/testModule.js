@@ -5,7 +5,7 @@ let Promise = require("promise-polyfill");
 let uikit = require("uikit");
 let $ = require("jquery");
 
-fetch("/users.html").then(/*() => console.log(arguments)*/);
+// fetch("/users.html").then(/*() => console.log(arguments)*/);
 
 //pick({});
 
