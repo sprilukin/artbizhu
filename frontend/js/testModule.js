@@ -1,18 +1,32 @@
-let a = require("./anotherModule");
-let fetch = require("whatwg-fetch").fetch;
-// let pick = require("lodash/pick");
-let Promise = require("promise-polyfill");
-let uikit = require("uikit");
-let $ = require("jquery");
-
-// fetch("/users.html").then(/*() => console.log(arguments)*/);
-
-//pick({});
-
-console.log($);
-console.log(uikit);
+let ProductList = require("./components/product/ProductList");
 
 
-Promise.resolve({test: "test"}).then(/*(res) => console.log(res)*/);
+var data = {
+    products: [
+        {name: "a"},
+        {name: "a1"},
+        {name: "a2"},
+        {name: "a3"},
+        {name: "a3"},
+        {name: "a3"},
+        {name: "a3"},
+        {name: "a3"},
+        {name: "a3"},
+        {name: "a3"},
+        {name: "a3"},
+        {name: "a3"},
+        {name: "a3"},
+        {name: "a3"},
+        {name: "a3"},
+        {name: "a3"},
+        {name: "a3"},
+        {name: "a3"},
+        {name: "a3"},
+        {name: "a3"}
+    ]
+};
 
-module.exports = a;
+new ProductList({
+    el: "#app",
+    data: data
+});

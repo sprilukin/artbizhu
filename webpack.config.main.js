@@ -25,6 +25,9 @@ let config = Object.assign({}, commonConfig, {
             path.join(__dirname, "frontend/js"),
             "node_modules"
         ],
+        alias: {
+            "vue$": "vue/dist/vue.common"
+        }
     },
 
     module: {
@@ -45,6 +48,10 @@ let config = Object.assign({}, commonConfig, {
                     }
                 ],
                 exclude: [/node_modules/]
+            },
+            {
+                test: /\.html$/,
+                use: "raw-loader"
             }
         ]
     },
