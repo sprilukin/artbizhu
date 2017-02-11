@@ -15,6 +15,14 @@ let config = {
     watch: profile.watch,
     watchOptions: {
         aggregateTimeout: 100
+    },
+
+    devServer: {
+        host: "localhost",
+        port: 4000,
+        proxy: {
+            "*": "http://localhost:3000"
+        }
     }
 };
 
