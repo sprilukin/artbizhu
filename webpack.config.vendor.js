@@ -1,9 +1,8 @@
 const path = require("path"),
     profile = require("./profile"),
-    webpack = require("webpack"),
-    rimraf = require("rimraf");
+    commonConfig = require("./webpack.config.common");
 
-let config = {
+let config = Object.assign({}, commonConfig, {
     entry: {
         "js/vendor/jquery.wrapped.js": "jquery",
         "js/vendor/uikit.wrapped.js": "uikit"
@@ -40,15 +39,9 @@ let config = {
         ]
     },
 
-    plugins: [
-        {
-            apply: (compiler) => {
-                rimraf.sync(compiler.options.output.path);
-            }
-        },
-        new webpack.NoEmitOnErrorsPlugin()
-    ],
-};
+    plugins: commonConfig.plugins.concat([
+    ]),
+});
 
 if (profile.uglify) {
     config.resolve.alias = {

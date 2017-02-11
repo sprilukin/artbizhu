@@ -1,12 +1,11 @@
 const path = require("path"),
     OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin"),
     ExtractTextPlugin = require("extract-text-webpack-plugin"),
-    webpack = require("webpack"),
-    rimraf = require("rimraf");
+    commonConfig = require("./webpack.config.common");
 
 const profile = require("./profile");
 
-let config = {
+let config = Object.assign({}, commonConfig, {
 
     entry: {
         "css/bundle.css": "uikit.less"
@@ -79,27 +78,14 @@ let config = {
         ]
     },
 
-    plugins: [
-        {
-            apply: (compiler) => {
-                rimraf.sync(compiler.options.output.path);
-            }
-        },
-        new webpack.NoEmitOnErrorsPlugin(),
+    plugins: commonConfig.plugins.concat([
         new ExtractTextPlugin({
             filename: "[name]",
             disable: false,
             allChunks: true
         })
-    ]
-};
-
-if (profile.watch) {
-    config.watch = true;
-    config.watchOptions = {
-        aggregateTimeout: 100
-    };
-}
+    ])
+});
 
 if (profile.uglify) {
     config.plugins.push(new OptimizeCssAssetsPlugin({

@@ -1,11 +1,11 @@
 const path = require("path"),
     UglifyJSPlugin = require("uglifyjs-webpack-plugin"),
     webpack = require("webpack"),
-    rimraf = require("rimraf");
+    commonConfig = require("./webpack.config.common");
 
 const profile = require("./profile");
 
-let config = {
+let config = Object.assign({}, commonConfig, {
     externals: {
         jquery: "jQuery",
         uikit: "UIkit"
@@ -49,27 +49,12 @@ let config = {
         ]
     },
 
-    plugins: [
-        {
-            apply: (compiler) => {
-                rimraf.sync(compiler.options.output.path);
-            }
-        },
-        new webpack.NoEmitOnErrorsPlugin(),
+    plugins: commonConfig.plugins.concat([
         new webpack.ProvidePlugin({
             "Promise": "promise-polyfill"
         })
-    ],
-
-    devtool: profile.devtool
-};
-
-if (profile.watch) {
-    config.watch = true;
-    config.watchOptions = {
-        aggregateTimeout: 100
-    };
-}
+    ])
+});
 
 if (profile.uglify) {
     config.plugins.push(new UglifyJSPlugin({
