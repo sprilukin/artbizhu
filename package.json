@@ -31,6 +31,7 @@
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.0",
     "ejs": "^2.5.5",
+    "eventing-bus": "^1.3.3",
     "exports-loader": "^0.6.3",
     "express": "^4.14.1",
     "imports-loader": "^0.7.0",
