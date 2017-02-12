@@ -10,5 +10,5 @@ app.set("views", viewsFolder);
 // app.engine("html", ejs.renderFile);
 // app.set("view engine", "html");
 
-app.set("view engine", "jade");
+app.set("view engine", "pug");
 app.set("view cache", profile.cache);
