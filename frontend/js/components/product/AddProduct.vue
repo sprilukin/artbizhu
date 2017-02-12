@@ -10,8 +10,7 @@
 
 <script>
     let fetch = require("whatwg-fetch").fetch,
-        ProductList = require("./ProductList.vue"),
-        store = require("../../store/store");
+        ProductList = require("./ProductList.vue");
 
     module.exports = {
         components: {
@@ -20,16 +19,16 @@
 
         computed: {
             productsCount: function(state) {
-                return store.state.products.length;
+                return this.$store.state.products.length;
             },
             addProductName: function(state) {
-                return store.state.addProductName;
+                return this.$store.state.addProductName;
             }
         },
 
         methods: {
             addProduct: function(name) {
-                store.commit("addProduct", name);
+                this.$store.commit("addProduct", name);
             }
         }
     }
