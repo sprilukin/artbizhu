@@ -1,6 +1,5 @@
 <template>
     <div>
-        <addProduct v-bind:newProductName="newProductName"></addProduct>
         <div class="uk-grid-small uk-child-width-1-4@s uk-flex-center uk-text-center" uk-grid>
             <div v-for="product in products">
                 <product v-bind:product="product"></product>
@@ -10,14 +9,14 @@
 </template>
 
 <script>
-    let Product = require("./Product.vue"),
-        AddProduct = require("./AddProduct.vue");
+    let Product = require("./Product.vue");
 
     module.exports = {
         components: {
-            product: Product,
-            addProduct: AddProduct
+            product: Product
         },
+
+        props: ["products"],
 
         computed: {
         },

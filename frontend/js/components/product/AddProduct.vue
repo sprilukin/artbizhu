@@ -4,6 +4,7 @@
         <button class="uk-button uk-button-primary" v-on:click="addProduct">Add Product</button>
     </div>
 </template>
+
 <script>
     let fetch = require("whatwg-fetch").fetch;
 

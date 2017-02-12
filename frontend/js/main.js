@@ -1,9 +1,12 @@
-let ProductList = require("./components/product/ProductList.vue"),
-    Vue = require("vue");
+let main = require("./components/main.vue"),
+    Vue = require("vue"),
+    VueRouter = require("vue-router");
+
+Vue.use(VueRouter);
 
 new Vue({
     el: "#app",
-    extends: ProductList,
+    extends: main,
     data: {
         newProductName: "",
         products: [
