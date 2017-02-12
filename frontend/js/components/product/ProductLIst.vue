@@ -5,6 +5,7 @@
                 <product v-bind:product="product"></product>
             </div>
         </div>
+        <router-link to="/">Go to Index</router-link>
     </div>
 </template>
 

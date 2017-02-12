@@ -2,6 +2,7 @@
     <div class="uk-margin">
         <input class="uk-input uk-form-width-medium" type="text" placeholder="Product name" v-model="newProductName">
         <button class="uk-button uk-button-primary" v-on:click="addProduct">Add Product</button>
+        <router-link to="/products">Go to Products</router-link>
     </div>
 </template>
 

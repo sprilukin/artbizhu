@@ -7,5 +7,5 @@ let products = require("../routes/rest/products");
 app.use("/", index);
 
 // REST
-app.use("/todos", todos);
-app.use("/products", products);
+app.use("/api/todos", todos);
+app.use("/api/products", products);
