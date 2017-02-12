@@ -1,2 +1,29 @@
-<template src="./template/productList.html"></template>
-<script src="./js/ProductList.js"></script>
+<template>
+    <div>
+        <addProduct v-bind:newProductName="newProductName"></addProduct>
+        <div class="uk-grid-small uk-child-width-1-4@s uk-flex-center uk-text-center" uk-grid>
+            <div v-for="product in products">
+                <product v-bind:product="product"></product>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script>
+    let Product = require("./Product.vue"),
+        AddProduct = require("./AddProduct.vue");
+
+    module.exports = {
+        components: {
+            product: Product,
+            addProduct: AddProduct
+        },
+
+        computed: {
+        },
+
+        methods: {
+
+        }
+    };
+</script>
