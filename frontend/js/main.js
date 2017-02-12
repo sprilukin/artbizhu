@@ -1,16 +1,7 @@
-let main = require("./components/main.vue"),
-    Vue = require("vue"),
-    VueRouter = require("vue-router");
-
-Vue.use(VueRouter);
+let Main = require("./components/Main.vue"),
+    Vue = require("vue");
 
 new Vue({
     el: "#app",
-    extends: main,
-    data: {
-        newProductName: "",
-        products: [
-            {name: "a"}
-        ]
-    }
+    extends: Main
 });

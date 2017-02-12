@@ -1,34 +1,35 @@
 <template>
     <div class="uk-margin">
-        <input class="uk-input uk-form-width-medium" type="text" placeholder="Product name" v-model="newProductName">
-        <button class="uk-button uk-button-primary" v-on:click="addProduct">Add Product</button>
+        <div>{{ productsCount }}</div>
+        <input class="uk-input uk-form-width-medium" type="text" placeholder="Product name" :value="addProductName">
+        <button class="uk-button uk-button-primary" v-on:click="addProduct('test')">Add Product</button>
         <router-link to="/products">Go to Products</router-link>
+        <productList></productList>
     </div>
 </template>
 
 <script>
-    let fetch = require("whatwg-fetch").fetch;
+    let fetch = require("whatwg-fetch").fetch,
+        ProductList = require("./ProductList.vue"),
+        store = require("../../store/store");
 
     module.exports = {
-        props: ["newProductName"],
+        components: {
+            productList: ProductList
+        },
 
         computed: {
+            productsCount: function(state) {
+                return store.state.products.length;
+            },
+            addProductName: function(state) {
+                return store.state.addProductName;
+            }
         },
 
         methods: {
-            addProduct: function() {
-                fetch("/products", {
-                    headers: {
-                        "Accept": "application/json",
-                        "Content-Type": "application/json"
-                    },
-                    method: "POST",
-                    body: JSON.stringify({name: this.newProductName})
-                }).then(function(response) {
-                    response.json().then(function(json) {
-                        console.log(json);
-                    });
-                });
+            addProduct: function(name) {
+                store.commit("addProduct", name);
             }
         }
     }

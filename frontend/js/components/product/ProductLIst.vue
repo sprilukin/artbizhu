@@ -10,16 +10,18 @@
 </template>
 
 <script>
-    let Product = require("./Product.vue");
+    let Product = require("./Product.vue"),
+        store = require("../../store/store");
 
     module.exports = {
         components: {
             product: Product
         },
 
-        props: ["products"],
-
         computed: {
+            products: function() {
+                return store.state.products
+            }
         },
 
         methods: {

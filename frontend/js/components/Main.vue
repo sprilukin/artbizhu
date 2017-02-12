@@ -1,12 +1,15 @@
 <template>
-    <router-view v-bind:products="products" v-bind:newProductName="newProductName"></router-view>
+    <router-view></router-view>
 </template>
 
 <script>
     let VueRouter = require("vue-router"),
-        productList = require("./product/ProductList.vue"),
-        addProduct = require("./product/AddProduct.vue"),
-        notFound = require("./NotFound.vue");
+        Vue = require("vue"),
+        ProductList = require("./product/ProductList.vue"),
+        AddProduct = require("./product/AddProduct.vue"),
+        NotFound = require("./NotFound.vue");
+
+    Vue.use(VueRouter);
 
     module.exports = {
         router: new VueRouter({
@@ -14,17 +17,17 @@
             routes: [
                 {
                     path: "/",
-                    component: addProduct,
+                    component: AddProduct,
                     props: true
                 },
                 {
                     path: "/products",
-                    component: productList,
+                    component: ProductList,
                     props: true
                 },
                 {
                     path: "*",
-                    component: notFound
+                    component: NotFound
                 }
             ]
         })
