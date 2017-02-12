@@ -1,5 +1,7 @@
 const webpack = require("webpack"),
-    RemoveAssetsPlugin = require("./plugin/RemoveAssetsPlugin");
+    path = require("path"),
+    RemoveAssetsPlugin = require("./plugin/RemoveAssetsPlugin"),
+    AssetsPlugin = require("assets-webpack-plugin");
 
 const profile = require("../profile");
 
@@ -7,6 +9,10 @@ let config = {
 
     plugins: [
         new RemoveAssetsPlugin(),
+        new AssetsPlugin({
+            filename: "assets.json",
+            path: path.resolve(__dirname, "../public")
+        }),
         new webpack.NoEmitOnErrorsPlugin(),
     ],
 
@@ -18,10 +24,12 @@ let config = {
     },
 
     devServer: {
+        historyApiFallback: false,
+        noInfo: true,
         host: "localhost",
         port: 4000,
         proxy: {
-            "*": "http://localhost:3000"
+            "*": "http://localhost:" + profile.port
         }
     }
 };

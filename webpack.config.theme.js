@@ -8,11 +8,12 @@ const profile = require("./profile");
 let config = Object.assign({}, commonConfig, {
 
     entry: {
-        "css/bundle.css": "uikit.less"
+        "css/bundle": "uikit.less"
     },
 
     output: {
-        filename: "[name]",
+        // filename: "[name].css?hash=[chunkhash:6]",
+        filename: "[name].css?hash=[hash]",
         path: path.resolve(__dirname, "public")
     },
 
@@ -55,7 +56,8 @@ let config = Object.assign({}, commonConfig, {
                     {
                         loader: "file-loader",
                         options: {
-                            name: "font/[hash:6].[name].[ext]",
+                            name: "font/[name].[ext]?hash=[hash]",
+                            // name: "font/[name].[ext]?hash=[hash:6]",
                             //name: "[1].[name].[ext]",
                             // regExp: "node_modules/(.*)"
                         }
@@ -69,7 +71,7 @@ let config = Object.assign({}, commonConfig, {
                     {
                         loader: "file-loader",
                         options: {
-                            name: "img/[hash:6].[name].[ext]"
+                            name: "img/[name].[ext]?hash=[hash:6]"
                         }
                     }
                 ],
@@ -80,7 +82,7 @@ let config = Object.assign({}, commonConfig, {
 
     plugins: commonConfig.plugins.concat([
         new ExtractTextPlugin({
-            filename: "[name]",
+            filename: "[name].css?hash=[contenthash]",
             disable: false,
             allChunks: true
         })

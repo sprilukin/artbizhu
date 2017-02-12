@@ -35,7 +35,7 @@ let config = Object.assign({}, commonConfig, {
                     }
                 ],
                 include: [/node_modules/]
-            }
+                            }
         ]
     },
 

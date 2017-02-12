@@ -12,11 +12,12 @@ let config = Object.assign({}, commonConfig, {
     },
 
     entry: {
-        "js/main.js": "main.js"
+        "js/main": "main.js"
     },
 
     output: {
-        filename: "[name]",
+        // filename: "[name].js?hash=[chunkhash:6]",
+        filename: "[name].js?hash=[hash]",
         path: path.resolve(__dirname, "public")
     },
 
