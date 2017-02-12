@@ -1,17 +1,13 @@
-let Vue = require("vue"),
-    fetch = require("whatwg-fetch").fetch,
-    template = require("./template/addProduct.html");
+let fetch = require("whatwg-fetch").fetch;
 
-module.exports = Vue.extend({
-    template: template,
-
+module.exports = {
     props: ["newProductName"],
 
     computed: {
     },
 
     methods: {
-        addProduct: function(event) {
+        addProduct: function() {
             fetch("/products", {
                 headers: {
                     "Accept": "application/json",
@@ -26,4 +22,4 @@ module.exports = Vue.extend({
             });
         }
     }
-});
+}
