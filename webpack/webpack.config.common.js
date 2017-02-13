@@ -1,6 +1,6 @@
 const webpack = require("webpack"),
     path = require("path"),
-    RemoveAssetsPlugin = require("./plugin/RemoveAssetsPlugin"),
+    // RemoveAssetsPlugin = require("./plugin/RemoveAssetsPlugin"),
     AssetsPlugin = require("assets-webpack-plugin");
 
 const profile = require("../profile");
