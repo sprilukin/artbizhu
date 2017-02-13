@@ -28,7 +28,7 @@
 
         methods: {
             addProduct: function(name) {
-                this.$store.commit("addProduct", name);
+                this.$store.dispatch("addProduct", name);
             }
         }
     }

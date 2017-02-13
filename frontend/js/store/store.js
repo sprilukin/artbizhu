@@ -1,5 +1,7 @@
 let Vuex = require("vuex"),
-    Vue = require("vue");
+    Vue = require("vue"),
+    mutations = require("./mutations"),
+    actions = require("./actions");
 
 Vue.use(Vuex);
 
@@ -10,9 +12,6 @@ module.exports = new Vuex.Store({
             {name: "a"}
         ]
     },
-    mutations: {
-        addProduct: function(state, productName) {
-            state.products.push({name: productName});
-        }
-    }
+    mutations,
+    actions
 });

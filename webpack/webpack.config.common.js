@@ -8,7 +8,7 @@ const profile = require("../profile");
 let config = {
 
     plugins: [
-        new RemoveAssetsPlugin(),
+        // new RemoveAssetsPlugin(),
         new AssetsPlugin({
             filename: "assets.json",
             path: path.resolve(__dirname, "../public")
