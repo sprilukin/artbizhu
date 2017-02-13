@@ -10,7 +10,8 @@
 
 <script>
     let fetch = require("whatwg-fetch").fetch,
-        Vuex = require("vuex"),
+        mapState = require("vuex").mapState,
+        mapActions = require("vue").mapActions,
         ProductList = require("./ProductList.vue");
 
     module.exports = {
@@ -18,11 +19,12 @@
             productList: ProductList
         },
 
-        computed: Vuex.mapState({
-            productsCount: (state) => state.products.length,
+        computed: Object.assign({}, mapState({
+                productsCount: (state) => state.products.length,
 
-            addProductName: (state) => state.addProductName
-        }),
+                addProductName: (state) => state.addProductName
+            })
+        ),
 
         methods: {
             addProduct: function(name) {
