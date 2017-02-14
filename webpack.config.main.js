@@ -38,11 +38,7 @@ let config = Object.assign({}, commonConfig, {
                 test: /\.js$/,
                 use: [
                     {
-                        loader: "babel-loader",
-                        options: {
-                            presets: ["es2015"],
-                            plugins: ["transform-runtime"]
-                        }
+                        loader: "babel-loader"
                     }
                 ],
                 exclude: [/node_modules/]

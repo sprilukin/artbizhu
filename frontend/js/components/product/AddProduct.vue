@@ -9,27 +9,27 @@
 </template>
 
 <script>
-    let fetch = require("whatwg-fetch").fetch,
-        mapState = require("vuex").mapState,
-        mapActions = require("vue").mapActions,
-        ProductList = require("./ProductList.vue");
+    import {mapState, mapActions} from "vuex";
+    import * as ProductList from "./ProductList.vue";
 
-    module.exports = {
+    let AddProduct = {
         components: {
             productList: ProductList
         },
 
-        computed: Object.assign({}, mapState({
+        computed: {
+            ...mapState({
                 productsCount: (state) => state.products.length,
-
                 addProductName: (state) => state.addProductName
             })
-        ),
+        },
 
         methods: {
-            addProduct: function(name) {
-                this.$store.dispatch("addProduct", name);
-            }
+            ...mapActions([
+                'addProduct'
+            ])
         }
-    }
+    };
+
+    export default AddProduct;
 </script>

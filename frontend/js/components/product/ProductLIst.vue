@@ -10,17 +10,18 @@
 </template>
 
 <script>
-    let Product = require("./Product.vue");
+    import Product from "./Product.vue";
+    import { mapState } from "vuex"
 
-    module.exports = {
+    export default {
         components: {
             product: Product
         },
 
         computed: {
-            products: function() {
-                return this.$store.state.products
-            }
+            ...mapState({
+                products: (state) => state.products
+            })
         },
 
         methods: {

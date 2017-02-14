@@ -4,8 +4,3 @@
         <router-link to="/">Go to Index</router-link>
     </div>
 </template>
-
-<script>
-    module.exports = {
-    };
-</script>
