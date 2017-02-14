@@ -1,7 +1,7 @@
-let App = require("./components/App.vue"),
-    Router = require("./router/Router"),
-    store = require("./store/store"),
-    Vue = require("vue");
+import App from "./components/App.vue";
+import Router from "./router/Router";
+import store from "./store/store";
+import Vue from "vue";
 
 new Vue({
     el: "#app",

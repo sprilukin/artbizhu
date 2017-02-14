@@ -1,10 +1,10 @@
-let VueRouter = require("vue-router"),
-    Vue = require("vue"),
-    store = require("../store/store"),
-    vuexRouterSync = require("vuex-router-sync").sync,
-    ProductList = require("../components/product/ProductList.vue"),
-    AddProduct = require("../components/product/AddProduct.vue"),
-    NotFound = require("../components/NotFound.vue");
+import VueRouter from "vue-router";
+import Vue from "vue";
+import store from "../store/store";
+import { sync } from "vuex-router-sync";
+import ProductList from "../components/product/ProductList.vue";
+import AddProduct from "../components/product/AddProduct.vue";
+import NotFound from "../components/NotFound.vue";
 
 let vueRouter = new VueRouter({
     mode: "history",
@@ -27,6 +27,6 @@ let vueRouter = new VueRouter({
 });
 
 Vue.use(VueRouter);
-vuexRouterSync(store, vueRouter);
+sync(store, vueRouter);
 
-module.exports = vueRouter;
+export default vueRouter;

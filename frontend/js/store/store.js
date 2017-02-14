@@ -1,11 +1,11 @@
-let Vuex = require("vuex"),
-    Vue = require("vue"),
-    mutations = require("./mutations"),
-    actions = require("./actions");
+import Vuex from "vuex";
+import Vue from "vue";
+import mutations from "./mutations";
+import actions from "./actions";
 
 Vue.use(Vuex);
 
-module.exports = new Vuex.Store({
+export default new Vuex.Store({
     state: {
         addProductName: "test",
         products: [
