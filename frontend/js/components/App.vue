@@ -1,0 +1,10 @@
+<template>
+    <div class="uk-container">
+        <router-view></router-view>
+    </div>
+</template>
+
+<script>
+    module.exports = {
+    };
+</script>
