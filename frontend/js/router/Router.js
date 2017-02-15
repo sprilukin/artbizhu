@@ -2,9 +2,9 @@ import VueRouter from "vue-router";
 import Vue from "vue";
 import store from "../store/store";
 import { sync } from "vuex-router-sync";
-import ProductList from "../components/product/ProductList.vue";
-import AddProduct from "../components/product/AddProduct.vue";
-import NotFound from "../components/NotFound.vue";
+import ProductList from "../component/product/ProductList.vue";
+import AddProduct from "../component/product/AddProduct.vue";
+import NotFound from "../component/NotFound.vue";
 
 let vueRouter = new VueRouter({
     mode: "history",
