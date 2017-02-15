@@ -1,5 +1,14 @@
 export default {
-    addProduct: function({commit}, productName) {
-        setTimeout(() => commit("addProduct", productName), 500);
+    addProduct: async function addProduct({commit}, productName) {
+        function delay(ms) {
+            return new Promise(function(resolve) {
+                setTimeout(() => {
+                    resolve();
+                }, ms);
+            });
+        }
+
+        await delay(1000);
+        commit("addProduct", productName);
     }
 };
