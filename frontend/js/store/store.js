@@ -10,7 +10,106 @@ export default new Vuex.Store({
         title: "Handcrafted",
         addProductName: "test",
         products: [
-            {name: "a"}
+            {
+                id: 1,
+                name: "Test",
+                src: "/img/1.jpg"
+            },
+            {
+                id: 1,
+                name: "Test",
+                src: "/img/2.jpg"
+            },
+            {
+                id: 1,
+                name: "Test",
+                src: "/img/3.jpg"
+            },
+            {
+                id: 1,
+                name: "Test",
+                src: "/img/4.jpg"
+            },
+            {
+                id: 1,
+                name: "Test",
+                src: "/img/1.jpg"
+            },
+            {
+                id: 1,
+                name: "Test",
+                src: "/img/2.jpg"
+            },
+            {
+                id: 1,
+                name: "Test",
+                src: "/img/3.jpg"
+            },
+            {
+                id: 1,
+                name: "Test",
+                src: "/img/4.jpg"
+            },
+            {
+                id: 1,
+                name: "Test",
+                src: "/img/1.jpg"
+            },
+            {
+                id: 1,
+                name: "Test",
+                src: "/img/2.jpg"
+            },
+            {
+                id: 1,
+                name: "Test",
+                src: "/img/3.jpg"
+            },
+            {
+                id: 1,
+                name: "Test",
+                src: "/img/4.jpg"
+            },
+            {
+                id: 1,
+                name: "Test",
+                src: "/img/1.jpg"
+            },
+            {
+                id: 1,
+                name: "Test",
+                src: "/img/2.jpg"
+            },
+            {
+                id: 1,
+                name: "Test",
+                src: "/img/3.jpg"
+            },
+            {
+                id: 1,
+                name: "Test",
+                src: "/img/4.jpg"
+            },
+            {
+                id: 1,
+                name: "Test",
+                src: "/img/1.jpg"
+            },
+            {
+                id: 1,
+                name: "Test",
+                src: "/img/2.jpg"
+            },
+            {
+                id: 1,
+                name: "Test",
+                src: "/img/3.jpg"
+            },
+            {
+                id: 1,
+                name: "Test",
+                src: "/img/4.jpg"
+            }
         ]
     },
     mutations,

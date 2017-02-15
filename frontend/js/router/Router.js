@@ -11,12 +11,12 @@ let vueRouter = new VueRouter({
     routes: [
         {
             path: "/",
-            component: AddProduct,
+            component: ProductList,
             props: true
         },
         {
-            path: "/products",
-            component: ProductList,
+            path: "/addProduct",
+            component: AddProduct,
             props: true
         },
         {
