@@ -10,7 +10,7 @@
 
 <script>
     import {mapState, mapActions} from "vuex";
-    import * as ProductList from "./ProductList.vue";
+    import ProductList from "./ProductList.vue";
 
     let AddProduct = {
         components: {
