@@ -38,6 +38,7 @@
                             <router-link active-class="uk-active" to="/">
                                 <span class="uk-icon uk-margin-small-right" href="#" uk-icon="icon: cart"></span>
                                 Корзина
+                                <span class="uk-badge">1</span>
                             </router-link>
                         </li>
                     </ul>
