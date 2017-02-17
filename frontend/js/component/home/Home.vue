@@ -1,16 +1,24 @@
 <template>
-    <layout>
-        <h1>Hello</h1>
-    </layout>
+    <div>
+        <div class="uk-background-cover home-page-featured-logo">
+        </div>
+        <div>
+            <navBar></navBar>
+            <productList></productList>
+        </div>
+    </div>
 </template>
 
 <script>
-    import WideContainer from "../layout/WideContainer.vue";
+    import ProductList from "../shop/ProductList.vue";
+    import NavBar from "../navBar/NavBar.vue";
+
     import { mapState } from "vuex"
 
     export default {
         components: {
-            layout: WideContainer
+            productList: ProductList,
+            navBar: NavBar
         }
     };
 </script>
