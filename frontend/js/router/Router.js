@@ -2,8 +2,9 @@ import VueRouter from "vue-router";
 import Vue from "vue";
 import store from "../store/store";
 import { sync } from "vuex-router-sync";
-import ProductList from "../component/product/ProductList.vue";
-import AddProduct from "../component/product/AddProduct.vue";
+import Shop from "../component/shop/Shop.vue";
+import Home from "../component/home/Home.vue";
+import AddProduct from "../component/shop/AddProduct.vue";
 import NotFound from "../component/NotFound.vue";
 
 let vueRouter = new VueRouter({
@@ -11,7 +12,12 @@ let vueRouter = new VueRouter({
     routes: [
         {
             path: "/",
-            component: ProductList,
+            component: Home,
+            props: true
+        },
+        {
+            path: "/store",
+            component: Shop,
             props: true
         },
         {

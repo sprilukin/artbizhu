@@ -1,0 +1,34 @@
+{
+  "main": [
+    {
+      "uri": "/",
+      "icon": "home",
+      "name": "Главная"
+    },
+    {
+      "uri": "/store",
+      "icon": "star",
+      "name": "Магазин"
+    },
+    {
+      "uri": "/addProduct",
+      "icon": "info",
+      "name": "Контакты"
+    },
+    {
+      "uri": "/",
+      "icon": "credit-card",
+      "name": "Оплата и доставка"
+    },
+    {
+      "uri": "/",
+      "icon": "happy",
+      "name": "Отзывы"
+    },
+    {
+      "uri": "/",
+      "icon": "cart",
+      "name": "Корзина"
+    }
+  ]
+}

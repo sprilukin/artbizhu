@@ -1,9 +1,7 @@
 <template>
-    <div>
-        <div class="uk-grid-small uk-child-width-1-3@s uk-flex-center uk-text-center" uk-grid>
-            <div v-for="product in products">
-                <product :product="product"></product>
-            </div>
+    <div class="uk-grid-small uk-child-width-1-3@s uk-flex-center uk-text-center" uk-grid>
+        <div v-for="product in products">
+            <product :product="product"></product>
         </div>
     </div>
 </template>
