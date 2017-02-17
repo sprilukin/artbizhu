@@ -1,9 +1,10 @@
 <template>
     <div class="uk-margin">
         <div>{{ productsCount }}</div>
-        <input class="uk-input uk-form-width-medium" type="text" placeholder="Product name" :value="addProductName">
-        <button class="uk-button uk-button-primary" v-on:click="addProduct('test')">Add Product</button>
-        <router-link to="/products">Go to Products</router-link>
+        <input class="uk-input uk-form-width-medium" type="text" placeholder="Product name">
+        <input class="uk-input uk-form-width-medium" type="text" placeholder="Src">
+        <button class="uk-button uk-button-primary" v-on:click="addProduct">Add Product</button>
+        <router-link to="/">Home</router-link>
         <productList></productList>
     </div>
 </template>

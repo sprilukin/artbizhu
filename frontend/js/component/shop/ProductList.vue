@@ -8,7 +8,7 @@
 
 <script>
     import Product from "./Product.vue";
-    import { mapState } from "vuex"
+    import { mapState, mapActions } from "vuex"
 
     export default {
         components: {
@@ -22,7 +22,13 @@
         },
 
         methods: {
-
+            ...mapActions({
+                loadProducts: 'loadProducts' // map this.add() to this.$store.dispatch('increment')
+            })
+        },
+        
+        created: function() {
+            this.loadProducts();
         }
     };
 </script>
