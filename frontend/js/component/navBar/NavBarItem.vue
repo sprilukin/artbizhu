@@ -1,6 +1,6 @@
 <template>
     <li>
-        <router-link active-class="uk-active" :to="uri">
+        <router-link :to="uri" exact>
             <span class="uk-icon uk-margin-small-right" href="#" :uk-icon="iconAttr"></span>
             {{ name }}
             <slot></slot>

@@ -29,7 +29,8 @@ let vueRouter = new VueRouter({
             path: "*",
             component: NotFound
         }
-    ]
+    ],
+    linkActiveClass: "uk-active"
 });
 
 Vue.use(VueRouter);
