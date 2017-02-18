@@ -1,5 +1,5 @@
 <template>
-    <div class="uk-navbar-container tm-navbar-container uk-active">
+    <!--<div class="uk-navbar-container tm-navbar-container uk-active">
         <div class="uk-container uk-container-expand">
             <nav class="uk-navbar">
                 <div class="uk-navbar-center">
@@ -11,7 +11,12 @@
                 </div>
             </nav>
         </div>
-    </div>
+    </div>-->
+    <ul uk-tab>
+        <template v-for="navBarItem in navBarItems">
+            <navBarItem :uri="navBarItem.uri" :icon="navBarItem.icon" :name="navBarItem.name"></navBarItem>
+        </template>
+    </ul>
 </template>
 
 <script>
