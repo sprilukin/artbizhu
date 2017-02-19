@@ -15,6 +15,8 @@ export default {
     },
 
     loadProducts: async function({commit}, options) {
+        commit("setProductsLoading");
+
         let p = await products.getProducts(options);
         commit("setProducts", p);
     }

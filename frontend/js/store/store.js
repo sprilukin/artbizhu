@@ -9,7 +9,8 @@ export default new Vuex.Store({
     state: {
         title: "Handcrafted",
         store: {
-            products: []
+            products: [],
+            loading: false
         }
     },
     mutations,

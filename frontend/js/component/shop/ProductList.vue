@@ -1,11 +1,19 @@
 <template>
     <div>
-        <div class="uk-grid-small uk-child-width-1-2@s uk-child-width-1-3@m uk-child-width-1-4@l uk-flex-center uk-text-center" uk-grid>
-            <div v-for="product in products">
-                <product :product="product"></product>
+        <div v-show="!loading">
+            <div class="uk-grid-small uk-child-width-1-2@s uk-child-width-1-3@m uk-child-width-1-4@l uk-flex-center uk-text-center" uk-grid>
+                <div v-for="product in products">
+                    <product :product="product"></product>
+                </div>
+            </div>
+            <pagination :page="page"></pagination>
+        </div>
+        <div v-show="loading" class="uk-flex uk-height-medium uk-margin uk-text-center">
+            <div class="uk-margin-auto uk-margin-auto-vertical uk-width-1-2@s uk-card uk-card-body">
+                <div uk-spinner></div>
+                Загрузка
             </div>
         </div>
-        <pagination :page="page"></pagination>
     </div>
 </template>
 
@@ -26,7 +34,8 @@
 
         computed: {
             ...mapState({
-                products: (state) => state.store.products
+                products: (state) => state.store.products,
+                loading: (state) => state.store.loading
             }),
             offset: function() {
                 return pagination.getOffsetByPage(this.page)
@@ -46,7 +55,7 @@
 
         watch: {
             page: function () {
-                let scroll = UIkit.scroll("#top");
+                let scroll = UIkit.scroll("#top", {duration: 0});
                 scroll[0].scrollToElement("#top");
                 this.loadProductsForCurrentPage();
             }

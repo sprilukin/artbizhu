@@ -4,6 +4,11 @@ export default {
     },
 
     setProducts: function(state, products) {
+        state.store.loading = false;
         state.store.products = products;
+    },
+
+    setProductsLoading: function(state) {
+        state.store.loading = true;
     }
 };
