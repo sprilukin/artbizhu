@@ -1,5 +1,5 @@
 <template>
-    <div class="uk-section uk-section-default">
+    <div class="uk-section uk-section-default uk-margin-xlarge">
         <div class="uk-container">
 
             <h3>Section Default</h3>
