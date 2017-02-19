@@ -1,0 +1,39 @@
+<template>
+    <div class="uk-container uk-container-small">
+        <ul class="uk-pagination">
+            <li :class="{'uk-disabled': !hasPrevious}">
+                <router-link :to="{ query: { page: previous } }">
+                    <span class="uk-margin-small-right" uk-pagination-previous></span>
+                    Назад
+                </router-link>
+            </li>
+            <li :class="{'uk-disabled': !hasNext}">
+                <router-link :to="{ query: { page: next } }">
+                    Вперед
+                    <span class="uk-margin-small-left" uk-pagination-next></span>
+                </router-link>
+            </li>
+        </ul>
+    </div>
+</template>
+
+<script>
+    export default {
+        props: ["page"],
+
+        computed: {
+            hasPrevious: function() {
+                return this.page > 0;
+            },
+            hasNext: function() {
+                return this.page < 3;
+            },
+            previous: function() {
+                return this.hasPrevious ? this.page - 1 : 0
+            },
+            next: function() {
+                return this.hasNext ? this.page + 1 : this.page;
+            }
+        }
+    };
+</script>

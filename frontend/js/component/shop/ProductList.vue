@@ -5,35 +5,23 @@
                 <product :product="product"></product>
             </div>
         </div>
-        <div class="uk-container uk-container-small">
-            <ul class="uk-pagination">
-                <li :class="{'uk-disabled': !hasPrevious}">
-                    <router-link :to="{ path: '', query: { page: previous } }">
-                        <span class="uk-margin-small-right" uk-pagination-previous></span>
-                        Previous
-                    </router-link>
-                </li>
-                <li :class="{'uk-disabled': !hasNext}">
-                    <router-link :to="{ path: '', query: { page: next } }">
-                        Next
-                        <span class="uk-margin-small-left" uk-pagination-next></span>
-                    </router-link>
-                </li>
-            </ul>
-        </div>
+        <pagination :page="page"></pagination>
     </div>
 </template>
 
 <script>
     import Product from "./Product.vue";
+    import Pagination from "./Pagination.vue";
     import { mapState, mapActions } from "vuex"
     import pagination from "../../service/util/pagination";
+    import UIkit from "uikit";
 
     export default {
         props: ["page"],
 
         components: {
-            product: Product
+            product: Product,
+            pagination: Pagination
         },
 
         computed: {
@@ -42,18 +30,6 @@
             }),
             offset: function() {
                 return pagination.getOffsetByPage(this.page)
-            },
-            hasPrevious: function() {
-                return this.page > 0;
-            },
-            hasNext: function() {
-                return this.page < 3;
-            },
-            previous: function() {
-                return this.hasPrevious ? this.page - 1 : 0
-            },
-            next: function() {
-                return this.hasNext ? this.page + 1 : this.page;
             }
         },
 
@@ -69,7 +45,9 @@
         },
 
         watch: {
-            page: function (val) {
+            page: function () {
+                let scroll = UIkit.scroll("#top");
+                scroll[0].scrollToElement("#top");
                 this.loadProductsForCurrentPage();
             }
         },

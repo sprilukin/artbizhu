@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1 class="uk-heading-primary uk-text-center uk-heading main-title">
+        <h1 id="top" class="uk-heading-primary uk-text-center uk-heading main-title">
             {{ title }}
         </h1>
     </div>
