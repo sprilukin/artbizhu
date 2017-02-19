@@ -1,7 +1,7 @@
 <template>
-    <layout>
+    <wideContainer>
         <productList></productList>
-    </layout>
+    </wideContainer>
 </template>
 
 <script>
@@ -11,7 +11,7 @@
 
     export default {
         components: {
-            layout: WideContainer,
+            wideContainer: WideContainer,
             productList: ProductList
         }
     };
