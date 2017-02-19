@@ -1,15 +1,9 @@
 <template>
-    <div class="uk-background-cover home-page-featured-image" :style="{'background-image': backgroundImage}"></div>
+    <img :src="url"/>
 </template>
 
 <script>
     export default {
-        props: ["url"],
-
-        computed: {
-            backgroundImage: function () {
-                return `url('${this.url}')`
-            }
-        }
+        props: ["url"]
     };
 </script>

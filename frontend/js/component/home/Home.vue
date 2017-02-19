@@ -1,45 +1,49 @@
 <template>
-    <layout>
-        <featuredImage url="/img/landing/1.jpg"></featuredImage>
-        <div class="uk-section uk-section-default">
-            <div class="uk-container">
+    <div>
+        <layout>
+            <div slot="header">
+                <featuredImage url="/img/landing/1.jpg"></featuredImage>
+                <div class="uk-section uk-section-default">
+                    <div class="uk-container">
 
-                <h3>Section Default</h3>
+                        <h3>Section Default</h3>
 
-                <div class="uk-grid-match uk-child-width-1-3@m" uk-grid>
-                    <div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
-                    </div>
-                    <div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
-                    </div>
-                    <div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
+                        <div class="uk-grid-match uk-child-width-1-3@m" uk-grid>
+                            <div>
+                                <p>Привет! Меня зовут Марина, я занимаюсь созданием бижутерии и оригинальных сувениров из запекаемой полимерной глины.</p>
+                            </div>
+                            <div>
+                                <p>Все изделия, представленные в магазине, могу повторить. Приятного просмотра и покупок!</p>
+                            </div>
+                            <div>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
+                <featuredImage url="/img/landing/8.jpg"></featuredImage>
+                <div class="uk-section uk-section-media">
+                    <div class="uk-container">
 
-            </div>
-        </div>
-        <featuredImage url="/img/landing/8.jpg"></featuredImage>
-        <div class="uk-section uk-section-media">
-            <div class="uk-container">
+                        <h3>Section Media</h3>
 
-                <h3>Section Media</h3>
-
-                <div class="uk-grid-match uk-child-width-1-3@m" uk-grid>
-                    <div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
-                    </div>
-                    <div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
-                    </div>
-                    <div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
+                        <div class="uk-grid-match uk-child-width-1-3@m" uk-grid>
+                            <div>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
+                            </div>
+                            <div>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
+                            </div>
+                            <div>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </layout>
+        </layout>
+    </div>
 </template>
 
 <script>
