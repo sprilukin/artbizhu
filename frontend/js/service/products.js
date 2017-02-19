@@ -1,5 +1,5 @@
 import { get } from "./rest";
-import url from "./util/url";
+import url from "../util/url";
 
 
 const END_POINT = "/api/products";

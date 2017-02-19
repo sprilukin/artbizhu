@@ -8,6 +8,7 @@ import Shop from "../component/shop/Shop.vue";
 import Home from "../component/home/Home.vue";
 import AddProduct from "../component/shop/AddProduct.vue";
 import NotFound from "../component/NotFound.vue";
+import navigationUtil from "./util/navigationUtil";
 
 let vueRouter = new VueRouter({
     mode: "history",
@@ -44,14 +45,22 @@ let vueRouter = new VueRouter({
         }
     ],
     linkActiveClass: "uk-active",
-    scrollBehavior (to, from, savedPosition) {
+    scrollBehavior (/*to, from, savedPosition*/) {
         return { x: 0, y: 0 };
     }
 });
 
 vueRouter.beforeEach((to, from, next) => {
-    // Close main menu
-    Vue.nextTick().then(() => $("body").trigger("click"));
+    let navItem = navigationUtil.getNavItemByPath(to.path);
+
+    // Close main menu and change title
+    Vue.nextTick().then(() => {
+        $("body").trigger("click");
+
+        if (navItem) {
+            $("head > title").text(navigationUtil.formatTitle(navItem.name));
+        }
+    });
 
     next();
 });
