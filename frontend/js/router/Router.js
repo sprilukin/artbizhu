@@ -1,5 +1,6 @@
 import VueRouter from "vue-router";
 import Vue from "vue";
+import $ from "jquery";
 import store from "../store/store";
 import { sync } from "vuex-router-sync";
 import MainLayout from "../component/layout/MainLayout.vue";
@@ -43,6 +44,13 @@ let vueRouter = new VueRouter({
         }
     ],
     linkActiveClass: "uk-active"
+});
+
+vueRouter.beforeEach((to, from, next) => {
+    // Close main menu
+    Vue.nextTick().then(() => $("body").trigger("click"));
+
+    next();
 });
 
 Vue.use(VueRouter);
