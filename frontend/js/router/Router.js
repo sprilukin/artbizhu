@@ -43,7 +43,10 @@ let vueRouter = new VueRouter({
             component: NotFound
         }
     ],
-    linkActiveClass: "uk-active"
+    linkActiveClass: "uk-active",
+    scrollBehavior (to, from, savedPosition) {
+        return { x: 0, y: 0 };
+    }
 });
 
 vueRouter.beforeEach((to, from, next) => {

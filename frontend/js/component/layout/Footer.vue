@@ -4,7 +4,7 @@
             <div class="uk-grid-match uk-child-width-1-3@m" uk-grid>
                 <div>
                     <h3 class="main-title">
-                        Handcrafted
+                        {{ title }}
                     </h3>
 
                     <div>© 2017</div>
@@ -31,7 +31,9 @@
 
 <script>
     import NavBarItem from "../navBar/NavBarItem.vue";
-    import navigation from "../../router/navigation"
+    import navigation from "../../router/navigation";
+    import settings from "../../../../common/settings";
+    import { mapState } from "vuex";
 
     export default {
         components: {
@@ -40,7 +42,10 @@
         computed: {
             menuItems: function() {
                 return navigation.footer;
-            }
+            },
+            ...mapState({
+                title: (state) => state.title
+            })
         }
     }
 </script>

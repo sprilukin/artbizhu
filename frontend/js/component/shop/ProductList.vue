@@ -22,7 +22,6 @@
     import Pagination from "./Pagination.vue";
     import { mapState, mapActions } from "vuex"
     import pagination from "../../service/util/pagination";
-    import UIkit from "uikit";
 
     export default {
         props: ["page"],
@@ -55,12 +54,6 @@
 
         watch: {
             page: function () {
-                //Scroll to the top after page change
-                this.$nextTick().then(() => {
-                    let scroll = UIkit.scroll("#top", {duration: 0});
-                    scroll[0].scrollToElement("#top");
-                });
-
                 this.loadProductsForCurrentPage();
             }
         },
