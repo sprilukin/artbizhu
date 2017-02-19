@@ -1,15 +1,36 @@
 const express = require("express");
+const url = require("url");
 const router = express.Router();
 // const mongoose = require("mongoose");
 const Product = require("../../models/Product");
 
 // GET /products listing.
 router.get("/", function(req, res, next) {
-    Product.find(function(err, todos) {
-        if (err) {
-            return next(err);
+    let query = url.parse(req.url, true).query;
+
+    let pagination = {
+        limit: Number(query.limit) || 10,
+        offset: Number(query.offset) || 0
+    };
+
+    Product.aggregate([
+        {
+            $project: {
+                _id: false,
+                name: true,
+                src: true
+            }
+        },
+        {
+            $limit: pagination.limit
+        },
+        {
+            $skip: pagination.offset
         }
-        res.json(todos);
+    ], function(err, result) {
+        if (err) return next(err);
+
+        res.json(result);
     });
 });
 
