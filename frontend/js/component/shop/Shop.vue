@@ -1,6 +1,6 @@
 <template>
     <wideContainer>
-        <productList></productList>
+        <productList :page="page"></productList>
     </wideContainer>
 </template>
 
@@ -10,6 +10,8 @@
     import { mapState } from "vuex"
 
     export default {
+        props: ["page"],
+
         components: {
             wideContainer: WideContainer,
             productList: ProductList

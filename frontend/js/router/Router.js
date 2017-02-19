@@ -24,7 +24,11 @@ let vueRouter = new VueRouter({
                 {
                     path: "/store",
                     component: Shop,
-                    props: true
+                    props: (route) => {
+                        return {
+                            page: Number(route.query.page) || 0
+                        };
+                    }
                 },
                 {
                     path: "/addProduct",

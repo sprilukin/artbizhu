@@ -13,6 +13,7 @@ export default {
         await delay(1000);
         commit("addProduct", productName);
     },
+
     loadProducts: async function({commit}, options) {
         let p = await products.getProducts(options);
         commit("setProducts", p);
