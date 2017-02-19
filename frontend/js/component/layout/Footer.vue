@@ -3,18 +3,44 @@
         <div class="uk-container">
             <div class="uk-grid-match uk-child-width-1-3@m" uk-grid>
                 <div>
-                    <h3>Section Default</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
+                    <h3 class="main-title">
+                        Handcrafted
+                    </h3>
+
+                    <div>© 2017</div>
+                    <div>handrcafted.com</div>
+                    <div>handrcafted@gmail.com</div>
                 </div>
                 <div>
-                    <h3>Section Default</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
+                    <h3>Помощь</h3>
+                    <template v-for="menuItem in menuItems">
+                        <router-link :to="menuItem.uri" exact>{{menuItem.name}}</router-link>
+                    </template>
                 </div>
                 <div>
-                    <h3>Section Default</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
+                    <h3>Мы в соцсетях</h3>
+                    <div>
+                        <a href="https://www.facebook.com/groups/509181309239215/" target="_blank" class="uk-icon-button  uk-margin-small-right" uk-icon="icon: facebook"></a>
+                        <a href="/" class="uk-icon-button uk-margin-small-right" uk-icon="icon: instagram"></a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </template>
+
+<script>
+    import NavBarItem from "../navBar/NavBarItem.vue";
+    import navigation from "../../router/navigation"
+
+    export default {
+        components: {
+            navBarItem: NavBarItem
+        },
+        computed: {
+            menuItems: function() {
+                return navigation.footer;
+            }
+        }
+    }
+</script>

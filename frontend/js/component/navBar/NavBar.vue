@@ -10,7 +10,7 @@
     import NavBarItem from "./NavBarItem.vue";
     import BigScreenNavBar from "./BigScreenNavBar.vue";
     import SmallScreenNavBar from "./SmallScreenNavBar.vue";
-    import navigation from "../../router/navigation.json"
+    import navigation from "../../router/navigation"
 
     export default {
         components: {
