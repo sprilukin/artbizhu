@@ -55,8 +55,12 @@
 
         watch: {
             page: function () {
-                let scroll = UIkit.scroll("#top", {duration: 0});
-                scroll[0].scrollToElement("#top");
+                //Scroll to the top after page change
+                this.$nextTick().then(() => {
+                    let scroll = UIkit.scroll("#top", {duration: 0});
+                    scroll[0].scrollToElement("#top");
+                });
+
                 this.loadProductsForCurrentPage();
             }
         },
