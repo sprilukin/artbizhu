@@ -9,6 +9,7 @@
 <script>
     import Product from "./Product.vue";
     import { mapState, mapActions } from "vuex"
+    import pagination from "../../service/util/pagination";
 
     export default {
         components: {
@@ -28,7 +29,11 @@
         },
         
         created: function() {
-            this.loadProducts();
+            let { page } = this.$router.currentRoute.query;
+
+            this.loadProducts({
+                offset: pagination.getOffsetByPage(page)
+            });
         }
     };
 </script>

@@ -1,4 +1,4 @@
-export default {
+module.exports = {
     pagination: {
         limit: 10
     }

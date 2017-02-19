@@ -3,29 +3,30 @@ const url = require("url");
 const router = express.Router();
 // const mongoose = require("mongoose");
 const Product = require("../../models/Product");
+const settings = require("../../../common/settings");
 
 // GET /products listing.
 router.get("/", function(req, res, next) {
     let query = url.parse(req.url, true).query;
 
     let pagination = {
-        limit: Number(query.limit) || 10,
+        limit: Number(query.limit) || settings.pagination.limit,
         offset: Number(query.offset) || 0
     };
 
     Product.aggregate([
+        {
+            $skip: pagination.offset
+        },
+        {
+            $limit: pagination.limit
+        },
         {
             $project: {
                 _id: false,
                 name: true,
                 src: true
             }
-        },
-        {
-            $limit: pagination.limit
-        },
-        {
-            $skip: pagination.offset
         }
     ], function(err, result) {
         if (err) return next(err);
