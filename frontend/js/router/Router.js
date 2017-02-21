@@ -6,7 +6,7 @@ import { sync } from "vuex-router-sync";
 import App from "../component/App.vue";
 import Shop from "../component/shop/Shop.vue";
 import Home from "../component/home/Home.vue";
-import AddProduct from "../component/shop/AddProduct.vue";
+import Info from "../component/info/Info.vue";
 import NotFound from "../component/NotFound.vue";
 import navigationUtil from "./util/navigationUtil";
 
@@ -33,8 +33,8 @@ let vueRouter = new VueRouter({
                     }
                 },
                 {
-                    path: "/addProduct",
-                    component: AddProduct,
+                    path: "/info",
+                    component: Info,
                     props: true
                 }
             ]

@@ -6,16 +6,16 @@ let allMenuItems = {
         "uri": "/store", "icon": "star", "name": "Магазин"
     },
     contacts: {
-        "uri": "/addProduct", "icon": "info", "name": "Контакты"
+        "uri": "/info", "icon": "info", "name": "Контакты"
     },
     payment: {
-        "uri": "/", "icon": "credit-card", "name": "Оплата и доставка"
+        "uri": "/payment", "icon": "credit-card", "name": "Оплата и доставка"
     },
     feedback: {
-        "uri": "/", "icon": "happy", "name": "Отзывы"
+        "uri": "/reviews", "icon": "happy", "name": "Отзывы"
     },
     cart: {
-        "uri": "/", "icon": "cart", "name": "Корзина"
+        "uri": "/cart", "icon": "cart", "name": "Корзина"
     }
 };
 
