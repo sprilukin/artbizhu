@@ -1,4 +1,4 @@
-import settings from "../../../../common/settings";
+import settings from "../../../common/settings";
 
 export default {
     getOffsetByPage: function(page) {

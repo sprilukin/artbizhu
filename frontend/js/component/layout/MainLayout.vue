@@ -2,7 +2,7 @@
     <div>
         <mainTitle></mainTitle>
         <navBar></navBar>
-        <router-view></router-view>
+        <slot></slot>
         <foot></foot>
     </div>
 </template>

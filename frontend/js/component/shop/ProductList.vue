@@ -21,7 +21,7 @@
     import Product from "./Product.vue";
     import Pagination from "./Pagination.vue";
     import { mapState, mapActions } from "vuex"
-    import pagination from "../../service/util/pagination";
+    import pagination from "../../util/pagination";
 
     export default {
         props: ["page"],

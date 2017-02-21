@@ -3,7 +3,7 @@ import Vue from "vue";
 import $ from "jquery";
 import store from "../store/store";
 import { sync } from "vuex-router-sync";
-import MainLayout from "../component/layout/MainLayout.vue";
+import App from "../component/App.vue";
 import Shop from "../component/shop/Shop.vue";
 import Home from "../component/home/Home.vue";
 import AddProduct from "../component/shop/AddProduct.vue";
@@ -15,7 +15,7 @@ let vueRouter = new VueRouter({
     routes: [
         {
             path: "/",
-            component: MainLayout,
+            component: App,
             props: true,
             children: [
                 {
