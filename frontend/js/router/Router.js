@@ -7,6 +7,8 @@ import App from "../component/App.vue";
 import Shop from "../component/shop/Shop.vue";
 import Home from "../component/home/Home.vue";
 import Info from "../component/info/Info.vue";
+import Payment from "../component/payment/Payment.vue";
+import Reviews from "../component/reviews/Reviews.vue";
 import NotFound from "../component/NotFound.vue";
 import navigationUtil from "./util/navigationUtil";
 
@@ -35,6 +37,16 @@ let vueRouter = new VueRouter({
                 {
                     path: "/info",
                     component: Info,
+                    props: true
+                },
+                {
+                    path: "/payment",
+                    component: Payment,
+                    props: true
+                },
+                {
+                    path: "/reviews",
+                    component: Reviews,
                     props: true
                 }
             ]
