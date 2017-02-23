@@ -63,7 +63,7 @@ let config = Object.assign({}, commonConfig, {
                         }
                     }
                 ],
-                include: [/node_modules/]
+                include: [/node_modules/, /frontend\/font/]
             },
             {
                 test: /\.(png|jpg|svg)$/,
@@ -75,7 +75,7 @@ let config = Object.assign({}, commonConfig, {
                         }
                     }
                 ],
-                include: [/node_modules/]
+                include: [/node_modules/, /frontend\/img/]
             }
         ]
     },
