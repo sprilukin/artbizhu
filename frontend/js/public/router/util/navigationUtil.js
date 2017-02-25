@@ -1,4 +1,4 @@
-import url from "../../util/url";
+import url from "uicommon/util/url";
 import navigation from "../navigation";
 import settings from "common/settings";
 

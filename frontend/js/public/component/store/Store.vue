@@ -5,7 +5,7 @@
 </template>
 
 <script>
-    import WideContainer from "commonComponent/layout/WideContainer.vue";
+    import WideContainer from "uicommon/component/layout/WideContainer.vue";
     import ProductList from "./ProductList.vue";
     import { mapState } from "vuex"
 

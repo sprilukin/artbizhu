@@ -1,5 +1,5 @@
-import { get } from "./rest";
-import url from "../util/url";
+import { get } from "uicommon/rest/rest";
+import url from "uicommon/util/url";
 
 
 const END_POINT = "/api/products";
