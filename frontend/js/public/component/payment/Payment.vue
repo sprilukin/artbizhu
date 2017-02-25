@@ -24,7 +24,7 @@
 </template>
 
 <script>
-    import WideContainer from "../layout/WideContainer.vue";
+    import WideContainer from "commonComponent/layout/WideContainer.vue";
 
     export default {
         components: {

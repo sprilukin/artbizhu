@@ -27,7 +27,8 @@ let config = Object.assign({}, commonConfig, {
             "node_modules"
         ],
         alias: {
-            "common": path.resolve(__dirname, "common/")
+            "common": path.resolve(__dirname, "common/"),
+            "commonComponent": path.resolve(__dirname, "frontend/js/common/component/")
         }
     },
 
