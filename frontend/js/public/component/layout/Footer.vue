@@ -30,14 +30,10 @@
 </template>
 
 <script>
-    import NavBarItem from "../navBar/NavBarItem.vue";
     import navigation from "../../router/navigation";
     import { mapState } from "vuex";
 
     export default {
-        components: {
-            navBarItem: NavBarItem
-        },
         computed: {
             menuItems: function() {
                 return navigation.footer;
