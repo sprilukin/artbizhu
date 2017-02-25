@@ -12,7 +12,8 @@ let config = Object.assign({}, commonConfig, {
     },
 
     entry: {
-        "js/main": "public/main.js"
+        "js/main": "public/main.js",
+        "js/admin": "admin/main.js"
     },
 
     output: {

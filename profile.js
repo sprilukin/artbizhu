@@ -5,13 +5,14 @@
 // where [profile] resolved from NODE_ENV
 
 let fs = require("fs"),
+    path = require("path"),
     profiles = require("./profiles"),
     environmentProfile = require("./profiles/environment");
 
 // get profile name from NODE_ENV
 let profile = profiles.development;
 
-const localProfilePath = "./.profile.json";
+const localProfilePath = path.resolve(__dirname, ".profile.json");
 let isProfileFileExists = fs.existsSync(localProfilePath);
 
 if (isProfileFileExists) {
