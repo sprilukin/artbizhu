@@ -32,7 +32,6 @@
 <script>
     import NavBarItem from "../navBar/NavBarItem.vue";
     import navigation from "../../router/navigation";
-    import settings from "../../../../../common/settings";
     import { mapState } from "vuex";
 
     export default {
