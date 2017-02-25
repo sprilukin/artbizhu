@@ -1,6 +1,6 @@
 import url from "../../util/url";
 import navigation from "../navigation";
-import settings from "../../../../common/settings";
+import settings from "../../../../../common/settings";
 
 export default {
     getNavItemByPath: function(path) {

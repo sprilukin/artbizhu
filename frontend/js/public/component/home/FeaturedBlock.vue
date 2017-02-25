@@ -7,7 +7,7 @@
 </template>
 
 <script>
-    import settings from "../../../../common/settings";
+    import settings from "../../../../../common/settings";
     import { mapState } from "vuex";
 
     export default {
