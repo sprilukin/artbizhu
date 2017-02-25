@@ -1,14 +1,14 @@
 export default {
-    addProduct: function(state, productName) {
-        state.store.products.push({name: productName});
+    // addProduct: function(state, productName) {
+    //     state.store.products.push({name: productName});
+    // },
+
+    setProductCategories: function(state, products) {
+        state.store.productCategories.loading = false;
+        state.store.productCategories.items = products;
     },
 
-    setProducts: function(state, products) {
-        state.store.loading = false;
-        state.store.products = products;
-    },
-
-    setProductsLoading: function(state) {
-        state.store.loading = true;
+    setProductCategoriesLoading: function(state) {
+        state.store.productCategories.loading = true;
     }
 };

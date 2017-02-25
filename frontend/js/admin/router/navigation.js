@@ -3,7 +3,7 @@ let allMenuItems = {
         "uri": "/", "icon": "home", "name": "Главная"
     },
     categories: {
-        "uri": "/store", "icon": "star", "name": "Категории"
+        "uri": "/category", "icon": "star", "name": "Категории"
     },
     products: {
         "uri": "/info", "icon": "info", "name": "Товары"

@@ -5,6 +5,7 @@ import store from "../store/store";
 import { sync } from "vuex-router-sync";
 import App from "../component/App.vue";
 import Home from "../component/home/Home.vue";
+import ProductCategory from "../component/productCategory/ProductCategory.vue";
 import NotFound from "../component/NotFound.vue";
 
 let vueRouter = new VueRouter({
@@ -19,6 +20,10 @@ let vueRouter = new VueRouter({
                     path: "",
                     component: Home,
                     props: true
+                },
+                {
+                    path: "/category",
+                    component: ProductCategory
                 }
             ]
         },
