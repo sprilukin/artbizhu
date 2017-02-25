@@ -8,7 +8,8 @@ module.exports = _.pickBy({
     localsError: process.env.LOCALS_ERROR,
     compress: process.env.COMPRESS,
     devtool: process.env.DEV_TOOL,
-    mainAppName: process.env.MAIN_APP
+    mainAppName: process.env.MAIN_APP,
+    dbName: process.env.DB_NAME
 }, function(value) {
     return !_.isUndefined(value);
 });

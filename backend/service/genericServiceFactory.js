@@ -4,6 +4,8 @@ module.exports = {
     create: function(Entity) {
         return {
             findAll: function(aggregation, offset, limit) {
+                aggregation = aggregation || [];
+
                 let pagination = [
                     {
                         $skip: Number(offset) || 0

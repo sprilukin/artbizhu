@@ -1,53 +1,38 @@
 const express = require("express");
+const url = require("url");
 const router = express.Router();
-// const mongoose = require("mongoose");
-const ProductCategory = require("../../models/ProductCategory");
+const productCategoriesService = require("../../service/productCategoriesService");
+const asyncServiceOperationHandler = require("../util/asyncServiceOperationHandler");
 
 // GET /products listing.
 router.get("/", function(req, res, next) {
-    ProductCategory.find(function(err, result) {
-        if (err) return next(err);
+    let query = url.parse(req.url, true).query,
+        limit = Number(query.limit),
+        offset = Number(query.offset);
 
-        res.json(result);
-    });
+    asyncServiceOperationHandler.handle(productCategoriesService.findAll(offset, limit), res, next);
 });
 
 // GET /product/1
 router.get("/:id", function(req, res, next) {
-    ProductCategory.findById(req.params.id, function (err, post) {
-        if (err) return next(err);
-        res.json(post);
-    });
+    asyncServiceOperationHandler.handle(productCategoriesService.findById(req.params.id), res, next);
 });
 
 // POST /products
 router.post("/", function(req, res, next) {
-    ProductCategory.create(req.body, function (err, post) {
-        if (err) return next(err);
-        res.json(post);
-    });
+    asyncServiceOperationHandler.handle(productCategoriesService.add(req.body), res, next);
 });
 
-
 router.put("/:id", function(req, res, next) {
-    ProductCategory.findByIdAndUpdate(req.params.id, req.body, function (err, post) {
-        if (err) return next(err);
-        res.json(post);
-    });
+    asyncServiceOperationHandler.handle(productCategoriesService.updateById(req.params.id, req.body), res, next);
 });
 
 router.delete("/:id", function(req, res, next) {
-    ProductCategory.findByIdAndRemove(req.params.id, req.body, function (err, post) {
-        if (err) return next(err);
-        res.json(post);
-    });
+    asyncServiceOperationHandler.handle(productCategoriesService.deleteById(req.params.id), res, next);
 });
 
 router.delete("/", function(req, res, next) {
-    ProductCategory.remove({}, function (err, post) {
-        if (err) return next(err);
-        res.json(post);
-    });
+    asyncServiceOperationHandler.handle(productCategoriesService.deleteAll(), res, next);
 });
 
 module.exports = router;

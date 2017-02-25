@@ -2,7 +2,7 @@ const express = require("express");
 const url = require("url");
 const router = express.Router();
 const productsService = require("../../service/productsService");
-const asyncServiceOperationHandler = require("./asyncServiceOperationHandler");
+const asyncServiceOperationHandler = require("../util/asyncServiceOperationHandler");
 
 // GET /products listing.
 router.get("/", function(req, res, next) {
