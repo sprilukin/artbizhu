@@ -14,10 +14,9 @@ export default {
         commit("addProduct", productName);
     },
 
-    loadProducts: async function({commit}, options) {
+    loadProducts: function({commit}, options) {
         commit("setProductsLoading");
 
-        let p = await products.getProducts(options);
-        commit("setProducts", p);
+        products.getProducts(options).then((products) => commit("setProducts", products));
     }
 };
