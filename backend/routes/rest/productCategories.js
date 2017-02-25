@@ -10,7 +10,7 @@ router.get("/", function(req, res, next) {
         limit = Number(query.limit),
         offset = Number(query.offset);
 
-    asyncServiceOperationHandler.handle(productCategoriesService.findAll(offset, limit), res, next);
+    asyncServiceOperationHandler.handleList(productCategoriesService.findAll(offset, limit), res, next);
 });
 
 // GET /product/1
