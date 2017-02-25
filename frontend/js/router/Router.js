@@ -4,7 +4,7 @@ import $ from "jquery";
 import store from "../store/store";
 import { sync } from "vuex-router-sync";
 import App from "../component/App.vue";
-import Shop from "../component/shop/Shop.vue";
+import Store from "../component/store/Store.vue";
 import Home from "../component/home/Home.vue";
 import Info from "../component/info/Info.vue";
 import Payment from "../component/payment/Payment.vue";
@@ -27,7 +27,7 @@ let vueRouter = new VueRouter({
                 },
                 {
                     path: "/store",
-                    component: Shop,
+                    component: Store,
                     props: (route) => {
                         return {
                             page: Number(route.query.page) || 0
