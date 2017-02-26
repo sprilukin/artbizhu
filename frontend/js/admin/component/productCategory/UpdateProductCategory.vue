@@ -1,5 +1,5 @@
 <template>
-    <div id="update-product-category" uk-modal="center: true">
+    <div :id="id" uk-modal="center: true">
         <div class="uk-modal-dialog">
             <button class="uk-modal-close-default" type="button" uk-close></button>
             <div class="uk-modal-header">
@@ -18,6 +18,8 @@
 
 <script>
     export default {
+        props: ["id"],
+
         components: {
         },
 

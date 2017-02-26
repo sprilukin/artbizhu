@@ -7,7 +7,7 @@
                 <tr>
                     <th>Название</th>
                     <th>Описание</th>
-                    <th></th>
+                    <th class="uk-table-shrink">Операции</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -24,7 +24,7 @@
 
             <pagination :page="page" :total="total" :pageSize="pageSize"></pagination>
 
-            <updateProductCategory></updateProductCategory>
+            <updateProductCategory id="update-product-category"></updateProductCategory>
             <confirm id="remove-product-category"></confirm>
         </div>
         <loading v-show="loading"></loading>
