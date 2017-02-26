@@ -15,7 +15,7 @@
                     <td>{{productCategory.name}}</td>
                     <td>{{productCategory.description}}</td>
                     <td>
-                        <a href="#update-product-category" uk-toggle class="uk-icon-link uk-margin-small-right" uk-icon="icon: file-edit" title="Редактировать" uk-tooltip></a>
+                        <router-link :to="editProductCategoryLink(productCategory._id)" uk-icon="icon: file-edit" title="Редактировать" uk-tooltip></router-link>
                         <a href="#remove-product-category" uk-toggle class="uk-icon-link" uk-icon="icon: trash" title="Удалить" uk-tooltip></a>
                     </td>
                 </tr>
@@ -24,7 +24,6 @@
 
             <pagination :page="page" :total="total" :pageSize="pageSize"></pagination>
 
-            <updateProductCategory id="update-product-category"></updateProductCategory>
             <confirm id="remove-product-category"></confirm>
         </div>
         <loading v-show="loading"></loading>
@@ -33,7 +32,6 @@
 
 <script>
     import Pagination from "uicommon/component/pagination/Pagination.vue";
-    import UpdateProductCategory from "./UpdateProductCategory.vue";
     import Confirm from "../modal/Confirm.vue";
     import Loading from "uicommon/component/loading/Loading.vue";
     import { mapState, mapActions } from "vuex"
@@ -46,7 +44,6 @@
         components: {
             pagination: Pagination,
             loading: Loading,
-            updateProductCategory: UpdateProductCategory,
             confirm: Confirm
         },
 
@@ -70,6 +67,9 @@
                 this.loadProductCategories({
                     offset: this.offset
                 });
+            },
+            editProductCategoryLink: function(id) {
+                return `/category/${id}`
             }
         },
 

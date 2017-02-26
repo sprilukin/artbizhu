@@ -1,21 +1,21 @@
 let allMenuItems = {
     main: {
-        "uri": "/", "icon": "home", "name": "Главная"
+        "uri": "/", "icon": "home", "name": "Главная", "exact": true
     },
     store: {
-        "uri": "/store", "icon": "star", "name": "Магазин"
+        "uri": "/store", "icon": "star", "name": "Магазин", "exact": false
     },
     contacts: {
-        "uri": "/info", "icon": "info", "name": "Контакты"
+        "uri": "/info", "icon": "info", "name": "Контакты", "exact": false
     },
     payment: {
-        "uri": "/payment", "icon": "credit-card", "name": "Оплата и доставка"
+        "uri": "/payment", "icon": "credit-card", "name": "Оплата и доставка", "exact": false
     },
     feedback: {
-        "uri": "/reviews", "icon": "happy", "name": "Отзывы"
+        "uri": "/reviews", "icon": "happy", "name": "Отзывы", "exact": false
     },
     cart: {
-        "uri": "/cart", "icon": "cart", "name": "Корзина"
+        "uri": "/cart", "icon": "cart", "name": "Корзина", "exact": false
     }
 };
 

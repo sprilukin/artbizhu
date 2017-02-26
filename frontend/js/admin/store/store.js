@@ -12,7 +12,8 @@ export default new Vuex.Store({
         productCategories: {
             list: [],
             total: 0,
-            loading: false
+            loading: false,
+            item: {}
         }
     },
     mutations,

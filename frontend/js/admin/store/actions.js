@@ -18,5 +18,11 @@ export default {
         commit("setProductCategoriesLoading");
 
         productCategories.findAll(options).then((productCategories) => commit("setProductCategories", productCategories));
+    },
+
+    loadProductCategory: function({commit}, id) {
+        commit("setProductCategoriesLoading");
+
+        productCategories.findById(id).then((productCategory) => commit("setProductCategory", productCategory));
     }
 };

@@ -29,4 +29,8 @@ function resolveList(response) {
     });
 }
 
-export {post, get, resolveList};
+function resolveSingle(response) {
+    return response.json();
+}
+
+export {post, get, resolveList, resolveSingle};

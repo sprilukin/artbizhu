@@ -11,5 +11,10 @@ export default {
 
     setProductCategoriesLoading: function(state) {
         state.productCategories.loading = true;
+    },
+
+    setProductCategory: function(state, productCategory) {
+        state.productCategories.loading = false;
+        state.productCategories.item = productCategory;
     }
 };

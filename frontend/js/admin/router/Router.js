@@ -5,6 +5,7 @@ import store from "../store/store";
 import { sync } from "vuex-router-sync";
 import App from "../component/App.vue";
 import Home from "../component/home/Home.vue";
+import ProductCategoryList from "../component/productCategory/ProductCategoryList.vue";
 import ProductCategory from "../component/productCategory/ProductCategory.vue";
 import NotFound from "../component/NotFound.vue";
 
@@ -23,12 +24,17 @@ let vueRouter = new VueRouter({
                 },
                 {
                     path: "/category",
-                    component: ProductCategory,
+                    component: ProductCategoryList,
                     props: (route) => {
                         return {
                             page: Number(route.query.page) || 0
                         };
                     }
+                },
+                {
+                    path: "/category/:id",
+                    component: ProductCategory,
+                    props: true
                 }
             ]
         },
