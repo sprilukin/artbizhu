@@ -15,14 +15,17 @@
                     <td>{{productCategory.name}}</td>
                     <td>{{productCategory.description}}</td>
                     <td>
-                        <a href="#" class="uk-icon-link uk-margin-small-right" uk-icon="icon: file-edit" title="Редактировать" uk-tooltip></a>
-                        <a href="#" class="uk-icon-link" uk-icon="icon: trash" title="Удалить" uk-tooltip></a>
+                        <a href="#update-product-category" uk-toggle class="uk-icon-link uk-margin-small-right" uk-icon="icon: file-edit" title="Редактировать" uk-tooltip></a>
+                        <a href="#remove-product-category" uk-toggle class="uk-icon-link" uk-icon="icon: trash" title="Удалить" uk-tooltip></a>
                     </td>
                 </tr>
                 </tbody>
             </table>
 
             <pagination :page="page" :total="total" :pageSize="pageSize"></pagination>
+
+            <updateProductCategory></updateProductCategory>
+            <confirm id="remove-product-category"></confirm>
         </div>
         <loading v-show="loading"></loading>
     </div>
@@ -30,6 +33,8 @@
 
 <script>
     import Pagination from "uicommon/component/pagination/Pagination.vue";
+    import UpdateProductCategory from "./UpdateProductCategory.vue";
+    import Confirm from "../modal/Confirm.vue";
     import Loading from "uicommon/component/loading/Loading.vue";
     import { mapState, mapActions } from "vuex"
     import pagination from "uicommon/util/pagination";
@@ -40,7 +45,9 @@
 
         components: {
             pagination: Pagination,
-            loading: Loading
+            loading: Loading,
+            updateProductCategory: UpdateProductCategory,
+            confirm: Confirm
         },
 
         computed: {
