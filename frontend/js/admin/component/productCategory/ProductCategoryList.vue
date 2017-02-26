@@ -2,9 +2,7 @@
     <div>
         <div v-show="!loading">
             <grid>
-                <div v-for="product in products">
-                    <product :product="product"></product>
-                </div>
+                <item v-for="productCategory in productCategories" :productCategory="productCategory"></item>
             </grid>
             <pagination :page="page"></pagination>
         </div>
@@ -13,7 +11,7 @@
 </template>
 
 <script>
-    import Product from "./Product.vue";
+    import ProductCategoryItem from "./ProductCategoryItem.vue";
     import FlexGrid from "uicommon/component/grid/FlexGrid.vue";
     import Pagination from "uicommon/component/pagination/Pagination.vue";
     import Loading from "uicommon/component/loading/Loading.vue";
@@ -24,16 +22,16 @@
         props: ["page"],
 
         components: {
-            grid: FlexGrid,
-            product: Product,
+            item: ProductCategoryItem,
             pagination: Pagination,
-            loading: Loading
+            loading: Loading,
+            grid: FlexGrid
         },
 
         computed: {
             ...mapState({
-                products: (state) => state.store.products,
-                loading: (state) => state.store.loading
+                productCategories: (state) => state.productCategories.list,
+                loading: (state) => state.productCategories.loading
             }),
             offset: function() {
                 return pagination.getOffsetByPage(this.page)
@@ -42,10 +40,10 @@
 
         methods: {
             ...mapActions({
-                loadProducts: 'loadProducts' // map this.add() to this.$store.dispatch('increment')
+                loadProductCategories: 'loadProductCategories'
             }),
             loadProductsForCurrentPage: function() {
-                this.loadProducts({
+                this.loadProductCategories({
                     offset: this.offset
                 });
             }

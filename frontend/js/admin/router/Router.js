@@ -23,7 +23,12 @@ let vueRouter = new VueRouter({
                 },
                 {
                     path: "/category",
-                    component: ProductCategory
+                    component: ProductCategory,
+                    props: (route) => {
+                        return {
+                            page: Number(route.query.page) || 0
+                        };
+                    }
                 }
             ]
         },

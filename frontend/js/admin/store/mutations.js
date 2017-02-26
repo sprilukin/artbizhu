@@ -4,11 +4,11 @@ export default {
     // },
 
     setProductCategories: function(state, products) {
-        state.store.productCategories.loading = false;
-        state.store.productCategories.items = products;
+        state.productCategories.loading = false;
+        state.productCategories.list = products;
     },
 
     setProductCategoriesLoading: function(state) {
-        state.store.productCategories.loading = true;
+        state.productCategories.loading = true;
     }
 };
