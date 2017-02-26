@@ -20,4 +20,13 @@ function get(endPoint) {
     });
 }
 
-export {post, get};
+function resolveList(response) {
+    return response.json().then((list) => {
+        return Promise.resolve({
+            list: list,
+            total: Number(response.headers.get("total-count"))
+        });
+    });
+}
+
+export {post, get, resolveList};

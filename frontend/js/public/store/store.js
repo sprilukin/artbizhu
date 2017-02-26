@@ -9,8 +9,9 @@ Vue.use(Vuex);
 export default new Vuex.Store({
     state: {
         title: settings.store.name,
-        store: {
-            products: [],
+        products: {
+            list: [],
+            total: 0,
             loading: false
         }
     },

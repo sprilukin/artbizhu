@@ -6,7 +6,7 @@
                     <product :product="product"></product>
                 </div>
             </grid>
-            <pagination :page="page"></pagination>
+            <pagination :page="page" :pageSize="pageSize" :total="total"></pagination>
         </div>
         <loading v-show="loading"></loading>
     </div>
@@ -19,6 +19,7 @@
     import Loading from "uicommon/component/loading/Loading.vue";
     import { mapState, mapActions } from "vuex"
     import pagination from "uicommon/util/pagination";
+    import settings from "common/settings";
 
     export default {
         props: ["page"],
@@ -32,12 +33,14 @@
 
         computed: {
             ...mapState({
-                products: (state) => state.store.products,
-                loading: (state) => state.store.loading
+                products: (state) => state.products.list,
+                loading: (state) => state.products.loading,
+                total: (state) => state.products.total
             }),
+            pageSize: () => settings.pagination.limit,
             offset: function() {
                 return pagination.getOffsetByPage(this.page)
-            }
+            },
         },
 
         methods: {

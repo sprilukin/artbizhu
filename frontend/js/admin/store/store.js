@@ -11,6 +11,7 @@ export default new Vuex.Store({
         title: settings.store.name,
         productCategories: {
             list: [],
+            total: 0,
             loading: false
         }
     },

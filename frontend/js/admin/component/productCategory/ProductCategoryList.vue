@@ -4,7 +4,7 @@
             <grid>
                 <item v-for="productCategory in productCategories" :productCategory="productCategory"></item>
             </grid>
-            <pagination :page="page"></pagination>
+            <pagination :page="page" :total="total" :pageSize="pageSize"></pagination>
         </div>
         <loading v-show="loading"></loading>
     </div>
@@ -17,6 +17,7 @@
     import Loading from "uicommon/component/loading/Loading.vue";
     import { mapState, mapActions } from "vuex"
     import pagination from "uicommon/util/pagination";
+    import settings from "common/settings";
 
     export default {
         props: ["page"],
@@ -31,8 +32,10 @@
         computed: {
             ...mapState({
                 productCategories: (state) => state.productCategories.list,
-                loading: (state) => state.productCategories.loading
+                loading: (state) => state.productCategories.loading,
+                total: (state) => state.productCategories.total
             }),
+            pageSize: () => settings.pagination.limit,
             offset: function() {
                 return pagination.getOffsetByPage(this.page)
             }

@@ -21,20 +21,20 @@
 
 <script>
     export default {
-        props: ["page"],
+        props: ["page", "pageSize", "total"],
 
         computed: {
             hasPrevious: function() {
                 return this.page > 0;
             },
             hasNext: function() {
-                return this.page < 3;
+                return this.page * this.pageSize < this.total;
             },
             previous: function() {
-                return this.hasPrevious ? this.page - 1 : 0
+                return this.page - 1;
             },
             next: function() {
-                return this.hasNext ? this.page + 1 : this.page;
+                return this.page + 1;
             }
         }
     };

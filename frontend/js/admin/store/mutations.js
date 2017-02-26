@@ -3,9 +3,10 @@ export default {
     //     state.store.products.push({name: productName});
     // },
 
-    setProductCategories: function(state, products) {
+    setProductCategories: function(state, productCategories) {
         state.productCategories.loading = false;
-        state.productCategories.list = products;
+        state.productCategories.list = productCategories.list;
+        state.productCategories.total = productCategories.total;
     },
 
     setProductCategoriesLoading: function(state) {
