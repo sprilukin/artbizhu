@@ -1,37 +1,33 @@
 <template>
     <div>
         <div v-if="!loading">
-            <form>
-                <fieldset class="uk-fieldset">
+            <ul class="uk-breadcrumb">
+                <li>
+                    <router-link to="/category">
+                        Категории
+                    </router-link>
+                </li>
+                <li>
+                    <span href="#">{{productCategory.name}}</span>
+                </li>
+            </ul>
 
-                    <legend class="uk-legend">{{productCategory.name}}</legend>
+            <form class="uk-form-horizontal uk-margin-large">
 
-                    <div class="uk-margin">
-                        <input class="uk-input" type="text" placeholder="Input">
+                <div class="uk-margin">
+                    <div class="uk-form-label">Название</div>
+                    <div class="uk-form-controls">
+                        <input class="uk-input" id="form-horizontal-text" type="text" placeholder="Some text..." :value="productCategory.name">
                     </div>
+                </div>
 
-                    <div class="uk-margin">
-                        <select class="uk-select">
-                            <option>Option 01</option>
-                            <option>Option 02</option>
-                        </select>
+                <div class="uk-margin">
+                    <div class="uk-form-label">Описание</div>
+                    <div class="uk-form-controls uk-form-controls-text">
+                        <textarea class="uk-textarea" id="form-horizontal-select" rows="5" placeholder="Textarea" :value="productCategory.description"></textarea>
                     </div>
+                </div>
 
-                    <div class="uk-margin">
-                        <textarea class="uk-textarea" rows="5" placeholder="Textarea"></textarea>
-                    </div>
-
-                    <div class="uk-margin uk-grid-small uk-child-width-auto" uk-grid>
-                        <label><input class="uk-radio" type="radio" name="radio2" checked> A</label>
-                        <label><input class="uk-radio" type="radio" name="radio2"> B</label>
-                    </div>
-
-                    <div class="uk-margin uk-grid-small uk-child-width-auto" uk-grid>
-                        <label><input class="uk-checkbox" type="checkbox" checked> A</label>
-                        <label><input class="uk-checkbox" type="checkbox"> B</label>
-                    </div>
-
-                </fieldset>
             </form>
 
             <div uk-grid class="uk-flex-center">
