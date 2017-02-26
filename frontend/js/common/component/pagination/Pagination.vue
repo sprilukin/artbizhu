@@ -24,11 +24,14 @@
         props: ["page", "pageSize", "total"],
 
         computed: {
+            pagesCount: function() {
+                return Math.ceil(this.total / this.pageSize);
+            },
             hasPrevious: function() {
                 return this.page > 0;
             },
             hasNext: function() {
-                return this.page * this.pageSize < this.total;
+                return this.page < this.pagesCount - 1;
             },
             previous: function() {
                 return this.page - 1;
