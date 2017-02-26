@@ -1,9 +1,27 @@
 <template>
     <div>
         <div v-show="!loading">
-            <grid>
-                <item v-for="productCategory in productCategories" :productCategory="productCategory"></item>
-            </grid>
+            <table class="uk-table uk-table-small uk-table-middle">
+                <caption class="uk-text-center">Категории</caption>
+                <thead>
+                <tr>
+                    <th>Название</th>
+                    <th>Описание</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr v-for="productCategory in productCategories">
+                    <td>{{productCategory.name}}</td>
+                    <td>{{productCategory.description}}</td>
+                    <td>
+                        <a href="#" class="uk-icon-link uk-margin-small-right" uk-icon="icon: file-edit" title="Редактировать" uk-tooltip></a>
+                        <a href="#" class="uk-icon-link" uk-icon="icon: trash" title="Удалить" uk-tooltip></a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
             <pagination :page="page" :total="total" :pageSize="pageSize"></pagination>
         </div>
         <loading v-show="loading"></loading>
@@ -11,8 +29,6 @@
 </template>
 
 <script>
-    import ProductCategoryItem from "./ProductCategoryItem.vue";
-    import FlexGrid from "uicommon/component/grid/FlexGrid.vue";
     import Pagination from "uicommon/component/pagination/Pagination.vue";
     import Loading from "uicommon/component/loading/Loading.vue";
     import { mapState, mapActions } from "vuex"
@@ -23,10 +39,8 @@
         props: ["page"],
 
         components: {
-            item: ProductCategoryItem,
             pagination: Pagination,
-            loading: Loading,
-            grid: FlexGrid
+            loading: Loading
         },
 
         computed: {
