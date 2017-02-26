@@ -5,7 +5,7 @@
                 <div class="uk-navbar-center">
                     <ul class="uk-navbar-nav">
                         <template v-for="menuItem in menuItems">
-                            <navBarItem :uri="menuItem.uri" :icon="menuItem.icon" :name="menuItem.name" :exact="menuItem.exact"></navBarItem>
+                            <navBarItem :menuItem="menuItem"></navBarItem>
                         </template>
                     </ul>
                 </div>

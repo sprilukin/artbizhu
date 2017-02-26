@@ -1,8 +1,8 @@
 <template>
-    <router-link :to="uri" tag="li" :exact="exact">
+    <router-link :to="menuItem.uri" tag="li" :exact="menuItem.exact">
         <a>
             <span class="uk-icon uk-margin-small-right" href="#" :uk-icon="iconAttr"></span>
-            {{ name }}
+            {{ menuItem.name }}
             <slot></slot>
         </a>
     </router-link>
@@ -11,11 +11,11 @@
 <script>
 
     export default {
-        props: ["uri", "name", "icon", "exact"],
+        props: ["menuItem"],
 
         computed: {
             iconAttr: function() {
-                return "icon: " + this.icon;
+                return `icon: ${this.menuItem.icon}`;
             }
         }
     }

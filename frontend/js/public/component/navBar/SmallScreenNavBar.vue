@@ -6,7 +6,7 @@
         <div uk-dropdown>
             <ul class="uk-nav uk-dropdown-nav">
                 <template v-for="menuItem in menuItems">
-                    <navBarItem :uri="menuItem.uri" :icon="menuItem.icon" :name="menuItem.name" :exact="menuItem.exact"></navBarItem>
+                    <navBarItem :menuItem="menuItem"></navBarItem>
                 </template>
             </ul>
         </div>
