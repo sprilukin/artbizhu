@@ -37,6 +37,7 @@
     import { mapState, mapActions } from "vuex"
     import pagination from "uicommon/util/pagination";
     import settings from "common/settings";
+    import navigation from "../../router/navigation"
 
     export default {
         props: ["page"],
@@ -69,7 +70,7 @@
                 });
             },
             editProductCategoryLink: function(id) {
-                return `/category/${id}`
+                return `${navigation.all.categories.uri}/${id}`
             }
         },
 

@@ -3,7 +3,7 @@
         <div v-if="!loading">
             <ul class="uk-breadcrumb">
                 <li>
-                    <router-link to="/category">
+                    <router-link :to="categoryLink">
                         Категории
                     </router-link>
                 </li>
@@ -31,7 +31,7 @@
             </form>
 
             <div uk-grid class="uk-flex-center">
-                <router-link to="/category" class="uk-button uk-button-default">
+                <router-link :to="categoryLink" class="uk-button uk-button-default">
                     <span uk-icon="icon: arrow-left"></span>
                     К категориям
                 </router-link>
@@ -48,6 +48,7 @@
 <script>
     import { mapState, mapActions } from "vuex";
     import Loading from "uicommon/component/loading/Loading.vue";
+    import navigation from "../../router/navigation"
 
     export default {
         props: ["id"],
@@ -60,7 +61,10 @@
             ...mapState({
                 productCategory: (state) => state.productCategories.item,
                 loading: (state) => state.productCategories.loading
-            })
+            }),
+            categoryLink() {
+                return navigation.all.categories.uri
+            }
         },
 
         methods: {

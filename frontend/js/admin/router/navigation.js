@@ -14,6 +14,7 @@ let allMenuItems = {
 };
 
 export default {
+    all: allMenuItems,
     main: [
         allMenuItems.main,
         allMenuItems.categories,
