@@ -11,14 +11,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr v-for="productCategory in productCategories">
-                    <td>{{productCategory.name}}</td>
-                    <td>{{productCategory.description}}</td>
-                    <td>
-                        <router-link :to="editProductCategoryLink(productCategory._id)" uk-icon="icon: file-edit" title="Редактировать" uk-tooltip></router-link>
-                        <a href="#remove-product-category" uk-toggle class="uk-icon-link" uk-icon="icon: trash" title="Удалить" uk-tooltip></a>
-                    </td>
-                </tr>
+                <productCategoryListItem v-for="productCategory in productCategories" :productCategory="productCategory"></productCategoryListItem>
                 </tbody>
             </table>
 
@@ -31,13 +24,13 @@
 </template>
 
 <script>
+    import ProductCategoryListItem from "./ProductCategoryLIstItem.vue";
     import Pagination from "uicommon/component/pagination/Pagination.vue";
     import Confirm from "../modal/Confirm.vue";
     import Loading from "uicommon/component/loading/Loading.vue";
     import { mapState, mapActions } from "vuex"
     import pagination from "uicommon/util/pagination";
     import settings from "common/settings";
-    import navigation from "../../router/navigation"
 
     export default {
         props: ["page"],
@@ -45,7 +38,8 @@
         components: {
             pagination: Pagination,
             loading: Loading,
-            confirm: Confirm
+            confirm: Confirm,
+            productCategoryListItem: ProductCategoryListItem
         },
 
         computed: {
@@ -68,9 +62,6 @@
                 this.loadProductCategories({
                     offset: this.offset
                 });
-            },
-            editProductCategoryLink: function(id) {
-                return `${navigation.all.categories.uri}/${id}`
             }
         },
 
