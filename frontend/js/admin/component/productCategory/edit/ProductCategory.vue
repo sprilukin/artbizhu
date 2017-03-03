@@ -62,7 +62,7 @@
 <script>
     import { mapState, mapActions } from "vuex";
     import Loading from "uicommon/component/loading/Loading.vue";
-    import navigation from "../../router/navigation";
+    import navigation from "../../../router/navigation";
     import FlexGrid from "uicommon/component/grid/FlexGrid.vue";
     import ProductCategoryImage from "./ProductCategoryImage.vue";
 

@@ -26,7 +26,7 @@
 <script>
     import ProductCategoryListItem from "./ProductCategoryLIstItem.vue";
     import Pagination from "uicommon/component/pagination/Pagination.vue";
-    import Confirm from "../modal/Confirm.vue";
+    import Confirm from "../../modal/Confirm.vue";
     import Loading from "uicommon/component/loading/Loading.vue";
     import { mapState, mapActions } from "vuex"
     import pagination from "uicommon/util/pagination";

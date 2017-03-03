@@ -5,8 +5,8 @@ import store from "../store/store";
 import { sync } from "vuex-router-sync";
 import App from "../component/App.vue";
 import Home from "../component/home/Home.vue";
-import ProductCategoryList from "../component/productCategory/ProductCategoryList.vue";
-import ProductCategory from "../component/productCategory/ProductCategory.vue";
+import ProductCategoryList from "../component/productCategory/list/ProductCategoryList.vue";
+import ProductCategory from "../component/productCategory/edit/ProductCategory.vue";
 import NotFound from "../component/NotFound.vue";
 
 let vueRouter = new VueRouter({

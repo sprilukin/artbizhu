@@ -10,7 +10,7 @@
 </template>
 
 <script>
-    import navigation from "../../router/navigation"
+    import navigation from "../../../router/navigation"
 
     export default {
         props: ["productCategory"],
