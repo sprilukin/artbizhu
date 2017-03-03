@@ -12,21 +12,35 @@
                 </li>
             </ul>
 
-            <form class="uk-form-horizontal uk-margin-large">
+            <form class="uk-form-horizontal uk-margin-large" action="/api/productCategories" method="POST" enctype="multipart/form-data">
 
                 <div class="uk-margin">
                     <div class="uk-form-label">Название</div>
                     <div class="uk-form-controls">
-                        <input class="uk-input" id="form-horizontal-text" type="text" placeholder="Some text..." :value="productCategory.name">
+                        <input name="name" class="uk-input" id="form-horizontal-text" type="text" placeholder="Some text..." :value="productCategory.name">
                     </div>
                 </div>
 
                 <div class="uk-margin">
                     <div class="uk-form-label">Описание</div>
                     <div class="uk-form-controls uk-form-controls-text">
-                        <textarea class="uk-textarea" id="form-horizontal-select" rows="5" placeholder="Textarea" :value="productCategory.description"></textarea>
+                        <textarea name="description" class="uk-textarea" id="form-horizontal-select" rows="5" placeholder="Textarea" :value="productCategory.description"></textarea>
                     </div>
                 </div>
+
+                <grid>
+                        <productCategoryImage v-for="(image, index) in productCategory.images" :image="image" :index="index"></productCategoryImage>
+                        <div class="uk-card uk-card-default uk-card-body">
+                            <div class="test-upload uk-placeholder uk-text-center">
+                                <span uk-icon="icon: cloud-upload"></span>
+                                <span class="uk-text-middle">Attach</span>
+                                <div uk-form-custom>
+                                    <input type="file" multiple>
+                                    <span class="uk-link">selecting one</span>
+                                </div>
+                            </div>
+                        </div>
+                </grid>
 
             </form>
 
@@ -48,13 +62,17 @@
 <script>
     import { mapState, mapActions } from "vuex";
     import Loading from "uicommon/component/loading/Loading.vue";
-    import navigation from "../../router/navigation"
+    import navigation from "../../router/navigation";
+    import FlexGrid from "uicommon/component/grid/FlexGrid.vue";
+    import ProductCategoryImage from "./ProductCategoryImage.vue";
 
     export default {
         props: ["id"],
 
         components: {
-            loading: Loading
+            loading: Loading,
+            grid: FlexGrid,
+            productCategoryImage: ProductCategoryImage
         },
 
         computed: {

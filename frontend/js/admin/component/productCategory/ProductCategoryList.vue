@@ -11,7 +11,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <productCategoryListItem v-for="productCategory in productCategories" :productCategory="productCategory"></productCategoryListItem>
+                    <productCategoryListItem v-for="productCategory in productCategories" :productCategory="productCategory"></productCategoryListItem>
                 </tbody>
             </table>
 
