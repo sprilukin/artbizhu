@@ -1,16 +1,7 @@
 <template>
     <div>
         <div v-if="!loading">
-            <ul class="uk-breadcrumb">
-                <li>
-                    <router-link :to="categoryLink">
-                        Категории
-                    </router-link>
-                </li>
-                <li>
-                    <span href="#">{{productCategory.name}}</span>
-                </li>
-            </ul>
+            <breadCrumb :productCategory="productCategory"></breadCrumb>
 
             <form class="uk-form-horizontal uk-margin-large" action="/api/productCategories" method="POST" enctype="multipart/form-data">
 
@@ -29,19 +20,9 @@
                 </div>
 
                 <grid>
-                        <productCategoryImage v-for="(image, index) in productCategory.images" :image="image" :index="index"></productCategoryImage>
-                        <div class="uk-card uk-card-default uk-card-body">
-                            <div class="test-upload uk-placeholder uk-text-center">
-                                <span uk-icon="icon: cloud-upload"></span>
-                                <span class="uk-text-middle">Attach</span>
-                                <div uk-form-custom>
-                                    <input type="file" multiple>
-                                    <span class="uk-link">selecting one</span>
-                                </div>
-                            </div>
-                        </div>
+                    <imageItem v-for="(image, index) in productCategory.images" :image="image" :index="index"></imageItem>
+                    <imageUpload></imageUpload>
                 </grid>
-
             </form>
 
             <div uk-grid class="uk-flex-center">
@@ -64,7 +45,9 @@
     import Loading from "uicommon/component/loading/Loading.vue";
     import navigation from "../../../router/navigation";
     import FlexGrid from "uicommon/component/grid/FlexGrid.vue";
-    import ProductCategoryImage from "./ProductCategoryImage.vue";
+    import Image from "./Image.vue";
+    import ImageUpload from "./ImageUpload.vue";
+    import BreadCrumb from "./BreadCrumb.vue";
 
     export default {
         props: ["id"],
@@ -72,7 +55,9 @@
         components: {
             loading: Loading,
             grid: FlexGrid,
-            productCategoryImage: ProductCategoryImage
+            imageItem: Image,
+            imageUpload: ImageUpload,
+            breadCrumb: BreadCrumb
         },
 
         computed: {
