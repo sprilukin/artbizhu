@@ -1,4 +1,4 @@
-import { fetch } from "whatwg-fetch";
+import fetch from "fetch";
 
 function post({endPoint, body}) {
     return fetch(endPoint, {
@@ -8,6 +8,16 @@ function post({endPoint, body}) {
         },
         method: "POST",
         body: JSON.stringify(body)
+    });
+}
+
+function multipart({endPoint, method, formData}) {
+    return fetch(endPoint, {
+        headers: {
+            "Accept": "application/json"
+        },
+        method: method || "POST",
+        body: formData
     });
 }
 
@@ -33,4 +43,4 @@ function resolveSingle(response) {
     return response.json();
 }
 
-export {post, get, resolveList, resolveSingle};
+export {post, get, multipart, resolveList, resolveSingle};

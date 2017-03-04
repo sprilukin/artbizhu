@@ -4,5 +4,8 @@ module.exports = {
     },
     store: {
         name: "Handcrafted"
+    },
+    images: {
+        maxUploadCount: 10
     }
 };

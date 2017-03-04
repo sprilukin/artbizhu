@@ -1,19 +1,6 @@
 import productCategories from "../service/productCategories";
 
 export default {
-    // addProduct: async function({commit}, productName) {
-    //     function delay(ms) {
-    //         return new Promise(function(resolve) {
-    //             setTimeout(() => {
-    //                 resolve();
-    //             }, ms);
-    //         });
-    //     }
-    //
-    //     await delay(1000);
-    //     commit("addProduct", productName);
-    // },
-
     loadProductCategories: function({commit}, options) {
         commit("setProductCategoriesLoading");
 
@@ -42,5 +29,19 @@ export default {
 
     removeImageFromProductCategory: function({commit}, index) {
         commit("removeImageFromProductCategory", index);
+    },
+
+    saveProductCategory: function({state, commit}) {
+        let item = state.productCategories.item;
+
+        if (item._id) {
+            productCategories.update(item).then((result) => {
+                console.log(result);
+            });
+        } else {
+            productCategories.save(item).then((result) => {
+                console.log(result);
+            });
+        }
     }
 };

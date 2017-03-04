@@ -8,7 +8,8 @@ const profile = require("./profile");
 let config = Object.assign({}, commonConfig, {
     externals: {
         jquery: "jQuery",
-        uikit: "UIkit"
+        uikit: "UIkit",
+        fetch: "fetch"
     },
 
     entry: {
@@ -35,10 +36,6 @@ let config = Object.assign({}, commonConfig, {
 
     module: {
         rules: [
-            {
-                test: /whatwg-fetch\/fetch.js$/,
-                use: "imports-loader?self=>undefined"
-            },
             {
                 test: /\.js$/,
                 use: [

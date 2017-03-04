@@ -31,7 +31,7 @@
                     <span uk-icon="icon: arrow-left"></span>
                     К категориям
                 </router-link>
-                <button class="uk-button uk-button-primary" type="button">
+                <button class="uk-button uk-button-primary" type="button" @click="onSaveClicked">
                     <span uk-icon="icon: push"></span>
                     Сохранить
                 </button>
@@ -74,7 +74,8 @@
 
         methods: {
             ...mapActions({
-                loadProductCategory: 'loadProductCategory'
+                loadProductCategory: "loadProductCategory",
+                saveProductCategory: "saveProductCategory"
             }),
             loadCurrentProductCategory: function() {
                 this.loadProductCategory(this.id);
@@ -90,6 +91,9 @@
                 });
 
                 this.$store.dispatch("reorderProductCategoryImages", reordered);
+            },
+            onSaveClicked: function() {
+                this.saveProductCategory();
             }
         },
 

@@ -1,8 +1,10 @@
 const express = require("express");
 const url = require("url");
 const router = express.Router();
-const productsService = require("../../service/productsService");
+const ProductsService = require("../../service/ProductsService");
 const asyncServiceOperationHandler = require("../util/asyncServiceOperationHandler");
+
+const productsService = new ProductsService();
 
 // GET /products listing.
 router.get("/", function(req, res, next) {

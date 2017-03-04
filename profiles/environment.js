@@ -9,7 +9,9 @@ module.exports = _.pickBy({
     compress: process.env.COMPRESS,
     devtool: process.env.DEV_TOOL,
     mainAppName: process.env.MAIN_APP,
-    dbName: process.env.DB_NAME
+    dbName: process.env.DB_NAME,
+    fileUploadPath: process.env.UPLOADS,
+    fileUploadSize: process.env.UPLOADS_SIZE
 }, function(value) {
     return !_.isUndefined(value);
 });

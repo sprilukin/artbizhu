@@ -1,4 +1,6 @@
 {
   "devtool": "source-map",
-  "dbName": "handcrafted"
+  "dbName": "handcrafted",
+  "fileUploadPath": "../../public/uploads",
+  "fileUploadSize": 5000000
 }

@@ -64,8 +64,4 @@ class GenericService {
     }
 }
 
-module.exports = {
-    create: function(Entity) {
-        return new GenericService(Entity);
-    }
-};
+module.exports = GenericService;

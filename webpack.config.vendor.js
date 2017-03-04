@@ -5,7 +5,8 @@ const path = require("path"),
 let config = Object.assign({}, commonConfig, {
     entry: {
         "js/vendor/jquery.wrapped.js": "jquery",
-        "js/vendor/uikit.wrapped.js": "uikit"
+        "js/vendor/uikit.wrapped.js": "uikit",
+        "js/vendor/fetch.wrapped.js": "whatwg-fetch"
     },
 
     output: {
@@ -20,7 +21,7 @@ let config = Object.assign({}, commonConfig, {
     },
 
     module: {
-        noParse: /(jquery|uikit)(\.min)?\.js$/,
+        noParse: /.+\.js$/,
 
         rules: [
             {
@@ -35,7 +36,19 @@ let config = Object.assign({}, commonConfig, {
                     }
                 ],
                 include: [/node_modules/]
-                            }
+            },
+            {
+                test: /fetch\.js$/,
+                use: [
+                    {
+                        loader: "file-loader",
+                        options: {
+                            name: "js/vendor/fetch.js"
+                        }
+                    }
+                ],
+                include: [/node_modules/]
+            }
         ]
     },
 
