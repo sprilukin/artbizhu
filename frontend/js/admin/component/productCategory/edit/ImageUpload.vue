@@ -2,10 +2,9 @@
     <div class="uk-card uk-card-default uk-card-body">
         <div class="test-upload uk-placeholder uk-text-center">
             <span uk-icon="icon: cloud-upload"></span>
-            <span class="uk-text-middle">Attach</span>
             <div uk-form-custom>
                 <input type="file" accept="image/*" multiple @change="onImagesSelected">
-                <span class="uk-link">selecting one</span>
+                <span class="uk-link">Загрузить файлы</span>
             </div>
         </div>
     </div>
