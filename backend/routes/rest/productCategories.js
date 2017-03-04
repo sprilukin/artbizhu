@@ -29,14 +29,14 @@ router.post("/", productCategoriesFileUploads, function(req, res, next) {
     asyncServiceOperationHandler.handle(productCategoriesService.add({
         productCategory: JSON.parse(req.body.productCategory),
         files: req.files
-    }, res, next));
+    }), res, next);
 });
 
 router.put("/:id", productCategoriesFileUploads, function(req, res, next) {
     asyncServiceOperationHandler.handle(productCategoriesService.updateById(req.params.id, {
         productCategory: JSON.parse(req.body.productCategory),
         files: req.files
-    }, res, next));
+    }), res, next);
 });
 
 router.delete("/:id", function(req, res, next) {

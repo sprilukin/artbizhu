@@ -1,5 +1,8 @@
 const ProductCategory = require("../models/ProductCategory");
 const GenericService = require("./GenericService");
+const fileUtil = require("../util/fileUtil");
+const profile = require("../../profile");
+const path = require("path");
 
 class ProductCategoriesService extends GenericService {
     constructor() {
@@ -7,13 +10,20 @@ class ProductCategoriesService extends GenericService {
     }
 
     add(options) {
-        console.log(options);
         return Promise.resolve();
     }
 
     updateById(id, options) {
-        console.log(options);
-        return Promise.resolve();
+        let filesToMove = options.files.map((file) => {
+            return {
+                oldName: file.path,
+                newName: path.resolve(profile.fileStoragePath, `${file.filename}.png`)
+            };
+        });
+
+        return fileUtil.renameFiles(filesToMove).then(() => {
+            return Promise.resolve({});
+        });
     }
 }
 

@@ -10,8 +10,9 @@ module.exports = _.pickBy({
     devtool: process.env.DEV_TOOL,
     mainAppName: process.env.MAIN_APP,
     dbName: process.env.DB_NAME,
-    fileUploadPath: process.env.UPLOADS,
-    fileUploadSize: process.env.UPLOADS_SIZE
+    fileUploadPath: process.env.UPLOADS_PATH,
+    fileUploadSize: process.env.UPLOADS_SIZE,
+    fileStoragePath: process.env.FILE_STORAGE_PATH,
 }, function(value) {
     return !_.isUndefined(value);
 });
