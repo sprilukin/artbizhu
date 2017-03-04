@@ -23,7 +23,13 @@ export default {
     loadProductCategory: function({commit}, id) {
         commit("setProductCategoriesLoading");
 
-        productCategories.findById(id).then((productCategory) => commit("setProductCategory", productCategory));
+        productCategories.findById(id).then((productCategory) => {
+            productCategory.images = productCategory.images.map((image) => Object.assign({
+                id: image.uri
+            }, image));
+
+            commit("setProductCategory", productCategory);
+        });
     },
 
     addFileUploadsForProductCategory: function({commit}, uploadedImages) {

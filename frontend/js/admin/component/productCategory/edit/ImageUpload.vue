@@ -21,9 +21,12 @@
                 let files = event.target.files;
 
                 for (let index = 0; index < files.length; index++) {
+                    let imageFromFile = imageUtil.createImageFromFile(files[index]);
+
                     uploadedImages.push({
-                       file: files[index],
-                       image: imageUtil.createImageFromFile(files[index])
+                        id: imageFromFile.src,
+                        file: files[index],
+                        image: imageFromFile
                    });
                 }
 

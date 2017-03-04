@@ -20,7 +20,7 @@
                 </div>
 
                 <grid uk-sortable class="j-productCategory-images-grid">
-                    <productCategoryImage v-for="(image, index) in productCategory.images" :image="image" :index="index"></productCategoryImage>
+                    <productCategoryImage v-for="(image, index) in productCategory.images" :image="image" :index="index" :key="image.id"></productCategoryImage>
                 </grid>
 
                 <imageUpload></imageUpload>
