@@ -19,10 +19,11 @@
                     </div>
                 </div>
 
-                <grid>
-                    <imageItem v-for="(image, index) in productCategory.images" :image="image" :index="index"></imageItem>
-                    <imageUpload></imageUpload>
+                <grid uk-sortable>
+                    <productCategoryImage v-for="(image, index) in productCategory.images" :image="image" :index="index"></productCategoryImage>
                 </grid>
+
+                <imageUpload></imageUpload>
             </form>
 
             <div uk-grid class="uk-flex-center">
@@ -45,7 +46,7 @@
     import Loading from "uicommon/component/loading/Loading.vue";
     import navigation from "../../../router/navigation";
     import FlexGrid from "uicommon/component/grid/FlexGrid.vue";
-    import Image from "./Image.vue";
+    import ProductCategoryImage from "./ProductCategoryImage.vue";
     import ImageUpload from "./ImageUpload.vue";
     import BreadCrumb from "./BreadCrumb.vue";
 
@@ -55,7 +56,7 @@
         components: {
             loading: Loading,
             grid: FlexGrid,
-            imageItem: Image,
+            productCategoryImage: ProductCategoryImage,
             imageUpload: ImageUpload,
             breadCrumb: BreadCrumb
         },

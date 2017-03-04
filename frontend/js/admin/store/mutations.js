@@ -16,5 +16,11 @@ export default {
     setProductCategory: function(state, productCategory) {
         state.productCategories.loading = false;
         state.productCategories.item = productCategory;
+    },
+
+    addFileUploadsForProductCategory: function(state, uploadedImages) {
+        let item = state.productCategories.item;
+
+        item.images.push.apply(item.images, uploadedImages);
     }
 };

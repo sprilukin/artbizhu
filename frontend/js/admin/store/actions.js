@@ -24,5 +24,9 @@ export default {
         commit("setProductCategoriesLoading");
 
         productCategories.findById(id).then((productCategory) => commit("setProductCategory", productCategory));
+    },
+
+    addFileUploadsForProductCategory: function({commit}, uploadedImages) {
+        commit("addFileUploadsForProductCategory", uploadedImages);
     }
 };
