@@ -1,5 +1,5 @@
 <template>
-    <div class="uk-card uk-card-default uk-card-body">
+    <div class="uk-card uk-card-default uk-card-body" :data-index="index">
         <button class="uk-modal-close-default uk-close" type="button" uk-close="" @click="onRemoveClicked"></button>
         <existingImage v-if="image.uri" :image="image"></existingImage>
         <uploadedImage v-if="image.file" :image="image"></uploadedImage>

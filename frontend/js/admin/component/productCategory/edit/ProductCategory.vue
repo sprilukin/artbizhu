@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div v-if="!loading">
+        <div v-show="!loading">
             <breadCrumb :productCategory="productCategory"></breadCrumb>
 
             <form class="uk-form-horizontal uk-margin-large" action="/api/productCategories" method="POST" enctype="multipart/form-data">
@@ -19,7 +19,7 @@
                     </div>
                 </div>
 
-                <grid uk-sortable>
+                <grid uk-sortable class="j-productCategory-images-grid">
                     <productCategoryImage v-for="(image, index) in productCategory.images" :image="image" :index="index"></productCategoryImage>
                 </grid>
 
@@ -49,6 +49,7 @@
     import ProductCategoryImage from "./ProductCategoryImage.vue";
     import ImageUpload from "./ImageUpload.vue";
     import BreadCrumb from "./BreadCrumb.vue";
+    import $ from "jquery";
 
     export default {
         props: ["id"],
@@ -77,6 +78,18 @@
             }),
             loadCurrentProductCategory: function() {
                 this.loadProductCategory(this.id);
+            },
+            onReorder: function(event, sortable) {
+                let reordered = [];
+
+                sortable.$el.find("> div").each((index, el) => {
+                    reordered.push({
+                        newIndex: Number($(el).attr("data-index")),
+                        oldIndex: index
+                    });
+                });
+
+                this.$store.dispatch("reorderProductCategoryImages", reordered);
             }
         },
 
@@ -88,6 +101,14 @@
 
         created: function() {
             this.loadCurrentProductCategory();
+        },
+
+        mounted: function() {
+            $(this.$el).find(".j-productCategory-images-grid").on("change", this.onReorder.bind(this));
+        },
+
+        destroyed: function() {
+            $(this.$el).find(".j-productCategory-images-grid").off("change");
         }
     };
 </script>

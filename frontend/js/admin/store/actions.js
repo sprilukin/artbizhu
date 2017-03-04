@@ -28,5 +28,9 @@ export default {
 
     addFileUploadsForProductCategory: function({commit}, uploadedImages) {
         commit("addFileUploadsForProductCategory", uploadedImages);
+    },
+
+    reorderProductCategoryImages: function({commit}, reorderedObj) {
+        commit("reorderProductCategoryImages", reorderedObj);
     }
 };

@@ -22,5 +22,17 @@ export default {
         let item = state.productCategories.item;
 
         item.images.push.apply(item.images, uploadedImages);
+    },
+
+    reorderProductCategoryImages: function(state, reorderedObj) {
+        let item = state.productCategories.item;
+
+        let images = reorderedObj.reduce(function(memo, entry) {
+            memo[entry.newIndex] = item.images[entry.oldIndex];
+
+            return memo;
+        }, []);
+
+        item.images.splice(0, item.images.length, ...images);
     }
 };
