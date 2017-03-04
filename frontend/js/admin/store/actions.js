@@ -1,5 +1,13 @@
 import productCategories from "../service/productCategories";
 
+function loadProductCategoryItem(commit, productCategory) {
+    productCategory.images = productCategory.images.map((image) => Object.assign({
+        id: image.uri
+    }, image));
+
+    commit("setProductCategory", productCategory);
+}
+
 export default {
     loadProductCategories: function({commit}, options) {
         commit("setProductCategoriesLoading");
@@ -11,11 +19,7 @@ export default {
         commit("setProductCategoriesLoading");
 
         productCategories.findById(id).then((productCategory) => {
-            productCategory.images = productCategory.images.map((image) => Object.assign({
-                id: image.uri
-            }, image));
-
-            commit("setProductCategory", productCategory);
+            loadProductCategoryItem(commit, productCategory);
         });
     },
 
@@ -31,16 +35,22 @@ export default {
         commit("removeImageFromProductCategory", index);
     },
 
-    saveProductCategory: function({state, commit}) {
-        let item = state.productCategories.item;
+    updateProductCategoryItem: function({commit}, options) {
+        commit("updateProductCategoryItem", options);
+    },
+
+    saveProductCategory: function({state, commit}, options) {
+        let item = Object.assign({}, state.productCategories.item, options);
+
+        commit("setProductCategoriesLoading");
 
         if (item._id) {
-            productCategories.update(item).then((result) => {
-                console.log(result);
+            productCategories.update(item).then((productCategory) => {
+                loadProductCategoryItem(commit, productCategory);
             });
         } else {
-            productCategories.save(item).then((result) => {
-                console.log(result);
+            productCategories.save(item).then((productCategory) => {
+                loadProductCategoryItem(commit, productCategory);
             });
         }
     }

@@ -93,7 +93,12 @@
                 this.$store.dispatch("reorderProductCategoryImages", reordered);
             },
             onSaveClicked: function() {
-                this.saveProductCategory();
+                let options = {
+                    name: $(this.$el).find("input[name='name']").val(),
+                    description: $(this.$el).find("textarea[name='description']").val()
+                };
+
+                this.saveProductCategory(options);
             }
         },
 

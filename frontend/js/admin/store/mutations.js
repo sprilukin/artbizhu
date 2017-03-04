@@ -1,8 +1,4 @@
 export default {
-    // addProduct: function(state, productName) {
-    //     state.store.products.push({name: productName});
-    // },
-
     setProductCategories: function(state, productCategories) {
         state.productCategories.loading = false;
         state.productCategories.list = productCategories.list;

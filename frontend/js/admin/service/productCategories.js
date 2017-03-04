@@ -59,6 +59,6 @@ export default {
             endPoint: endPoint,
             method: "PUT",
             formData: formData
-        });
+        }).then(resolveSingle);
     }
 };

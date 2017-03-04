@@ -1,5 +1,5 @@
 <template>
-    <img src="/img/4.jpg" alt="" class="uk-transition-scale-up uk-transition-opaque" width="100">
+    <img :src="imageUri" alt="" class="uk-transition-scale-up uk-transition-opaque" width="100">
 </template>
 
 <script>
@@ -12,6 +12,9 @@
         },
 
         computed: {
+            imageUri: function() {
+                return `/img/uploaded/${this.image.uri}`;
+            }
         },
 
         methods: {

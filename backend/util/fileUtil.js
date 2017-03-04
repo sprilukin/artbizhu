@@ -18,7 +18,12 @@ function renameFiles(files) {
     return Promise.all(promises);
 }
 
+function getExtensionByMimeType(mimeType) {
+    return mimeType.split("\/")[1];
+}
+
 module.exports = {
     renameFile: renameFile,
-    renameFiles: renameFiles
+    renameFiles: renameFiles,
+    getExtensionByMimeType: getExtensionByMimeType
 };
