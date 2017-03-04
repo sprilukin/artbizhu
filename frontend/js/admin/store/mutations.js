@@ -34,5 +34,9 @@ export default {
         }, []);
 
         item.images.splice(0, item.images.length, ...images);
+    },
+
+    removeImageFromProductCategory: function(state, index) {
+        state.productCategories.item.images.splice(index, 1);
     }
 };

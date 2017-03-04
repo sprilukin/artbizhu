@@ -38,5 +38,9 @@ export default {
 
     reorderProductCategoryImages: function({commit}, reorderedObj) {
         commit("reorderProductCategoryImages", reorderedObj);
+    },
+
+    removeImageFromProductCategory: function({commit}, index) {
+        commit("removeImageFromProductCategory", index);
     }
 };

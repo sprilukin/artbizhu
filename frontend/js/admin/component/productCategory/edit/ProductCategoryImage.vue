@@ -23,8 +23,11 @@
         },
 
         methods: {
+            ...mapActions({
+                removeImage: 'removeImageFromProductCategory'
+            }),
             onRemoveClicked: function() {
-                console.log(this.index);
+                this.removeImage(this.index);
             }
         }
     };
