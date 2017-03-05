@@ -3,13 +3,13 @@ let allMenuItems = {
         "uri": "/", "icon": "home", "name": "Главная", "exact": true
     },
     categories: {
-        "uri": "/category", "icon": "star", "name": "Категории", "exact": false
+        "uri": "/categories", "icon": "star", "name": "Категории", "exact": false
     },
     products: {
-        "uri": "/info", "icon": "info", "name": "Товары", "exact": false
+        "uri": "/products", "icon": "info", "name": "Товары", "exact": false
     },
     orders: {
-        "uri": "/payment", "icon": "credit-card", "name": "Заказы", "exact": false
+        "uri": "/orders", "icon": "credit-card", "name": "Заказы", "exact": false
     }
 };
 

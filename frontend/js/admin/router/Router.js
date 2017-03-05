@@ -8,6 +8,7 @@ import Home from "../component/home/Home.vue";
 import ProductCategoryList from "../component/productCategory/list/ProductCategoryList.vue";
 import ProductCategory from "../component/productCategory/edit/ProductCategory.vue";
 import NotFound from "../component/NotFound.vue";
+import navigation from "./navigation";
 
 let vueRouter = new VueRouter({
     mode: "history",
@@ -23,7 +24,7 @@ let vueRouter = new VueRouter({
                     props: true
                 },
                 {
-                    path: "/category",
+                    path: navigation.all.categories.uri,
                     component: ProductCategoryList,
                     props: (route) => {
                         return {
@@ -32,7 +33,7 @@ let vueRouter = new VueRouter({
                     }
                 },
                 {
-                    path: "/category/:id",
+                    path: `${navigation.all.categories.uri}/:id`,
                     component: ProductCategory,
                     props: true
                 }
