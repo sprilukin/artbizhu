@@ -18,8 +18,8 @@ class ProductCategoriesService extends GenericService {
         let images = this._convertImages(options.productCategory.images, filesToMove);
         let productCategory = options.productCategory;
 
-        return fileUtil.renameFiles(filesToMove).then(() => {
-            return ProductCategory.update({_id: id}, {
+        let removeFilesAndUpdateProductCategoryPromise = this._findRemovedFiles(images, id).then((files) => {
+            let updateProductCategoryPromise = ProductCategory.update({_id: id}, {
                 $set: {
                     __v: productCategory.__v + 1,
                     updated_at: new Date(),
@@ -30,6 +30,36 @@ class ProductCategoriesService extends GenericService {
             }).then(function() {
                 return ProductCategory.findById(id).exec();
             });
+
+            let removeFilesPromise = fileUtil.removeFiles(files);
+
+            return Promise.all([removeFilesPromise, updateProductCategoryPromise]).then((results) => {
+                return Promise.resolve(results[1]);
+            });
+        });
+
+        let renameFilesPromise = fileUtil.renameFiles(filesToMove);
+
+        return Promise.all([removeFilesAndUpdateProductCategoryPromise, renameFilesPromise]).then((results) => {
+            return Promise.resolve(results[0]);
+        });
+    }
+
+    _findRemovedFiles(images, id) {
+        let existingImagesMap = images.reduce((memo, image) => {
+            memo[image.uri] = true;
+
+            return memo;
+        }, {});
+
+        return ProductCategory.findById(id).exec().then((productCategory) => {
+            let files = productCategory.images.filter((image) => {
+                return !existingImagesMap[image.uri];
+            }).map((image) => {
+                return this._getFullPathForFileStorage(image.uri);
+            });
+
+            return Promise.resolve(files);
         });
     }
 

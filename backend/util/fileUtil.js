@@ -18,6 +18,26 @@ function renameFiles(files) {
     return Promise.all(promises);
 }
 
+function removeFile(file) {
+    return new Promise((resolve, reject) => {
+        fs.unlink(file, function(ex) {
+            if (ex) {
+                console.error(ex);
+                //reject(ex);
+                resolve();
+            } else {
+                resolve();
+            }
+        });
+    });
+}
+
+function removeFiles(files) {
+    let promises = files.map((file) => removeFile(file));
+
+    return Promise.all(promises);
+}
+
 function getExtensionByMimeType(mimeType) {
     return mimeType.split("\/")[1];
 }
@@ -25,5 +45,7 @@ function getExtensionByMimeType(mimeType) {
 module.exports = {
     renameFile: renameFile,
     renameFiles: renameFiles,
+    removeFile: removeFile,
+    removeFiles: removeFiles,
     getExtensionByMimeType: getExtensionByMimeType
 };
