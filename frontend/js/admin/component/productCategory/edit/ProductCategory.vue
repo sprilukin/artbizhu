@@ -19,7 +19,7 @@
                     </div>
                 </div>
 
-                <grid uk-sortable class="j-productCategory-images-grid">
+                <grid uk-sortable="handle: .uk-sortable-handle" class="j-productCategory-images-grid">
                     <productCategoryImage v-for="(image, index) in productCategory.images" :image="image" :index="index" :key="image.id"></productCategoryImage>
                 </grid>
 

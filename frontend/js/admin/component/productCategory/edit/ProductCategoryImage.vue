@@ -1,6 +1,7 @@
 <template>
     <div class="uk-card uk-card-default uk-card-body" :data-index="index">
         <button class="uk-modal-close-default uk-close" type="button" uk-close="" @click="onRemoveClicked"></button>
+        <span class="uk-sortable-handle uk-margin-small-left" uk-icon="icon: table"></span>
         <existingImage v-if="image.uri" :image="image"></existingImage>
         <uploadedImage v-if="image.file" :image="image"></uploadedImage>
     </div>
