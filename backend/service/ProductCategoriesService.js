@@ -31,7 +31,7 @@ class ProductCategoriesService extends GenericService {
                 return ProductCategory.findById(id).exec();
             });
 
-            let removeFilesPromise = fileUtil.removeFiles(files);
+            let removeFilesPromise = fileUtil.removeFiles(files, false);
 
             return Promise.all([removeFilesPromise, updateProductCategoryPromise]).then((results) => {
                 return Promise.resolve(results[1]);

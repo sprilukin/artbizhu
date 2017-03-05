@@ -18,13 +18,16 @@ function renameFiles(files) {
     return Promise.all(promises);
 }
 
-function removeFile(file) {
+function removeFile(file, rejectOnFail = true) {
     return new Promise((resolve, reject) => {
         fs.unlink(file, function(ex) {
             if (ex) {
-                console.error(ex);
-                //reject(ex);
-                resolve();
+                if (rejectOnFail) {
+                    reject(ex);
+                } else {
+                    console.error(ex);
+                    resolve();
+                }
             } else {
                 resolve();
             }
@@ -32,8 +35,8 @@ function removeFile(file) {
     });
 }
 
-function removeFiles(files) {
-    let promises = files.map((file) => removeFile(file));
+function removeFiles(files, rejectOnFail = true) {
+    let promises = files.map((file) => removeFile(file, rejectOnFail));
 
     return Promise.all(promises);
 }
