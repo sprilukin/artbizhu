@@ -4,6 +4,7 @@
 *.css.map
 *.png
 *.jpg
+*.jpeg
 *.svg
 *.ttf
 *.eot
