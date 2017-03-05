@@ -3,8 +3,8 @@
         <td>{{productCategory.name}}</td>
         <td>{{productCategory.description}}</td>
         <td>
-            <router-link :to="editProductCategoryLink(productCategory._id)" uk-toggle class="uk-icon-link" uk-icon="icon: file-edit" title="Редактировать" uk-tooltip></router-link>
-            <a href="#remove-product-category" uk-toggle class="uk-icon-link" uk-icon="icon: trash" title="Удалить" uk-tooltip></a>
+            <router-link :to="editProductCategoryLink(productCategory._id)" class="uk-icon-link" uk-icon="icon: file-edit" title="Редактировать" uk-tooltip></router-link>
+            <a href="#" class="uk-icon-link" uk-icon="icon: trash" title="Удалить" uk-tooltip @click="onRemoveClicked"></a>
         </td>
     </tr>
 </template>
@@ -18,6 +18,9 @@
         methods: {
             editProductCategoryLink: function(id) {
                 return `${navigation.all.categories.uri}/${id}`
+            },
+            onRemoveClicked: function() {
+                this.$emit("remove", this.productCategory._id);
             }
         }
     };

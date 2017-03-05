@@ -11,7 +11,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                    <productCategoryListItem v-for="productCategory in productCategories" :productCategory="productCategory"></productCategoryListItem>
+                    <productCategoryListItem v-for="productCategory in productCategories" :productCategory="productCategory" @remove="onRemove"></productCategoryListItem>
                 </tbody>
             </table>
 
@@ -23,8 +23,6 @@
                     Добавить категорию
                 </router-link>
             </div>
-
-            <confirm id="remove-product-category"></confirm>
         </div>
         <loading v-show="loading"></loading>
     </div>
@@ -33,12 +31,12 @@
 <script>
     import ProductCategoryListItem from "./ProductCategoryLIstItem.vue";
     import Pagination from "uicommon/component/pagination/Pagination.vue";
-    import Confirm from "../../modal/Confirm.vue";
     import Loading from "uicommon/component/loading/Loading.vue";
     import { mapState, mapActions } from "vuex"
     import pagination from "uicommon/util/pagination";
     import settings from "common/settings";
     import navigation from "../../../router/navigation";
+    import uikit from "uikit";
 
     export default {
         props: ["page"],
@@ -46,7 +44,6 @@
         components: {
             pagination: Pagination,
             loading: Loading,
-            confirm: Confirm,
             productCategoryListItem: ProductCategoryListItem
         },
 
@@ -67,12 +64,20 @@
 
         methods: {
             ...mapActions({
-                loadProductCategories: 'loadProductCategories'
+                loadProductCategories: 'loadProductCategories',
+                removeProductCategory: 'removeProductCategory'
             }),
             loadProductsForCurrentPage: function() {
                 this.loadProductCategories({
                     offset: this.offset
                 });
+            },
+            onRemove: function(id) {
+                uikit.modal.confirm('Удалить?', {
+                    center: true
+                }).then(() => {
+                    this.removeProductCategory(id);
+                }, () => {});
             }
         },
 

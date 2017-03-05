@@ -56,7 +56,7 @@ class GenericService {
     }
 
     deleteById(id) {
-        return this.Entity.findByIdAndRemove(id);
+        return this.Entity.findByIdAndRemove(id).exec();
     }
 
     deleteAll() {

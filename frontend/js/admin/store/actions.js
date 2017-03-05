@@ -2,6 +2,12 @@ import productCategories from "../service/productCategories";
 import navigation from "../router/navigation";
 import Router from "../router/Router";
 
+function loadProductCategories({commit}, options) {
+    commit("setProductCategoriesLoading");
+
+    productCategories.findAll(options).then((productCategories) => commit("setProductCategories", productCategories));
+}
+
 function loadProductCategoryItem(commit, productCategory) {
     productCategory.images = productCategory.images.map((image) => Object.assign({
         id: image.uri
@@ -19,11 +25,7 @@ function loadEmptyProductCategory({commit}) {
 }
 
 export default {
-    loadProductCategories: function({commit}, options) {
-        commit("setProductCategoriesLoading");
-
-        productCategories.findAll(options).then((productCategories) => commit("setProductCategories", productCategories));
-    },
+    loadProductCategories: loadProductCategories,
 
     loadProductCategory: function({commit}, id) {
         if (id === navigation.emptyEntityId) {
@@ -68,5 +70,11 @@ export default {
                 Router.replace(`${navigation.all.categories.uri}/${productCategory._id}`);
             });
         }
+    },
+
+    removeProductCategory: function({commit}, id) {
+        productCategories.remove(id).then(() => {
+            loadProductCategories({commit}, {});
+        });
     }
 };

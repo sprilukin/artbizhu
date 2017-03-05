@@ -1,6 +1,5 @@
-import { get } from "uicommon/rest/rest";
 import url from "uicommon/util/url";
-import { resolveList, resolveSingle, multipart } from "uicommon/rest/rest";
+import { get, deleteItem, resolveList, resolveSingle, multipart } from "uicommon/rest/rest";
 import _ from "lodash";
 
 
@@ -76,5 +75,11 @@ export default {
             method: "PUT",
             formData: formData
         }).then(resolveSingle);
+    },
+
+    remove: function(id) {
+        let endPoint = `${END_POINT}/${id}`;
+
+        return deleteItem(endPoint).then(resolveSingle);
     }
 };

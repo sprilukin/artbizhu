@@ -30,6 +30,15 @@ function get(endPoint) {
     });
 }
 
+function deleteItem(endPoint) {
+    return fetch(endPoint, {
+        headers: {
+            "Accept": "application/json"
+        },
+        method: "DELETE"
+    });
+}
+
 function resolveList(response) {
     return response.json().then((list) => {
         return Promise.resolve({
@@ -43,4 +52,4 @@ function resolveSingle(response) {
     return response.json();
 }
 
-export {post, get, multipart, resolveList, resolveSingle};
+export {post, get, deleteItem, multipart, resolveList, resolveSingle};
