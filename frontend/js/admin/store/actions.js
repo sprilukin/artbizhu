@@ -1,4 +1,6 @@
 import productCategories from "../service/productCategories";
+import navigation from "../router/navigation";
+import Router from "../router/Router";
 
 function loadProductCategoryItem(commit, productCategory) {
     productCategory.images = productCategory.images.map((image) => Object.assign({
@@ -6,6 +8,14 @@ function loadProductCategoryItem(commit, productCategory) {
     }, image));
 
     commit("setProductCategory", productCategory);
+}
+
+function loadEmptyProductCategory({commit}) {
+    loadProductCategoryItem(commit, {
+        name: "",
+        description: "",
+        images: []
+    });
 }
 
 export default {
@@ -16,11 +26,15 @@ export default {
     },
 
     loadProductCategory: function({commit}, id) {
-        commit("setProductCategoriesLoading");
+        if (id === navigation.emptyEntityId) {
+            loadEmptyProductCategory({commit});
+        } else {
+            commit("setProductCategoriesLoading");
 
-        productCategories.findById(id).then((productCategory) => {
-            loadProductCategoryItem(commit, productCategory);
-        });
+            productCategories.findById(id).then((productCategory) => {
+                loadProductCategoryItem(commit, productCategory);
+            });
+        }
     },
 
     addFileUploadsForProductCategory: function({commit}, uploadedImages) {
@@ -50,7 +64,8 @@ export default {
             });
         } else {
             productCategories.save(item).then((productCategory) => {
-                loadProductCategoryItem(commit, productCategory);
+                // redirect to saved product category
+                Router.replace(`${navigation.all.categories.uri}/${productCategory._id}`);
             });
         }
     }

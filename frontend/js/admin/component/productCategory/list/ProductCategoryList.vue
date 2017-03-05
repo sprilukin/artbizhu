@@ -17,6 +17,13 @@
 
             <pagination :page="page" :total="total" :pageSize="pageSize"></pagination>
 
+            <div uk-grid class="uk-flex-center">
+                <router-link :to="addCategoryLink" class="uk-button uk-button-primary">
+                    <span uk-icon="icon: plus"></span>
+                    Добавить категорию
+                </router-link>
+            </div>
+
             <confirm id="remove-product-category"></confirm>
         </div>
         <loading v-show="loading"></loading>
@@ -31,6 +38,7 @@
     import { mapState, mapActions } from "vuex"
     import pagination from "uicommon/util/pagination";
     import settings from "common/settings";
+    import navigation from "../../../router/navigation";
 
     export default {
         props: ["page"],
@@ -48,6 +56,9 @@
                 loading: (state) => state.productCategories.loading,
                 total: (state) => state.productCategories.total
             }),
+            addCategoryLink() {
+                return navigation.all.addCategory.uri;
+            },
             pageSize: () => settings.pagination.limit,
             offset: function() {
                 return pagination.getOffsetByPage(this.page)

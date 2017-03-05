@@ -10,7 +10,21 @@ class ProductCategoriesService extends GenericService {
     }
 
     add(options) {
-        return Promise.resolve();
+        let filesToMove = this._convertPathForMovingUploadedFiles(options.files);
+        let images = this._convertImages(options.productCategory.images, filesToMove);
+        let productCategory = options.productCategory;
+
+        let createProductCategoryPromise = ProductCategory.create({
+            name: productCategory.name,
+            description: productCategory.description,
+            images: images
+        });
+
+        let renameFilesPromise = fileUtil.renameFiles(filesToMove);
+
+        return Promise.all([createProductCategoryPromise, renameFilesPromise]).then((results) => {
+            return Promise.resolve(results[0]);
+        });
     }
 
     updateById(id, options) {

@@ -1,9 +1,14 @@
+const emptyEntityId = "add";
+
 let allMenuItems = {
     main: {
         "uri": "/", "icon": "home", "name": "Главная", "exact": true
     },
     categories: {
         "uri": "/categories", "icon": "star", "name": "Категории", "exact": false
+    },
+    addCategory: {
+        "uri": `/categories/${emptyEntityId}`
     },
     products: {
         "uri": "/products", "icon": "info", "name": "Товары", "exact": false
@@ -20,5 +25,6 @@ export default {
         allMenuItems.categories,
         allMenuItems.products,
         allMenuItems.orders
-    ]
+    ],
+    emptyEntityId: emptyEntityId
 };
