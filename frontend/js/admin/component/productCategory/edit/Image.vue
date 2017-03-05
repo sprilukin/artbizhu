@@ -3,7 +3,7 @@
 </template>
 
 <script>
-    import { mapState, mapActions } from "vuex";
+    import settings from "uicommon/util/settings.js";
 
     export default {
         props: ["image", "index"],
@@ -13,7 +13,7 @@
 
         computed: {
             imageUri: function() {
-                return `/img/uploaded/${this.image.uri}`;
+                return `${settings.imagesPath}${this.image.uri}`;
             }
         },
 
