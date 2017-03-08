@@ -24,11 +24,8 @@
         },
 
         methods: {
-            ...mapActions("productCategories", {
-                removeImage: 'removeImageFromProductCategory'
-            }),
             onRemoveClicked: function() {
-                this.removeImage(this.index);
+                this.$emit("remove", this.index);
             }
         }
     };

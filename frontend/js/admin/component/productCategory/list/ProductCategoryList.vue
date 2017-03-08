@@ -11,7 +11,9 @@
                 </tr>
                 </thead>
                 <tbody>
-                    <productCategoryListItem v-for="productCategory in productCategories" :productCategory="productCategory" @remove="onRemove"></productCategoryListItem>
+                    <productCategoryListItem @remove="onRemove" v-for="productCategory in productCategories"
+                                             :productCategory="productCategory">
+                    </productCategoryListItem>
                 </tbody>
             </table>
 
@@ -66,11 +68,11 @@
 
         methods: {
             ...mapActions(modulesEnum.PRODUCT_CATEGORY, {
-                loadProductCategories: actionNamesEnum.LOAD_PRODUCT_CATEGORIES,
-                removeProductCategory: actionNamesEnum.REMOVE_PRODUCT_CATEGORY
+                loadAll: actionNamesEnum.LOAD_ALL,
+                remove: actionNamesEnum.REMOVE
             }),
             loadProductsForCurrentPage: function() {
-                this.loadProductCategories({
+                this.loadAll({
                     offset: this.offset
                 });
             },
@@ -78,7 +80,7 @@
                 uikit.modal.confirm("Удалить?", {
                     center: true
                 }).then(() => {
-                    this.removeProductCategory(id);
+                    this.remove(id);
                 }, () => {});
             }
         },

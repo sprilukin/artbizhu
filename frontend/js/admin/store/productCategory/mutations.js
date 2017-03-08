@@ -16,13 +16,17 @@ export default {
         state.item = productCategory;
     },
 
-    [mutationNames.ADD_FILE_UPLOADS_FOR_PRODUCT_CATEGORY]: function(state, uploadedImages) {
+    [mutationNames.UPDATE]: function(state, item) {
+        Object.assign(state.updatedItem, item);
+    },
+
+    [mutationNames.ADD_IMAGES]: function(state, uploadedImages) {
         let item = state.item;
 
         item.images.push.apply(item.images, uploadedImages);
     },
 
-    [mutationNames.REORDER_PRODUCT_CATEGORY_IMAGES]: function(state, reorderedObj) {
+    [mutationNames.REORDER_IMAGES]: function(state, reorderedObj) {
         let item = state.item;
 
         let images = reorderedObj.reduce(function(memo, entry) {
@@ -34,7 +38,7 @@ export default {
         item.images.splice(0, item.images.length, ...images);
     },
 
-    [mutationNames.REMOVE_IMAGE_FROM_PRODUCT_CATEGORY]: function(state, index) {
+    [mutationNames.REMOVE_IMAGE]: function(state, index) {
         state.item.images.splice(index, 1);
     }
 };

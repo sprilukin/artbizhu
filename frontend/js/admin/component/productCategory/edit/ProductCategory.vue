@@ -15,12 +15,17 @@
                 <div class="uk-margin">
                     <div class="uk-form-label">Описание</div>
                     <div class="uk-form-controls uk-form-controls-text">
-                        <textarea name="description" class="uk-textarea" id="form-horizontal-select" rows="5" placeholder="Описание..." :value="productCategory.description"></textarea>
+                        <textarea name="description"
+                                  class="uk-textarea" id="form-horizontal-select" rows="5" placeholder="Описание..."
+                                  :value="productCategory.description">
+                        </textarea>
                     </div>
                 </div>
 
                 <grid uk-sortable="handle: .uk-sortable-handle" class="j-productCategory-images-grid">
-                    <productCategoryImage v-for="(image, index) in productCategory.images" :image="image" :index="index" :key="image.id"></productCategoryImage>
+                    <productCategoryImage @remove="onRemoveImage" v-for="(image, index) in productCategory.images"
+                                          :image="image" :index="index" :key="image.id">
+                    </productCategoryImage>
                 </grid>
 
                 <imageUpload @upload="onImageUpload"></imageUpload>
@@ -76,13 +81,14 @@
 
         methods: {
             ...mapActions(modulesEnum.PRODUCT_CATEGORY, {
-                loadProductCategory: actionNamesEnum.LOAD_PRODUCT_CATEGORY,
-                saveProductCategory: actionNamesEnum.SAVE_PRODUCT_CATEGORY,
-                reorderProductCategoryImages: actionNamesEnum.REORDER_PRODUCT_CATEGORY_IMAGES,
-                addFileUploadsForProductCategory: actionNamesEnum.ADD_FILE_UPLOADS_FOR_PRODUCT_CATEGORY
+                load: actionNamesEnum.LOAD_BY_ID,
+                save: actionNamesEnum.SAVE,
+                reorderImages: actionNamesEnum.REORDER_IMAGES,
+                addImages: actionNamesEnum.ADD_IMAGES,
+                removeImage: actionNamesEnum.REMOVE_IMAGE
             }),
             loadCurrentProductCategory: function() {
-                this.loadProductCategory(this.id);
+                this.load(this.id);
             },
             onReorder: function(event, sortable) {
                 let reordered = [];
@@ -94,7 +100,7 @@
                     });
                 });
 
-                this.reorderProductCategoryImages(reordered);
+                this.reorderImages(reordered);
             },
             onSaveClicked: function() {
                 let options = {
@@ -102,10 +108,13 @@
                     description: $(this.$el).find("textarea[name='description']").val()
                 };
 
-                this.saveProductCategory(options);
+                this.save(options);
             },
             onImageUpload: function(uploadedImages) {
-                this.addFileUploadsForProductCategory(uploadedImages);
+                this.addImages(uploadedImages);
+            },
+            onRemoveImage: function(index) {
+                this.removeImage(index);
             }
         },
 

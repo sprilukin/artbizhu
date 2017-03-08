@@ -27,9 +27,9 @@ function loadEmptyProductCategory({commit}) {
 }
 
 export default {
-    [actionNames.LOAD_PRODUCT_CATEGORIES]: loadProductCategories,
+    [actionNames.LOAD_ALL]: loadProductCategories,
 
-    [actionNames.LOAD_PRODUCT_CATEGORY]: function({commit}, id) {
+    [actionNames.LOAD_BY_ID]: function({commit}, id) {
         if (id === navigation.emptyEntityId) {
             loadEmptyProductCategory({commit});
         } else {
@@ -41,23 +41,23 @@ export default {
         }
     },
 
-    [actionNames.ADD_FILE_UPLOADS_FOR_PRODUCT_CATEGORY]: function({commit}, uploadedImages) {
-        commit(mutationNames.ADD_FILE_UPLOADS_FOR_PRODUCT_CATEGORY, uploadedImages);
+    [actionNames.ADD_IMAGES]: function({commit}, uploadedImages) {
+        commit(mutationNames.ADD_IMAGES, uploadedImages);
     },
 
-    [actionNames.REORDER_PRODUCT_CATEGORY_IMAGES]: function({commit}, reorderedObj) {
-        commit(mutationNames.REORDER_PRODUCT_CATEGORY_IMAGES, reorderedObj);
+    [actionNames.REORDER_IMAGES]: function({commit}, reorderedObj) {
+        commit(mutationNames.REORDER_IMAGES, reorderedObj);
     },
 
-    [actionNames.REMOVE_IMAGE_FROM_PRODUCT_CATEGORY]: function({commit}, index) {
-        commit(mutationNames.REMOVE_IMAGE_FROM_PRODUCT_CATEGORY, index);
+    [actionNames.REMOVE_IMAGE]: function({commit}, index) {
+        commit(mutationNames.REMOVE_IMAGE, index);
     },
 
-    [actionNames.UPDATE_PRODUCT_CATEGORY_ITEM]: function({commit}, options) {
-        commit(mutationNames.UPDATE_PRODUCT_CATEGORY_ITEM, options);
+    [actionNames.UPDATE]: function({commit}, options) {
+        commit(mutationNames.UPDATE, options);
     },
 
-    [actionNames.SAVE_PRODUCT_CATEGORY]: function({state, commit}, options) {
+    [actionNames.SAVE]: function({state, commit}, options) {
         let item = Object.assign({}, state.item, options);
 
         commit(mutationNames.SET_PRODUCT_CATEGORIES_LOADING);
@@ -74,7 +74,7 @@ export default {
         }
     },
 
-    [actionNames.REMOVE_PRODUCT_CATEGORY]: function({commit}, id) {
+    [actionNames.REMOVE]: function({commit}, id) {
         productCategories.remove(id).then(() => {
             loadProductCategories({commit}, {});
         });
