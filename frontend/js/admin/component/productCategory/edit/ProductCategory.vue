@@ -23,7 +23,7 @@
                     <productCategoryImage v-for="(image, index) in productCategory.images" :image="image" :index="index" :key="image.id"></productCategoryImage>
                 </grid>
 
-                <imageUpload></imageUpload>
+                <imageUpload @upload="onImageUpload"></imageUpload>
             </form>
 
             <div uk-grid class="uk-flex-center">
@@ -47,7 +47,7 @@
     import navigation from "../../../router/navigation";
     import FlexGrid from "uicommon/component/grid/FlexGrid.vue";
     import ProductCategoryImage from "./ProductCategoryImage.vue";
-    import ImageUpload from "./ImageUpload.vue";
+    import ImageUpload from "../../common/ImageUpload.vue";
     import BreadCrumb from "./BreadCrumb.vue";
     import $ from "jquery";
 
@@ -99,6 +99,9 @@
                 };
 
                 this.saveProductCategory(options);
+            },
+            onImageUpload: function(uploadedImages) {
+                this.$store.dispatch("addFileUploadsForProductCategory", uploadedImages);
             }
         },
 

@@ -11,7 +11,7 @@
 </template>
 
 <script>
-    import imageUtil from "../../../util/imageUtil";
+    import imageUtil from "../../util/imageUtil";
 
     export default {
         methods: {
@@ -30,7 +30,7 @@
                 }
 
                 if (uploadedImages.length) {
-                    this.$store.dispatch("addFileUploadsForProductCategory", uploadedImages);
+                    this.$emit("upload", uploadedImages);
                 }
             }
         }
