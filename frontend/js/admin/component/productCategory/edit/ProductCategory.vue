@@ -3,19 +3,19 @@
         <div v-show="!loading">
             <breadCrumb :productCategory="productCategory"></breadCrumb>
 
-            <form class="uk-form-horizontal uk-margin-large" action="/api/productCategories" method="POST" enctype="multipart/form-data">
+            <form class="uk-form-horizontal uk-margin-large">
 
                 <div class="uk-margin">
                     <div class="uk-form-label">Название</div>
                     <div class="uk-form-controls">
-                        <input name="name" class="uk-input" id="form-horizontal-text" type="text" placeholder="Some text..." :value="productCategory.name">
+                        <input name="name" class="uk-input" id="form-horizontal-text" type="text" placeholder="Имя..." :value="productCategory.name">
                     </div>
                 </div>
 
                 <div class="uk-margin">
                     <div class="uk-form-label">Описание</div>
                     <div class="uk-form-controls uk-form-controls-text">
-                        <textarea name="description" class="uk-textarea" id="form-horizontal-select" rows="5" placeholder="Textarea" :value="productCategory.description"></textarea>
+                        <textarea name="description" class="uk-textarea" id="form-horizontal-select" rows="5" placeholder="Описание..." :value="productCategory.description"></textarea>
                     </div>
                 </div>
 
@@ -49,6 +49,8 @@
     import ProductCategoryImage from "./ProductCategoryImage.vue";
     import ImageUpload from "../../common/ImageUpload.vue";
     import BreadCrumb from "./BreadCrumb.vue";
+    import actionNamesEnum from "../../../store/productCategory/actionNamesEnum";
+    import modulesEnum from "../../../store/modulesEnum";
     import $ from "jquery";
 
     export default {
@@ -63,7 +65,7 @@
         },
 
         computed: {
-            ...mapState("productCategories", {
+            ...mapState(modulesEnum.PRODUCT_CATEGORY, {
                 productCategory: (state) => state.item,
                 loading: (state) => state.loading
             }),
@@ -73,11 +75,11 @@
         },
 
         methods: {
-            ...mapActions("productCategories", {
-                loadProductCategory: "loadProductCategory",
-                saveProductCategory: "saveProductCategory",
-                reorderProductCategoryImages: "reorderProductCategoryImages",
-                addFileUploadsForProductCategory: "addFileUploadsForProductCategory"
+            ...mapActions(modulesEnum.PRODUCT_CATEGORY, {
+                loadProductCategory: actionNamesEnum.LOAD_PRODUCT_CATEGORY,
+                saveProductCategory: actionNamesEnum.SAVE_PRODUCT_CATEGORY,
+                reorderProductCategoryImages: actionNamesEnum.REORDER_PRODUCT_CATEGORY_IMAGES,
+                addFileUploadsForProductCategory: actionNamesEnum.ADD_FILE_UPLOADS_FOR_PRODUCT_CATEGORY
             }),
             loadCurrentProductCategory: function() {
                 this.loadProductCategory(this.id);

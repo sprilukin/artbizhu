@@ -33,6 +33,8 @@
     import Pagination from "uicommon/component/pagination/Pagination.vue";
     import Loading from "uicommon/component/loading/Loading.vue";
     import { mapState, mapActions } from "vuex"
+    import actionNamesEnum from "../../../store/productCategory/actionNamesEnum";
+    import modulesEnum from "../../../store/modulesEnum";
     import pagination from "uicommon/util/pagination";
     import settings from "common/settings";
     import navigation from "../../../router/navigation";
@@ -48,7 +50,7 @@
         },
 
         computed: {
-            ...mapState("productCategories", {
+            ...mapState(modulesEnum.PRODUCT_CATEGORY, {
                 productCategories: (state) => state.list,
                 loading: (state) => state.loading,
                 total: (state) => state.total
@@ -63,9 +65,9 @@
         },
 
         methods: {
-            ...mapActions("productCategories", {
-                loadProductCategories: "loadProductCategories",
-                removeProductCategory: "removeProductCategory"
+            ...mapActions(modulesEnum.PRODUCT_CATEGORY, {
+                loadProductCategories: actionNamesEnum.LOAD_PRODUCT_CATEGORIES,
+                removeProductCategory: actionNamesEnum.REMOVE_PRODUCT_CATEGORY
             }),
             loadProductsForCurrentPage: function() {
                 this.loadProductCategories({
