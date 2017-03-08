@@ -8,16 +8,18 @@
                 <div class="uk-margin">
                     <div class="uk-form-label">Название</div>
                     <div class="uk-form-controls">
-                        <input name="name" class="uk-input" id="form-horizontal-text" type="text" placeholder="Имя..." :value="productCategory.name">
+                        <input @input="onChange('name', $event.target.value)"
+                               name="name" class="uk-input" id="form-horizontal-text" type="text" placeholder="Имя..."
+                               :value="updatedProductCategory.name">
                     </div>
                 </div>
 
                 <div class="uk-margin">
                     <div class="uk-form-label">Описание</div>
                     <div class="uk-form-controls uk-form-controls-text">
-                        <textarea name="description"
+                        <textarea @input="onChange('description', $event.target.value)" name="description"
                                   class="uk-textarea" id="form-horizontal-select" rows="5" placeholder="Описание..."
-                                  :value="productCategory.description">
+                                  :value="updatedProductCategory.description">
                         </textarea>
                     </div>
                 </div>
@@ -72,6 +74,7 @@
         computed: {
             ...mapState(modulesEnum.PRODUCT_CATEGORY, {
                 productCategory: (state) => state.item,
+                updatedProductCategory: (state) => state.updatedItem,
                 loading: (state) => state.loading
             }),
             categoryLink() {
@@ -85,7 +88,8 @@
                 save: actionNamesEnum.SAVE,
                 reorderImages: actionNamesEnum.REORDER_IMAGES,
                 addImages: actionNamesEnum.ADD_IMAGES,
-                removeImage: actionNamesEnum.REMOVE_IMAGE
+                removeImage: actionNamesEnum.REMOVE_IMAGE,
+                update: actionNamesEnum.UPDATE
             }),
             loadCurrentProductCategory: function() {
                 this.load(this.id);
@@ -102,13 +106,13 @@
 
                 this.reorderImages(reordered);
             },
+            onChange: function(property, value) {
+                this.update({
+                    [property]: value
+                })
+            },
             onSaveClicked: function() {
-                let options = {
-                    name: $(this.$el).find("input[name='name']").val(),
-                    description: $(this.$el).find("textarea[name='description']").val()
-                };
-
-                this.save(options);
+                this.save();
             },
             onImageUpload: function(uploadedImages) {
                 this.addImages(uploadedImages);

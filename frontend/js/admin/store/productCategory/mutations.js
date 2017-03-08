@@ -14,6 +14,10 @@ export default {
     [mutationNames.SET_PRODUCT_CATEGORY]: function(state, productCategory) {
         state.loading = false;
         state.item = productCategory;
+        state.updatedItem = {
+            name: productCategory.name,
+            description: productCategory.description
+        };
     },
 
     [mutationNames.UPDATE]: function(state, item) {

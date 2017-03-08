@@ -57,8 +57,8 @@ export default {
         commit(mutationNames.UPDATE, options);
     },
 
-    [actionNames.SAVE]: function({state, commit}, options) {
-        let item = Object.assign({}, state.item, options);
+    [actionNames.SAVE]: function({state, commit}) {
+        let item = Object.assign({}, state.item, state.updatedItem);
 
         commit(mutationNames.SET_PRODUCT_CATEGORIES_LOADING);
 
