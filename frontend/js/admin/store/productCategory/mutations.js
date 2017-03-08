@@ -1,17 +1,17 @@
 import mutationNames from "./mutationNamesEnum";
 
 export default {
-    [mutationNames.SET_PRODUCT_CATEGORIES]: function(state, productCategories) {
+    [mutationNames.SET_LIST]: function(state, productCategories) {
         state.loading = false;
         state.list = productCategories.list;
         state.total = productCategories.total;
     },
 
-    [mutationNames.SET_PRODUCT_CATEGORIES_LOADING]: function(state) {
+    [mutationNames.SET_LOADING]: function(state) {
         state.loading = true;
     },
 
-    [mutationNames.SET_PRODUCT_CATEGORY]: function(state, productCategory) {
+    [mutationNames.SET_ITEM]: function(state, productCategory) {
         state.loading = false;
         state.item = productCategory;
         state.updatedItem = {

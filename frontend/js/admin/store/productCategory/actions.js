@@ -5,9 +5,9 @@ import actionNames from "./actionNamesEnum";
 import mutationNames from "./mutationNamesEnum";
 
 function loadProductCategories({commit}, options) {
-    commit(mutationNames.SET_PRODUCT_CATEGORIES_LOADING);
+    commit(mutationNames.SET_LOADING);
 
-    productCategories.findAll(options).then((productCategories) => commit(mutationNames.SET_PRODUCT_CATEGORIES, productCategories));
+    productCategories.findAll(options).then((productCategories) => commit(mutationNames.SET_LIST, productCategories));
 }
 
 function loadProductCategoryItem(commit, productCategory) {
@@ -15,7 +15,7 @@ function loadProductCategoryItem(commit, productCategory) {
         id: image.uri
     }, image));
 
-    commit(mutationNames.SET_PRODUCT_CATEGORY, productCategory);
+    commit(mutationNames.SET_ITEM, productCategory);
 }
 
 function loadEmptyProductCategory({commit}) {
@@ -33,7 +33,7 @@ export default {
         if (id === navigation.emptyEntityId) {
             loadEmptyProductCategory({commit});
         } else {
-            commit(mutationNames.SET_PRODUCT_CATEGORIES_LOADING);
+            commit(mutationNames.SET_LOADING);
 
             productCategories.findById(id).then((productCategory) => {
                 loadProductCategoryItem(commit, productCategory);
@@ -60,7 +60,7 @@ export default {
     [actionNames.SAVE]: function({state, commit}) {
         let item = Object.assign({}, state.item, state.updatedItem);
 
-        commit(mutationNames.SET_PRODUCT_CATEGORIES_LOADING);
+        commit(mutationNames.SET_LOADING);
 
         if (item._id) {
             productCategories.update(item).then((productCategory) => {
