@@ -3,8 +3,6 @@
 </template>
 
 <script>
-    import imageUtil from "../../../util/imageUtil";
-
     export default {
         props: ["image"],
         
@@ -12,7 +10,7 @@
         },
         
         mounted: function() {
-            this.$el.appendChild(this.image.image);
+            this.$el.appendChild(this.image);
         }
     };
 </script>

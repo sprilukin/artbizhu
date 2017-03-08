@@ -3,7 +3,7 @@
         <td>{{productCategory.name}}</td>
         <td>{{productCategory.description}}</td>
         <td>
-            <router-link :to="editProductCategoryLink(productCategory._id)" class="uk-icon-link" uk-icon="icon: file-edit" title="Редактировать" uk-tooltip></router-link>
+            <router-link :to="editProductCategoryLink" class="uk-icon-link" uk-icon="icon: file-edit" title="Редактировать" uk-tooltip></router-link>
             <a href="#" class="uk-icon-link" uk-icon="icon: trash" title="Удалить" uk-tooltip @click="onRemoveClicked"></a>
         </td>
     </tr>
@@ -15,10 +15,13 @@
     export default {
         props: ["productCategory"],
 
+        computed: {
+            editProductCategoryLink: function() {
+                return `${navigation.all.categories.uri}/${this.productCategory._id}`
+            }
+        },
+
         methods: {
-            editProductCategoryLink: function(id) {
-                return `${navigation.all.categories.uri}/${id}`
-            },
             onRemoveClicked: function() {
                 this.$emit("remove", this.productCategory._id);
             }

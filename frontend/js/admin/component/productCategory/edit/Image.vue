@@ -6,14 +6,14 @@
     import settings from "uicommon/util/settings.js";
 
     export default {
-        props: ["image", "index"],
+        props: ["uri"],
 
         components: {
         },
 
         computed: {
             imageUri: function() {
-                return `${settings.uploadedImagesPath}${this.image.uri}`;
+                return `${settings.uploadedImagesPath}${this.uri}`;
             }
         },
 
