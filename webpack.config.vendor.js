@@ -6,6 +6,7 @@ let config = Object.assign({}, commonConfig, {
     entry: {
         "js/vendor/jquery.wrapped.js": "jquery",
         "js/vendor/uikit.wrapped.js": "uikit",
+        "js/vendor/uikit-icons.wrapped.js": "uikit/dist/js/uikit-icons",
         "js/vendor/fetch.wrapped.js": "whatwg-fetch"
     },
 
@@ -25,7 +26,7 @@ let config = Object.assign({}, commonConfig, {
 
         rules: [
             {
-                test: /(jquery|uikit)(\.min)?\.js$/,
+                test: /(jquery|uikit).*(\.min)?\.js$/,
                 use: [
                     {
                         loader: "file-loader",
@@ -59,7 +60,8 @@ let config = Object.assign({}, commonConfig, {
 if (profile.uglify) {
     config.resolve.alias = {
         jquery: "jquery/dist/jquery.min",
-        uikit: "uikit/dist/js/uikit.min"
+        uikit: "uikit/dist/js/uikit.min",
+        "uikit-icons": "uikit/dist/js/uikit-icons.min"
     };
 }
 
