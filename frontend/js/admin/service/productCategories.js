@@ -9,14 +9,14 @@ function convertImagesToUpdate(images) {
     let index = 0;
 
     return images.map((image) => {
-        if (!image.file) {
-            return {
-                uri: image.uri
-            };
-        } else {
+        if (image.file) {
             return {
                 file: true,
                 index: index++
+            };
+        } else {
+            return {
+                uri: image.uri
             };
         }
     }, []);
