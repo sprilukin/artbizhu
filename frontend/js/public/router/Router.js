@@ -1,8 +1,4 @@
-import VueRouter from "vue-router";
-import Vue from "vue";
-import $ from "jquery";
 import store from "../store/store";
-import { sync } from "vuex-router-sync";
 import App from "../component/App.vue";
 import Store from "../component/store/Store.vue";
 import Home from "../component/home/Home.vue";
@@ -10,10 +6,10 @@ import Info from "../component/info/Info.vue";
 import Payment from "../component/payment/Payment.vue";
 import Reviews from "../component/reviews/Reviews.vue";
 import NotFound from "../component/NotFound.vue";
-import navigationUtil from "./util/navigationUtil";
+import navigation from "./navigation";
+import routerFactory from "uicommon/router/routerFactory";
 
-let vueRouter = new VueRouter({
-    mode: "history",
+let vueRouter = routerFactory.create({
     routes: [
         {
             path: "/",
@@ -56,28 +52,8 @@ let vueRouter = new VueRouter({
             component: NotFound
         }
     ],
-    linkActiveClass: "uk-active",
-    scrollBehavior (/*to, from, savedPosition*/) {
-        return { x: 0, y: 0 };
-    }
+    store: store,
+    navigation: navigation.all
 });
-
-vueRouter.beforeEach((to, from, next) => {
-    let navItem = navigationUtil.getNavItemByPath(to.path);
-
-    // Close main menu and change title
-    Vue.nextTick().then(() => {
-        $("body").trigger("click");
-
-        if (navItem) {
-            $("head > title").text(navigationUtil.formatTitle(navItem.name));
-        }
-    });
-
-    next();
-});
-
-Vue.use(VueRouter);
-sync(store, vueRouter);
 
 export default vueRouter;

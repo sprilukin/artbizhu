@@ -1,16 +1,15 @@
 import url from "uicommon/util/url";
-import navigation from "../navigation";
 import settings from "common/settings";
 
 export default {
-    getNavItemByPath: function(path) {
+    getNavItemByPath: function(path, navigation) {
         let pathWithoutLastSlash = url.getPathWithoutLastSlash(path);
 
-        let navItemName = Object.keys(navigation.all).find(function(nav) {
-            return navigation.all[nav].uri === pathWithoutLastSlash;
+        let navItemName = Object.keys(navigation).find(function(nav) {
+            return navigation[nav].uri === pathWithoutLastSlash;
         });
 
-        return navigation.all[navItemName];
+        return navigation[navItemName];
     },
 
     formatTitle: function(name) {
