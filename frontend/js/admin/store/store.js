@@ -1,21 +1,11 @@
 import Vuex from "vuex";
 import Vue from "vue";
-import mutations from "./mutations";
-import actions from "./actions";
-import settings from "common/settings";
+import productCategory from "./productCategory";
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-    state: {
-        title: settings.store.name,
-        productCategories: {
-            list: [],
-            total: 0,
-            loading: false,
-            item: {}
-        }
-    },
-    mutations,
-    actions
+    modules: {
+        productCategories: productCategory
+    }
 });

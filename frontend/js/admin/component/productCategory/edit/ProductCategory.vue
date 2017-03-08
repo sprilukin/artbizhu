@@ -63,9 +63,9 @@
         },
 
         computed: {
-            ...mapState({
-                productCategory: (state) => state.productCategories.item,
-                loading: (state) => state.productCategories.loading
+            ...mapState("productCategories", {
+                productCategory: (state) => state.item,
+                loading: (state) => state.loading
             }),
             categoryLink() {
                 return navigation.all.categories.uri
@@ -73,9 +73,11 @@
         },
 
         methods: {
-            ...mapActions({
+            ...mapActions("productCategories", {
                 loadProductCategory: "loadProductCategory",
-                saveProductCategory: "saveProductCategory"
+                saveProductCategory: "saveProductCategory",
+                reorderProductCategoryImages: "reorderProductCategoryImages",
+                addFileUploadsForProductCategory: "addFileUploadsForProductCategory"
             }),
             loadCurrentProductCategory: function() {
                 this.loadProductCategory(this.id);
@@ -90,7 +92,7 @@
                     });
                 });
 
-                this.$store.dispatch("reorderProductCategoryImages", reordered);
+                this.reorderProductCategoryImages(reordered);
             },
             onSaveClicked: function() {
                 let options = {
@@ -101,7 +103,7 @@
                 this.saveProductCategory(options);
             },
             onImageUpload: function(uploadedImages) {
-                this.$store.dispatch("addFileUploadsForProductCategory", uploadedImages);
+                this.addFileUploadsForProductCategory(uploadedImages);
             }
         },
 

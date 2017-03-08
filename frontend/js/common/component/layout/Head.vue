@@ -6,13 +6,11 @@
     </div>
 </template>
 <script>
-    import {mapState} from "vuex";
+    import settings from "common/settings"
 
     export default {
         computed: {
-            ...mapState({
-                title: (state) => state.title
-            })
+            title: () => settings.store.name
         },
     }
 </script>

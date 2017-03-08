@@ -48,10 +48,10 @@
         },
 
         computed: {
-            ...mapState({
-                productCategories: (state) => state.productCategories.list,
-                loading: (state) => state.productCategories.loading,
-                total: (state) => state.productCategories.total
+            ...mapState("productCategories", {
+                productCategories: (state) => state.list,
+                loading: (state) => state.loading,
+                total: (state) => state.total
             }),
             addCategoryLink() {
                 return navigation.all.addCategory.uri;
@@ -63,9 +63,9 @@
         },
 
         methods: {
-            ...mapActions({
-                loadProductCategories: 'loadProductCategories',
-                removeProductCategory: 'removeProductCategory'
+            ...mapActions("productCategories", {
+                loadProductCategories: "loadProductCategories",
+                removeProductCategory: "removeProductCategory"
             }),
             loadProductsForCurrentPage: function() {
                 this.loadProductCategories({
@@ -73,7 +73,7 @@
                 });
             },
             onRemove: function(id) {
-                uikit.modal.confirm('Удалить?', {
+                uikit.modal.confirm("Удалить?", {
                     center: true
                 }).then(() => {
                     this.removeProductCategory(id);

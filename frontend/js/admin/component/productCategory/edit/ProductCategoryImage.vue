@@ -24,7 +24,7 @@
         },
 
         methods: {
-            ...mapActions({
+            ...mapActions("productCategories", {
                 removeImage: 'removeImageFromProductCategory'
             }),
             onRemoveClicked: function() {
