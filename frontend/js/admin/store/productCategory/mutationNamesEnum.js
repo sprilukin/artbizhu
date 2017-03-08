@@ -1,10 +1,10 @@
 export default {
-    SET_LOADING: "setProductCategoriesLoading",
-    SET_LIST: "setProductCategories",
-    SET_ITEM: "setProductCategory",
+    SET_LOADING: "setLoading",
+    SET_LIST: "setList",
+    SET_ITEM: "setItem",
 
-    ADD_IMAGES: "addFileUploadsForProductCategory",
-    REORDER_IMAGES: "reorderProductCategoryImages",
-    REMOVE_IMAGE: "removeImageFromProductCategory",
-    UPDATE: "updateProductCategoryItem"
+    ADD_IMAGES: "addImages",
+    REORDER_IMAGES: "reorderImages",
+    REMOVE_IMAGE: "removeImage",
+    UPDATE: "updateProperties"
 };

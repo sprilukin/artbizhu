@@ -1,11 +1,11 @@
 export default {
-    LOAD_ALL: "loadProductCategories",
-    LOAD_BY_ID: "loadProductCategory",
-    SAVE: "saveProductCategory",
-    REMOVE: "removeProductCategory",
+    LOAD_ALL: "loadAll",
+    LOAD_BY_ID: "loadById",
+    SAVE: "save",
+    REMOVE: "remove",
 
-    ADD_IMAGES: "addFileUploadsForProductCategory",
-    REORDER_IMAGES: "reorderProductCategoryImages",
-    REMOVE_IMAGE: "removeImageFromProductCategory",
-    UPDATE: "updateProductCategoryItem",
+    ADD_IMAGES: "addImages",
+    REORDER_IMAGES: "reorderImages",
+    REMOVE_IMAGE: "removeImage",
+    UPDATE: "updateProperties",
 };
